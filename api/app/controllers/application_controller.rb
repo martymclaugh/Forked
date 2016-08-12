@@ -15,9 +15,9 @@ class ApplicationController < ActionController::Base
      "cuisine" => params[:cuisine],
      "type" => params[:course],
      "imitLicense" => false,
-     "number" => 3,
+     "excludeIngredients" => "eggs",
      "offset" => 0,
-     "ranking" => 2,
+     "ranking" => 1,
      "number" => 25
    }
    headers = {
@@ -27,6 +27,6 @@ class ApplicationController < ActionController::Base
    response = HTTParty.get("https://spoonacular-recipe-food-nutrition-v1.p.mashape.com/recipes/searchComplex",
               query: parameters,
               headers: headers )
-  p response#['results'].map{|r| p r['title']}
+  p response['results']
   end
 end

@@ -5,6 +5,10 @@
     <title></title>
   </head>
   <body>
-    
+    <h1>Search Results</h1>
+    <% @recipes.each do |recipe| %>
+    <li> <a href="#"><img style="width:25%;" src="<%= recipe["image"] %>" alt="<%= recipe["title"] %>"><%= recipe["title"] %></a> </li>
+
+    <% end %>
   </body>
 </html>
