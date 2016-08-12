@@ -44,7 +44,7 @@ class ApplicationController < ActionController::Base
                headers: headers )
     pp response[0]['steps']
   end
-  
+
   def search_ingredient(id)
     headers = {
       "Accept" => "application/json",
@@ -56,4 +56,5 @@ class ApplicationController < ActionController::Base
                headers: headers )
     pp response
   end
+  
 end
