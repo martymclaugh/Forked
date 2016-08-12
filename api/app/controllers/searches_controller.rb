@@ -2,9 +2,12 @@ class SearchesController < ApplicationController
   def index
   end
 
-  def create
-    @search = Search.create
-    redirect_to "searches/show"
-    # @results = search
+  # def create
+  #   @recipes = search
+  #   redirect_to "/searches/show"
+  # end
+
+  def show
+    @recipes = search
   end
 end
