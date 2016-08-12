@@ -3,8 +3,9 @@ class SearchesController < ApplicationController
   end
 
   def create
-    @search = Search.create
-    redirect_to "searches/show"
-    # @results = search
+    redirect_to "/searches/show"
+    @results = search
+  end
+  def show
   end
 end
