@@ -18,7 +18,8 @@ class ApplicationController < ActionController::Base
      "imitLicense" => false,
      "excludeIngredients" => "eggs",
      "offset" => 0,
-     "ranking" => 1,
+     "ranking" => 2,
+     "query" => params[:query],
      "number" => 25
    }
    headers = {
@@ -56,5 +57,5 @@ class ApplicationController < ActionController::Base
                headers: headers )
     pp response
   end
-  
+
 end
