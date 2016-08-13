@@ -9,6 +9,17 @@
   </head>
 
   <body>
+<% if current_user %>
+  <h3><%= current_user.name %></h3>
+  <%= image_tag(@auth['info']['image']) %>
+  <p>
+    <%= link_to "Sign Out", 'sign_out', method: :delete %>
+  </p>
+<% else %>
+  <p>
+      <%= link_to "Sign in with Facebook", "auth/facebook" %>
+  </p>
+<% end %>
     <%= yield %>
   </body>
 </html>
