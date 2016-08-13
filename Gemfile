@@ -28,6 +28,7 @@ gem 'httparty'
 gem 'unirest'
 gem 'omniauth-facebook'
 gem 'dotenv-rails', :groups => [:development, :test]
+gem 'faker'
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
 group :production do
