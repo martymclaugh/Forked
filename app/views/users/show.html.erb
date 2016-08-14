@@ -1,2 +1,9 @@
-<h1>Home#profile</h1>
-<p>Find me in app/views/home/profile.html.erb</p>
+<div class="user-profile-top">
+
+<% if logged_in? %>
+  <img src="<%= current_user.img_url" %>" height="50" width="50">
+<% else %>
+  <img src="http://sd.keepcalm-o-matic.co.uk/i/keep-calm-my-profile-picture-is-under-construction.png"  height="50" width="50">
+<% end %>
+
+</div>
