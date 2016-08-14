@@ -1,5 +1,4 @@
 <div class="user-profile-top">
-
   <div class="user-image">
     <% if current_user.img_url %>
       <img src="<%= current_user.img_url %>" height="200" width="200"  style="border: black solid 2px;";>
@@ -9,8 +8,15 @@
   </div>
 
   <div class="user-information">
-    <h3><%= current_user </h3>
-
+    <h3><%= current_user.name %></h3>
+    <p>Place holder for chef score</p>
+    <p>Place holder for favorite meal</p>
+    <p>Recipe count: <%= current_user.recipes.count %></p>
   </div>
+</div>
 
+<div class="user-profile-bottom">
+  <div class="user-friend-list">
+  <
+  </div>
 </div>
