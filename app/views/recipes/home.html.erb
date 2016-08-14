@@ -11,7 +11,7 @@
 
           	<div>
           		<small class="left">Recipe of the Day</small>
-              <h3 class="left"><%= recipe.title %></h3>
+              <h3 class="left"><a href="/recipes/<%= recipe.id %>"><%= recipe.title %></a></h3>
           		<h5 class="left">
                 <span class="fa fa-star"></span>
                 <span class="fa fa-star"></span>
@@ -34,8 +34,17 @@
           			<div class="col-sm-9 col-lg-9 col-md-9">
           				<p>Reciped Submitted by: <%= User.find(UserRecipe.find(recipe.id).user_id).name %> </p>
           			</div>
+
+                <div class="col-sm-9 col-lg-9 col-md-9">
+                  <p><span class="fa fa-heart"></span> <%= rand(1..100) %>&nbsp;&nbsp;
+                  <span class="fa fa-cutlery"></span> <%= rand(1..100) %></p>
+                </div>
           		</div>
           	</div>
+
+
+
+
 
 
           </div>
