@@ -1,7 +1,7 @@
 <h1><%= @ingredients['title'] %></h1><br>
 <img style="border:6px solid black; width: 50%;" src="<%= @ingredients['image'] %>" alt="<%= @ingredients['title'] %>"/>
   <% if logged_in? %>
-    <%= form_for(:recipe, :url => "/users/#{current_user.id}/recipes") do |f|%>
+    <%= form_for(:recipe, :url => recipes_path) do |f|%>
       <%= f.hidden_field :spoon_id, :value => params[:id] %>
       <%= submit_tag ("Save")%>
     <% end %>

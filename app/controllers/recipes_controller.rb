@@ -7,8 +7,12 @@ class RecipesController < ApplicationController
 
   def create
     @recipe = Recipe.new(spoon_id: params['recipe']['spoon_id'])
-    if @recipe.save?
-      UserRecipe.create(recipe_id: @recipe.id, user_id: current_user.id )
+    if @recipe.save
+      @user_recipe = UserRecipe.create(recipe_id: @recipe.id, user_id: current_user.id )
+    end
+    p current_user
+    p @recipe
+    p @user_recipe
   end
 
   def home
