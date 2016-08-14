@@ -21,11 +21,25 @@
 
   <div class="user-ingredients">
     <%= form_for(:ingredient, :url => ingredients_path) do |f|%>
-      <%= f.text_field :ingredient %>
+      <%= f.text_field :ingredient, placeholder: "Enter new ingredient" %>
       <%= submit_tag ("Add")%>
     <% end %>
 
+    <div class="user-fridge" style="background-image: url('http://cdn.xl.thumbs.canstockphoto.com/canstock11620823.jpg');
+    background-size: 125px 100px;
+    background-repeat: no-repeat;
+    display:inline-block;";>
+      <h4>My Ingredients:</h4>
+      <% current_user.ingredients.each do |ingredient| %>
+        <div class="ingredient-item">
+          <img src="<%= ingredient.image %>">
+          <p class="ingredient-name"><%= ingredient.name %></p>
+        </div>
+      <% end %>
+    </div>
 
 
   </div>
+
+
 </div>
