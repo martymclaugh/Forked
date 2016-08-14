@@ -2,8 +2,7 @@ class SearchesController < ApplicationController
   def index
   end
 
-  def show
+  def search
     @recipes = search
-    render :json => @recipes
   end
 end

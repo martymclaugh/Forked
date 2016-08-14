@@ -1,4 +1,4 @@
-class HomeController < ApplicationController
+class UsersController < ApplicationController
   before_action :set_auth
 
   def index
@@ -11,5 +11,5 @@ class HomeController < ApplicationController
   def set_auth
     @auth = session[:omniauth] if session[:omniauth]
   end
-  
+
 end
