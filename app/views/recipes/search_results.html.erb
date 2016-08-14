@@ -7,7 +7,9 @@
   <body>
     <h1>Search Results</h1>
     <% @recipes.each do |recipe| %>
-    <li> <a href="/recipes/<%= recipe['id'] %>"><img style="width:13%;" src="<%= recipe["image"] %>" alt="<%= recipe["title"] %>"><%= recipe["title"] %></a> </li>
+    <li> <a href="/recipes/preview/<%= recipe['id'] %>"><img style="width:13%;" src="<%= recipe["image"] %>" alt="<%= recipe["title"] %>"><%= recipe["title"] %></a> </li>
+    <p>Used Ingredients: <%= recipe["usedIngredientCount"] %></p>
+    <p>Missing Ingredients: <%= recipe["missedIngredientCount"] %></p>
 
     <% end %>
   </body>
