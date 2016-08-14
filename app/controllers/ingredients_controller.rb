@@ -1,7 +1,8 @@
 class IngredientsController < ApplicationController
   def create
-    search_ingredients(params[:ingredient][:ingredient])
-    @ingredient = Ingredient.new(name: ingredient[0]["name"], spoon_id: ingredient[0]["id"], image: ingredient[0]["image"])
+    search = search_ingredients
+    p params[:ingredient][:ingredient]
+    @ingredient = Ingredient.new(name: search[0]["name"], spoon_id: search[0]["id"], image: search[0]["image"])
     if @ingredient.save
       @useringredient = UserIngredient.create(user_id: current_user.id, ingredient_id: @ingredient.id)
     end
@@ -9,14 +10,14 @@ class IngredientsController < ApplicationController
 
   private
 
-  def search_ingredients(ingredient)
+  def search_ingredients
     ingredient = HTTParty.post "https://spoonacular-recipe-food-nutrition-v1.p.mashape.com/recipes/parseIngredients",
     headers:{
       "X-Mashape-Key" => ENV['SPOON_KEY'],
-      "Accept" => "application/json"
+       "Content-Type" => "application/x-www-form-urlencoded"
     },
-    parameters:{
-      "ingredientList" => ingredient,
+    query:{
+      "ingredientList" => params[:ingredient][:ingredient],
       "servings" => 1
     }
   end
