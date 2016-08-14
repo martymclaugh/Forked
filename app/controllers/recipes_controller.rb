@@ -6,7 +6,9 @@ class RecipesController < ApplicationController
   end
 
   def create
-    @recipe = Recipe.new()
+    @recipe = Recipe.new(spoon_id: params['recipe']['spoon_id'])
+    if @recipe.save?
+      UserRecipe.create(recipe_id: @recipe.id, user_id: current_user.id )
   end
 
   def home
