@@ -6,6 +6,10 @@ class ApplicationController < ActionController::Base
   helper_method :set_auth
   # headers['Access-Control-Allow-Origin'] = 'http://localhost:9000'
 
+  def index
+    @recipe = Recipe.all
+  end
+
   private
 
   def set_auth
