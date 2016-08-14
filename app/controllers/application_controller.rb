@@ -3,13 +3,16 @@ class ApplicationController < ActionController::Base
   protect_from_forgery with: :exception
   protect_from_forgery unless: -> { request.format.json? }
   helper_method :search
+  helper_method :set_auth
   # headers['Access-Control-Allow-Origin'] = 'http://localhost:9000'
 
   private
-  
+
   def set_auth
     @auth = session[:omniauth] if session[:omniauth]
   end
+
+
 
   def search
     @ingredients = params[:ingredients].split(" ").join(",").to_s
