@@ -2,6 +2,7 @@ class HomeController < ApplicationController
   before_action :set_auth
 
   def index
+  	@recipe = Recipe.all
   end
 
   def profile
