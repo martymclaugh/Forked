@@ -3,6 +3,7 @@ class UserRecipes < ActiveRecord::Migration[5.0]
     create_table :user_recipes do |t|
       t.integer :user_id
       t.integer :recipe_id
+      
       t.timestamps
     end
   end
