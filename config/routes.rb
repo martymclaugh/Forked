@@ -1,11 +1,10 @@
 Rails.application.routes.draw do
   # root 'searches#index'
 
-  root 'home#index'
-
+  get '/' => 'recipes#home'
   # get 'home/index'
 
-  get 'home/profile'
+  # get 'home/profile'
 
   get 'auth/:provider/callback', to: 'sessions#create'
 

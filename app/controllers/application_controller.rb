@@ -4,8 +4,10 @@ class ApplicationController < ActionController::Base
   protect_from_forgery unless: -> { request.format.json? }
   helper_method :current_user
 
-  private
+  def index
+  end
 
+  private
   def current_user
 
     if session[:user_id]
