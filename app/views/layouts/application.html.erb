@@ -11,8 +11,7 @@
   <body>
     <% if current_user %>
       <h3><%= current_user.name %></h3>
-      <%= p @auth %>
-      <%= image_tag(@auth['info']['image']) %>
+      <%= image_tag current_user.img_url%>
       <%= link_to "Sign Out", 'sign_out', method: :delete %>
     <% else %>
       <%= link_to "Sign in with Facebook", "auth/facebook" %>
