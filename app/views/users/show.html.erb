@@ -21,7 +21,7 @@
 
   <div class="user-ingredients">
     <%= form_for(:ingredient, :url => ingredients_path) do |f|%>
-      <%= f.text_field :name %>
+      <%= f.text_field :ingredient %>
       <%= submit_tag ("Add")%>
     <% end %>
 

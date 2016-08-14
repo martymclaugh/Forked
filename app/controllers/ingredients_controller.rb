@@ -12,8 +12,8 @@ class IngredientsController < ApplicationController
   def search_ingredients(ingredient)
     ingredient = HTTParty.post "https://spoonacular-recipe-food-nutrition-v1.p.mashape.com/recipes/parseIngredients",
     headers:{
-      "X-Mashape-Key" => ENV['SPOON_KEY']
-      "Content-Type" => "application/x-www-form-urlencoded"
+      "X-Mashape-Key" => ENV['SPOON_KEY'],
+      "Accept" => "application/json"
     },
     parameters:{
       "ingredientList" => ingredient,
