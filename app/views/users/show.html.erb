@@ -25,7 +25,18 @@
       <%= submit_tag ("Add")%>
     <% end %>
 
+    <div class="user-fridge" style="background-image: url('http://image.shutterstock.com/z/stock-vector-mascot-illustration-featuring-a-refrigerator-holding-an-apple-99796532.jpg');";>
+      <h4>My Ingredients:</h4>
+      <% current_user.ingredients.each do |ingredient| %>
+        <div class="ingredient-item">
+          <img src="<%= ingredient.image %>">
+          <p class="ingredient-name"><%= ingredient.name %></p>
+        </div>
+      <% end %>
+    </div>
 
 
   </div>
+
+
 </div>
