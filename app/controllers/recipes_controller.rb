@@ -13,7 +13,7 @@ class RecipesController < ApplicationController
     @recipe = Recipe.find(params[:id])
   end
 
-  def recipe_preview
+  def preview
     @recipe = search_recipe(params[:id])
     @ingredients = search_ingredient(params[:id])
   end
