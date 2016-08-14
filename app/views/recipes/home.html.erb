@@ -1,12 +1,12 @@
 <div class="contain">
   <div class="row">
-    <% @recipe.each do |recipe| %>
+    <% @recipes.each do |recipe| %>
     <div class="col-sm-3 col-lg-3 col-md-3">
       <div>
         <div class="thumbnail">
           <div class="caption" style="height: 550px";>
           	<div>
-          		<img src="<%= current_user.img_url %>" style="width: 100%; height: auto";>
+          		<img src="" style="width: 100%; height: auto";>
           	</div>
 
           	<div>
@@ -21,14 +21,14 @@
           	<div>
           		<div class="row">
           			<div class="col-sm-3 col-lg-3 col-md-3">
-          				<img src="<%= current_user.img_url %>">
+          				<img src="<%=  %>">
           			</div>
           			<div class="col-sm-9 col-lg-9 col-md-9">
-          				<p>Reciped Submitted by: <%= current_user.name %> </p>
+          				<p>Reciped Submitted by: <%= %> </p>
           			</div>
           		</div>
           	</div>
-          	
+
 
           </div>
         </div>
