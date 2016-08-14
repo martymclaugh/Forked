@@ -6,6 +6,10 @@ class ApplicationController < ActionController::Base
   # headers['Access-Control-Allow-Origin'] = 'http://localhost:9000'
 
   private
+  
+  def set_auth
+    @auth = session[:omniauth] if session[:omniauth]
+  end
 
   def search
     @ingredients = params[:ingredients].split(" ").join(",").to_s
