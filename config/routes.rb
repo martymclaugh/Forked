@@ -7,8 +7,6 @@ Rails.application.routes.draw do
   get '/recipes/preview/:id' => 'recipes#preview'
   get '/recipes/:id' => 'recipes#show'
 
-  get '/users/:id' => 'users#profile'
-
   get 'auth/:provider/callback', to: 'sessions#create'
   delete 'sign_out', to: 'sessions#destroy', as: 'sign_out'
 
