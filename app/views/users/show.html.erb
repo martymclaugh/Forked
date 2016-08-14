@@ -1,0 +1,31 @@
+<div class="user-profile-top">
+  <div class="user-image">
+    <% if current_user.img_url %>
+      <img src="<%= current_user.img_url %>" height="200" width="200"  style="border: black solid 2px;";>
+    <% else %>
+      <img src="http://sd.keepcalm-o-matic.co.uk/i/keep-calm-my-profile-picture-is-under-construction.png" height="50" width="50">
+    <% end %>
+  </div>
+
+  <div class="user-information">
+    <h3><%= current_user.name %></h3>
+    <p>Place holder for chef score</p>
+    <p>Place holder for favorite meal</p>
+    <p>Recipe count: <%= current_user.recipes.count %></p>
+  </div>
+</div>
+
+<div class="user-profile-bottom">
+  <div class="user-friend-list">
+  </div>
+
+  <div class="user-ingredients">
+    <%= form_for(:ingredient, :url => ingredients_path) do |f|%>
+      <%= f.text_field :ingredient %>
+      <%= submit_tag ("Add")%>
+    <% end %>
+
+
+
+  </div>
+</div>
