@@ -12,8 +12,6 @@ class ApplicationController < ActionController::Base
     @auth = session[:omniauth] if session[:omniauth]
   end
 
-
-
   def search
     @ingredients = params[:ingredients].split(" ").join(",").to_s
     @ingredients
