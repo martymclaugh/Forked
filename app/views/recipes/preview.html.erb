@@ -1,23 +1,24 @@
-
-        <h1><%= p @ingredients['title'] %></h1><br>
-        <img style="border:6px solid black; width: 50%;" src="<%= @ingredients['image'] %>" alt="<%= @ingredients['title'] %>"/>
-        <p>Ready in:
-            <%= @ingredients['readyInMinutes'] %>
-            minutes</p>
-        <div style="border:4px solid black;">
-            <% @ingredients["extendedIngredients"].each do |ingredient| %>
-              <li><%= ingredient["originalString"] %></li>
-            <% end %>
-        </div>
-        <h2>Instructions</h2>
-        <div style="border:4px solid black;">
-            <%p @recipe.each do |step| %>
-              <p><b><%= step['number'] %></b>:
-                <%= step['step'] %></p>
-            <% end %>
-        </div>
-        <% if logged_in? %>
-          <%= form_for(:recipe, :url => "/users/#{current_user.id}/recipes") do |f|%>
-          <%= f.hidden_field :spoon_id, :value => params[:id] %>
-          <% end %>
-          <% end %>
+<h1><%= @ingredients['title'] %></h1><br>
+<img style="border:6px solid black; width: 50%;" src="<%= @ingredients['image'] %>" alt="<%= @ingredients['title'] %>"/>
+  <% if logged_in? %>
+    <%= form_for(:recipe, :url => "/users/#{current_user.id}/recipes") do |f|%>
+      <%= f.hidden_field :spoon_id, :value => params[:id] %>
+      <%= submit_tag ("Save")%>
+    <% end %>
+  <% end %>
+<p>Ready in:
+    <%= @ingredients['readyInMinutes'] %>
+    minutes</p>
+<div style="border:4px solid black;">
+    <% @ingredients["extendedIngredients"].each do |ingredient| %>
+    <li><%= ingredient["originalString"] %></li>
+    <% end %>
+</div>
+<h2>Instructions</h2>
+<div style="border:4px solid black;">
+    <% @recipe.each do |step| %>
+    <p>
+        <b><%= step['number'] %></b>:
+        <%= step['step'] %></p>
+    <% end %>
+</div>
