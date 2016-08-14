@@ -5,6 +5,10 @@ class RecipesController < ApplicationController
     @recipe = Recipe.all
   end
 
+  def create
+    @recipe = Recipe.new()
+  end
+
   def home
     @recipes = Recipe.all
   end
