@@ -94,7 +94,7 @@ GEM
     multi_xml (0.5.5)
     multipart-post (2.0.0)
     nio4r (1.2.1)
-    nokogiri (1.6.8)
+    nokogiri (1.6.7)
       mini_portile2 (~> 2.1.0)
       pkg-config (~> 1.1.7)
     oauth2 (1.2.0)
