@@ -5,6 +5,7 @@ Rails.application.routes.draw do
   get '/recipes/search' => 'recipes#search'
   get "/recipes/search_results" => 'recipes#search_results'
   get '/recipes/preview/:id' => 'recipes#preview'
+  get '/recipes/:id' => 'recipes#show'
 
   get '/users/:id' => 'users#profile'
 
