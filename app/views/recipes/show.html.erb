@@ -17,10 +17,10 @@
 		</div>
 		<div>
 			<ul class="recipe-nav">
-				<li><h4><a class="active" href="#like">Like</a></h4></li>
-				<li><h4><a href="#made">I Made It</a></h4></li>
-				<li><h4><a href="#share">Share</a></h4></li>
-				<li><h4><a href="#print">Print</a></h4></li>
+				<li><h4><a class="active" href="#like"><span class="fa fa-thumbs-up"></span>  Like</a></h4></li>
+				<li><h4><a href="#made"><span class="fa fa-cutlery"></span>  I Made It</a></h4></li>
+				<li><h4><a href="#share"><span class="fa fa-share-alt"></span>  Share</a></h4></li>
+				<li><h4><a href="#print"><span class="fa fa-print"></span>  Print</a></h4></li>
 			</ul>
 		</div>
 
@@ -61,13 +61,21 @@
 		</div>
 
 
-		<% Recipe.find(@recipe.id).ingredients.each do |ingredient| %>
+		<% Recipe.find(@recipe.id).ingredients.each_with_index do |ingredient, i| %>
 		<div class="row">
 			<div class="col-sm-1 col-lg-1 col-md-1 left">
-				<span class="fa-stack fa-lg ingredient-check">
+				
+				
+				<span class="fa-stack fa-lg">
 			  		<i class="fa fa-circle-thin fa-stack-2x"></i>
-			  		<i class="fa fa-plus fa-stack-1x"></i>
+			  		<i class="directions fa-stack-1x"><%= i %></i>
 				</span>
+
+			<!-- 	<span class="fa-stack fa-lg ingredient-check">
+			  		<i class="fa fa-circle-thin fa-stack-2x"></i>
+			  		<i class="fa fa-check fa-stack-1x">1</i>
+				</span> -->
+
 			</div>
 			<div class="col-sm-11 col-lg-11 col-md-11 left">
 				<h4 class=""><%= ingredient.name %></h4><br>
