@@ -34,6 +34,9 @@ function directionDone(){
 	$(this).html('')
 	$(this).addClass('fa fa-check')
 	$(this).parent().css('color', 'green')
+	$(this).parent().parent().siblings().css('color', 'gray')
+
+
 }
 
 function showIngredientName(){
