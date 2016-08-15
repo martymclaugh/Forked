@@ -10,8 +10,20 @@ class IngredientsController < ApplicationController
   end
 
   def destroy
-    @ingredient = Ingredient.find(params[:id])
-    @ingredient.destroy
+    ingredients = current_user.user_ingredients
+    p user_ingredients
+
+
+    ingredient = UserIngredient.where(user_id: current_user.id, ingredient_id: params[:id])
+    puts "*" *100
+    # p ingredient
+    # p ingredient.class
+    # p ingredient.user_id
+    # p ingredient.ingredient_id
+    # p ingredient.user_ingredient_id
+    # p ingredient.id
+
+    # UserIngredient.destroy()
     redirect_to user_path(current_user)
   end
 
