@@ -90,14 +90,16 @@ ul li:last-child {
   bottom: 5%;
   left: 5%;
   right: 25%;
-  color: #fff;
+  color: black;
   padding: .5em;
 }
 .ingredient-item:hover .ingredient-name{
 	display: block;
 }
-.ingredient-item:hover{
-	width: 120%;
+.ingredient-image:hover {
+
+transform: scale(1.25);
+
 }
 
 .ingredient-item .ingredient-delete {
