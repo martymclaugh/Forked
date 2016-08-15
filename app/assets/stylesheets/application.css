@@ -80,3 +80,15 @@ ul li:last-child {
     border-right: none;
 }
 
+.ingredient-item{
+	position: relative;
+}
+
+.ingredient-item .ingredient-name {
+	position: absolute;
+  bottom: 5%;
+  left: 5%;
+  right: 5%;
+  background-color: #fff;
+  padding: .5em;
+}
