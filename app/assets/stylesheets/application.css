@@ -85,10 +85,14 @@ ul li:last-child {
 }
 
 .ingredient-item .ingredient-name {
+	display: none;
 	position: absolute;
   bottom: 5%;
   left: 5%;
   right: 5%;
-  background-color: #fff;
+  color: #fff;
   padding: .5em;
+}
+.ingredient-item:hover .ingredient-name{
+	display: block;
 }

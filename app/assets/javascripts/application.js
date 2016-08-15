@@ -3,6 +3,8 @@ $(document).on("ready", function(){
 	$('.directions').on('click', directionDone)
     $('.ingredient-image').on('mouseenter', showIngredientName )
     $('.ingredient-image').on('mouseleave', hideIngredientName )
+		$('.ingredient-name').on('mouseenter', showIngredientName )
+		$('.ingredient-name').on('mouseleave', hideIngredientName )
 })
 
 
@@ -26,5 +28,3 @@ function showIngredientName(){
 function hideIngredientName(){
       nameSelector.hide()
 }
-
-
