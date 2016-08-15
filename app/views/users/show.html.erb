@@ -30,8 +30,9 @@
       <img src="https://lh3.ggpht.com/ObcpDS70JKvFYRYRmRzVkxkOnyt4EFsiIv6PvWUZvIGYreVdNfOb91-WFk4Pivfk_5U=w300" style="width:50%;" alt="My Fridge">
       <% current_user.ingredients.each do |ingredient| %>
         <div class="ingredient-item">
-          <img src="<%= ingredient.image %>">
-          <p class="ingredient-name"><%= ingredient.name %></p>
+
+          <img class="ingredient-image" src="<%= ingredient.image %>">
+          <p class="ingredient-name" style="display: none;";><%= ingredient.name %></p>
         </div>
       <% end %>
     </div>
@@ -42,7 +43,7 @@
     <% current_user.recipes.each do |recipe| %>
         <div class="saved-recipe-list">
           <img src="<%= recipe.image %>">
-          <p class="recipe-name"><%= recipe.name %></p>
+          <p class="recipe-name"><%= recipe.title %></p>
         </div>
       <% end %>
   </div>
