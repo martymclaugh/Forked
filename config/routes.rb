@@ -1,17 +1,15 @@
 Rails.application.routes.draw do
   # root 'searches#index'
 
-  root 'home#index'
-
-  # get 'home/index'
-
-  get 'home/profile'
+  get '/' => 'recipes#home'
+  get '/recipes/search' => 'recipes#search'
+  get "/recipes/search_results" => 'recipes#search_results'
+  get '/recipes/preview/:id' => 'recipes#preview'
+  get '/recipes/:id' => 'recipes#show'
 
   get 'auth/:provider/callback', to: 'sessions#create'
-
   delete 'sign_out', to: 'sessions#destroy', as: 'sign_out'
 
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
-  resources :searches, only: [:new, :create, :index, :show]
-  resources :recipes
+  resources :recipes, :ingredients, :users
 end

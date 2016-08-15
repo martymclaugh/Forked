@@ -1,27 +1,91 @@
-<!DOCTYPE html>
-<html>
-    <head>
-        <meta charset="utf-8">
-        <title></title>
-    </head>
-    <body>
-        <h1><%= @ingredients['title'] %></h1><br>
-        <img style="border:6px solid black; width: 50%;" src="<%= @ingredients['image'] %>" alt="<%= @ingredients['title'] %>"/>
-        <p>Ready in:
-            <%= @ingredients['readyInMinutes'] %>
-            minutes</p>
-        <div style="border:4px solid black;">
-            <%@ingredients["extendedIngredients"].each do |ingredient| %>
-              <li><%= ingredient["originalString"] %></li>
-            <% end %>
-        </div>
-        <h2>Instructions</h2>
-        <div style="border:4px solid black;">
-            <% @recipe.each do |step| %>
-              <p><b><%= step['number'] %></b>:
-                <%= step['step'] %></p>
-            <% end %>
-        </div>
+<div class="contain">
+	<div class="row">
+		<div class="col-sm-4 col-lg-4 col-md-4">
+			<h1><%= @recipe.title %></h1>
+			<span class="fa fa-star"></span>
+			<span class="fa fa-star"></span>
+			<span class="fa fa-star"></span>
+			<span class="fa fa-star-half-o"></span>
+			<span class="fa fa-star-o"></span>
+			<h3>Reciped Submitted by: <small><%= User.find(UserRecipe.find(@recipe.id).user_id).name %></small></h3>
+			<p><span class="fa fa-heart"></span> <%= rand(1..100) %>&nbsp;&nbsp;
+				<span class="fa fa-cutlery"></span> <%= rand(1..100) %></p>
+			</div>
+			<div class="col-sm-8 col-lg-8 col-md-8">
+				<img src="<%= Recipe.find(@recipe.id).image %>">
+			</div>
+		</div>
+		<div>
+			<ul class="recipe-nav">
+				<li><h4><a class="active" href="#like"><span class="fa fa-thumbs-up"></span>  Like</a></h4></li>
+				<li><h4><a href="#made"><span class="fa fa-cutlery"></span>  I Made It</a></h4></li>
+				<li><h4><a href="#share"><span class="fa fa-share-alt"></span>  Share</a></h4></li>
+				<li><h4><a href="#print"><span class="fa fa-print"></span>  Print</a></h4></li>
+			</ul>
+		</div>
 
-    </body>
-</html>
+		<div class="row">
+			<div class="col-sm-6 col-lg-6 col-md-6 left">
+				<h3>Ingredients</h3>
+			</div>
+			<div class="col-sm-6 col-lg-6 col-md-6 right pad10">
+				<h4><span class="fa fa-clock-o"></span> <%= rand(10..45)%> Minutes | <span class="fa fa-spoon"></span> <%= rand(1..8) %> Servings | <span class="fa fa-bar-chart"></span> <%= rand(45..800) %> Calories </h4>
+			</div>
+		</div>
+
+		<% Recipe.find(@recipe.id).ingredients.each do |ingredient| %>
+		<div class="row">
+			<div class="col-sm-1 col-lg-1 col-md-1 left">
+				<span class="fa-stack fa-lg ingredient-check">
+			  		<i class="fa fa-circle-thin fa-stack-2x"></i>
+			  		<i class="fa fa-plus fa-stack-1x"></i>
+				</span>
+			</div>
+			<div class="col-sm-11 col-lg-11 col-md-11 left">
+				<h4 class=""><%= ingredient.name %></h4><br>
+			</div>
+		</div>
+
+		<% end %>
+
+		<div class="row">
+			<div class="col-sm-6 col-lg-6 col-md-6 left">
+				<h3>Directions</h3>
+			</div>
+			<% prep = rand(10..45) %>
+			<% cook = rand(10..45) %>
+			<% ready = prep + cook %>
+			<div class="col-sm-6 col-lg-6 col-md-6 right pad10">
+				<h4><span class="fa fa-clock-o"></span> Prep: <%= prep %> Minutes | <span class="fa fa-clock-o"></span> Cook: <%= cook %> Minutes | <span class="fa fa-clock-o"></span> Ready In: <%= ready %> Minutes </h4>
+			</div>
+		</div>
+
+
+		<% Recipe.find(@recipe.id).ingredients.each_with_index do |ingredient, i| %>
+		<div class="row">
+			<div class="col-sm-1 col-lg-1 col-md-1 left">
+				
+				
+				<span class="fa-stack fa-lg">
+			  		<i class="fa fa-circle-thin fa-stack-2x"></i>
+			  		<i class="directions fa-stack-1x"><%= i %></i>
+				</span>
+
+			<!-- 	<span class="fa-stack fa-lg ingredient-check">
+			  		<i class="fa fa-circle-thin fa-stack-2x"></i>
+			  		<i class="fa fa-check fa-stack-1x">1</i>
+				</span> -->
+
+			</div>
+			<div class="col-sm-11 col-lg-11 col-md-11 left">
+				<h4 class=""><%= ingredient.name %></h4><br>
+			</div>
+		</div>
+
+		<% end %>
+
+ 
+
+		
+
+	</div>

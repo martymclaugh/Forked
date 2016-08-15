@@ -1,3 +1,4 @@
+
 // This is a manifest file that'll be compiled into application.js, which will include all the files
 // listed below.
 //
@@ -14,3 +15,35 @@
 //= require jquery_ujs
 //= require turbolinks
 //= require_tree .
+
+
+$(document).on("ready", function(){
+	$('.ingredient-check').on('click', recipeDone)
+	$('.directions').on('click', directionDone)
+    $('.ingredient-image').on('mouseenter', showIngredientName ) 
+    $('.ingredient-image').on('mouseleave', hideIngredientName )
+})
+
+
+function recipeDone(){
+	$(this).css('color', 'green')
+}
+
+function directionDone(){
+	console.log("Im clicked")
+	$(this).html('')
+	$(this).addClass('fa fa-check')
+	$(this).parent().css('color', 'green')
+}
+
+function showIngredientName(){
+    var idSuffix = $(this).attr("value")
+    nameSelector = $('#ingredient-' + idSuffix)
+    nameSelector.show()
+}
+
+function hideIngredientName(){
+      nameSelector.hide()
+}
+
+  
