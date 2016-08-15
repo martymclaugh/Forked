@@ -4,6 +4,7 @@ $(document).ready(function() {
 
 
   $('.ingredient-image').mouseenter( function() {
+    console.log(this)
     var idSuffix = $(this).attr("value");
     nameSelector = $('#ingredient-' + idSuffix);
     nameSelector.show();
@@ -12,7 +13,7 @@ $(document).ready(function() {
 
    $('.ingredient-image').mouseleave( function() {
       nameSelector.hide();
-      $('.button_to').hide();
+      // $('.button_to').hide();
   })
 
 })
