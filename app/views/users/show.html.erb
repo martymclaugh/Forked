@@ -1,55 +1,59 @@
 <div class="user-profile-top">
-  <div class="user-image left">
-    <% if current_user.img_url %>
-      <img src="<%= current_user.img_url %>" height="200" width="200"  style="border: black solid 2px;";>
+    <div class="user-image left">
+        <% if current_user.img_url %>
+        <img src="<%= current_user.img_url %>" height="200" width="200" style="border: black solid 2px;" ;>
     <% else %>
-      <img src="http://sd.keepcalm-o-matic.co.uk/i/keep-calm-my-profile-picture-is-under-construction.png" height="50" width="50">
-    <% end %>
-  </div>
+        <img src="http://sd.keepcalm-o-matic.co.uk/i/keep-calm-my-profile-picture-is-under-construction.png" height="50" width="50">
+        <% end %>
+    </div>
 
-  <div class="user-information center">
-    <h3><%= current_user.name %></h3>
-    <p>Place holder for chef score</p>
-    <p>Place holder for favorite meal</p>
-    <p>Recipe count: <%= current_user.recipes.count %></p>
-  </div>
+    <div class="user-information center">
+        <h3><%= current_user.name %></h3>
+        <p>Place holder for chef score</p>
+        <p>Place holder for favorite meal</p>
+        <p>Recipe count:
+            <%= current_user.recipes.count %></p>
+    </div>
 </div>
 
 <div class="user-profile-bottom">
-  <div class="user-friend-list">
-  </div>
+    <div class="user-friend-list"></div>
 
-  <div class="user-ingredients">
-    <div class="user-fridge">
-      <h4>My Ingredients:</h4>
+    <div class="user-ingredients">
+        <div class="user-fridge">
+            <h4>My Ingredients:</h4>
 
-      <%= form_for(:ingredient, :url => ingredients_path) do |f|%>
-        <%= f.text_field :ingredient, placeholder: "Enter new ingredient" %>
-        <%= submit_tag ("Add")%>
-      <% end %>
+            <%= form_for(:ingredient, :url => ingredients_path) do |f|%>
+            <%= f.text_field :ingredient, placeholder: "Enter new ingredient" %>
+            <%= submit_tag ("Add")%>
+            <% end %>
+            <div class="ingredients-list col-sm-6" style="height: 200px; width: 30%; overflow: scroll;">
+            <% current_user.ingredients.each do |ingredient| %>
 
-      <% current_user.ingredients.each do |ingredient| %>
-        <%= button_to "delete", {:controller => :ingredients,
-          :action => 'destroy', :id => ingredient.id }, :method => :delete %>
-
-        <div class="ingredient-item">
-          <img class="ingredient-image" src="<%= ingredient.image %>" value="<%= ingredient.name %>">
-          <p id="ingredient-<%= ingredient.name %>" style="display: none;";><%= ingredient.name %></p>
+            <div class="ingredient-item" style="display: inline-block; float: left;">
+                <img class="ingredient-image" style="display: inline-block; float: left;" src="<%= ingredient.image %>" value="<%= ingredient.name %>">
+                <div class="ingredient-name">
+                    <p id="ingredient-<%= ingredient.name %>"><%= ingredient.name %></p>
+                </div>
+                <div class="ingredient-delete">
+                    <button action="/ingredients/<%= ingredient.id%>" method="delete" style="background-color: Transparent; border: none; width: 5%;">
+                        <img height="25" width="25" src="http://www.ontomni.com/support/gifts/Delete@2x.png">
+                    </button>
+                </div>
+            </div>
+            <% end %>
+          </div>
         </div>
-      <% end %>
-
     </div>
-  </div>
 
-  <div class="user-recipes">
-    <h4>Saved Recipes:</h4>
-    <% current_user.recipes.each do |recipe| %>
+    <div class="user-recipes">
+        <h4>Saved Recipes:</h4>
+        <% current_user.recipes.each do |recipe| %>
         <div class="saved-recipe-list">
-          <img src="<%= recipe.image %>">
-          <p class="recipe-name"><%= recipe.title %></p>
+            <img src="<%= recipe.image %>">
+            <p class="recipe-name"><%= recipe.title %></p>
         </div>
-      <% end %>
-  </div>
-
+        <% end %>
+    </div>
 
 </div>

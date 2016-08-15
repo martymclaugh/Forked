@@ -80,3 +80,41 @@ ul li:last-child {
     border-right: none;
 }
 
+.ingredient-item{
+	position: relative;
+}
+
+.ingredient-item .ingredient-name {
+	display: none;
+	position: absolute;
+  bottom: 5%;
+  left: 5%;
+  right: 25%;
+  color: black;
+  padding: .5em;
+}
+.ingredient-item:hover .ingredient-name{
+	display: block;
+}
+.ingredient-image:hover {
+
+transform: scale(1.25);
+
+}
+
+.ingredient-item .ingredient-delete {
+	display: none;
+	position: absolute;
+  top: 5%;
+  left: 5%;
+  right: 0%;
+	background-repeat:no-repeat;
+	border: none;
+	cursor:pointer;
+	overflow: hidden;
+	outline:none;
+  padding: .5em;
+}
+.ingredient-item:hover .ingredient-delete{
+	display: block;
+}
