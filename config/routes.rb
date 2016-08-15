@@ -2,6 +2,7 @@ Rails.application.routes.draw do
   # root 'searches#index'
 
   get '/' => 'recipes#home'
+  get '/recipes/new' => 'recipes#new'
   get '/recipes/search' => 'recipes#search'
   get "/recipes/search_results" => 'recipes#search_results'
   get '/recipes/preview/:id' => 'recipes#preview'

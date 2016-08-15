@@ -15,6 +15,15 @@
  */
 
 
+.white{
+	color: white;
+}
+
+.modal-header{
+	background-color: #29598c;
+	color: white;
+}
+
 .contain{
     padding:30px;
 }
@@ -47,8 +56,8 @@
 
 .recipe-nav li {
     float: left;
-    padding-left: 125px;
-    padding-right: 125px;
+    padding-left: 80px;
+    padding-right: 80px;
 }
 
 ul li a {
@@ -70,3 +79,4 @@ ul li {
 ul li:last-child {
     border-right: none;
 }
+
