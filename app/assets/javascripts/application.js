@@ -1,7 +1,9 @@
 $(document).ready(function() {
 
   $('.ingredient-image').mouseenter( function() {
-      $('.ingredient-name').show();
+    var stuff = $(this).attr("value");
+    console.log(stuff);
+      $(stuff).show();
   })
 
    $('.ingredient-image').mouseleave( function() {

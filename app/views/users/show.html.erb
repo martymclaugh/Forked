@@ -28,13 +28,15 @@
     <div class="user-fridge">
       <h4>My Ingredients:</h4>
       <img src="https://lh3.ggpht.com/ObcpDS70JKvFYRYRmRzVkxkOnyt4EFsiIv6PvWUZvIGYreVdNfOb91-WFk4Pivfk_5U=w300" style="width:50%;" alt="My Fridge">
-      <% current_user.ingredients.each do |ingredient| %>
-        <div class="ingredient-item">
 
-          <img class="ingredient-image" src="<%= ingredient.image %>">
-          <p class="ingredient-name" style="display: none;";><%= ingredient.name %></p>
-        </div>
-      <% end %>
+
+        <% current_user.ingredients.each do |ingredient| %>
+          <div class="ingredient-item">
+            <img class="ingredient-image" src="<%= ingredient.image %>" value="<%= ingredient.name %>">
+            <p class="ingredient-name" style="display: none;";><%= ingredient.name %></p>
+          </div>
+        <% end %>
+
     </div>
   </div>
 
