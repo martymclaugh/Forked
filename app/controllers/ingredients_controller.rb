@@ -1,4 +1,5 @@
 class IngredientsController < ApplicationController
+
   def create
     search = search_ingredients
     @ingredient = Ingredient.new(name: search[0]["name"], spoon_id: search[0]["id"], image: search[0]["image"])
@@ -8,9 +9,10 @@ class IngredientsController < ApplicationController
   end
 
   def destroy
-    @ingredient = UserIngredient.find_by_user_id_and_ingredient_id(current_user.id, params[:ingredient_id])
+    @ingredient = Ingredient.find(params[:id])
+    @ingredient.destroy
+    redirect_to user_path(current_user)
   end
-
 
   private
 
@@ -26,8 +28,4 @@ class IngredientsController < ApplicationController
     }
   end
 
-  def destroy
-    p params
-    # redirect_to
-  end
 end
