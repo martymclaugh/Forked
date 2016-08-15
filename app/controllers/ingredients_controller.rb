@@ -2,7 +2,6 @@ class IngredientsController < ApplicationController
 
   def create
     search = search_ingredients
-    p params[:ingredient][:ingredient]
     @ingredient = Ingredient.new(name: search[0]["name"], spoon_id: search[0]["id"], image: search[0]["image"])
     if @ingredient.save
       @useringredient = UserIngredient.create(user_id: current_user.id, ingredient_id: @ingredient.id)
@@ -29,10 +28,4 @@ class IngredientsController < ApplicationController
     }
   end
 
-
-  # def destroy
-  #   # Ingredient.find(params[:id]).destroy
-  #   flash[:success] = "Ingredient deleted"
-  #   redirect_to user_path(current_user)
-  # end
 end
