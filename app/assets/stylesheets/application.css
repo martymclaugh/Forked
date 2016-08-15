@@ -83,6 +83,12 @@ ul li:last-child {
 .ingredient-item{
 	position: relative;
 }
+.button_to {
+	background-color: transparent;
+	border: none;
+	width: 5%;
+	color: red;
+}
 
 .ingredient-item .ingredient-name {
 	display: none;

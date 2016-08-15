@@ -36,9 +36,7 @@
                     <p id="ingredient-<%= ingredient.name %>"><%= ingredient.name %></p>
                 </div>
                 <div class="ingredient-delete">
-                    <button action="/ingredients/<%= ingredient.id%>" method="delete" style="background-color: Transparent; border: none; width: 5%;">
-                        <img height="25" width="25" src="http://www.ontomni.com/support/gifts/Delete@2x.png">
-                    </button>
+                  <%= button_to "X", {:controller => :ingredients, :action => 'destroy', :id => ingredient.id, :class => "delete-button" }, :method => :delete %>
                 </div>
             </div>
             <% end %>
