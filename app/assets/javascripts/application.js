@@ -1,13 +1,13 @@
 $(document).ready(function() {
 
   $('.ingredient-image').mouseenter( function() {
-    var stuff = $(this).attr("value");
-    console.log(stuff);
-      $(stuff).show();
+    var idSuffix = $(this).attr("value");
+    nameSelector = $('#ingredient-' + idSuffix);
+    nameSelector.show();
   })
 
    $('.ingredient-image').mouseleave( function() {
-      $('.ingredient-name').hide();
+      nameSelector.hide();
   })
 
 })
