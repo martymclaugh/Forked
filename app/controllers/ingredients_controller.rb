@@ -1,12 +1,16 @@
 class IngredientsController < ApplicationController
   def create
     search = search_ingredients
-    p params[:ingredient][:ingredient]
     @ingredient = Ingredient.new(name: search[0]["name"], spoon_id: search[0]["id"], image: search[0]["image"])
     if @ingredient.save
       @useringredient = UserIngredient.create(user_id: current_user.id, ingredient_id: @ingredient.id)
     end
   end
+
+  def destroy
+    @ingredient = UserIngredient.find_by_user_id_and_ingredient_id(current_user.id, params[:ingredient_id])
+  end
+
 
   private
 
