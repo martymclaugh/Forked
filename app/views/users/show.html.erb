@@ -20,20 +20,24 @@
   </div>
 
   <div class="user-ingredients">
-    <%= form_for(:ingredient, :url => ingredients_path) do |f|%>
-      <%= f.text_field :ingredient, placeholder: "Enter new ingredient" %>
-      <%= submit_tag ("Add")%>
-    <% end %>
-
     <div class="user-fridge">
       <h4>My Ingredients:</h4>
-      <img src="https://lh3.ggpht.com/ObcpDS70JKvFYRYRmRzVkxkOnyt4EFsiIv6PvWUZvIGYreVdNfOb91-WFk4Pivfk_5U=w300" style="width:50%;" alt="My Fridge">
+
+      <%= form_for(:ingredient, :url => ingredients_path) do |f|%>
+        <%= f.text_field :ingredient, placeholder: "Enter new ingredient" %>
+        <%= submit_tag ("Add")%>
+      <% end %>
+
       <% current_user.ingredients.each do |ingredient| %>
+        <%= button_to "delete", {:controller => :ingredients,
+          :action => 'destroy', :id => ingredient.id }, :method => :delete %>
+
         <div class="ingredient-item">
-          <img src="<%= ingredient.image %>">
-          <p class="ingredient-name"><%= ingredient.name %></p>
+          <img class="ingredient-image" src="<%= ingredient.image %>" value="<%= ingredient.name %>">
+          <p id="ingredient-<%= ingredient.name %>" style="display: none;";><%= ingredient.name %></p>
         </div>
       <% end %>
+
     </div>
   </div>
 
@@ -42,7 +46,7 @@
     <% current_user.recipes.each do |recipe| %>
         <div class="saved-recipe-list">
           <img src="<%= recipe.image %>">
-          <p class="recipe-name"><%= recipe.name %></p>
+          <p class="recipe-name"><%= recipe.title %></p>
         </div>
       <% end %>
   </div>

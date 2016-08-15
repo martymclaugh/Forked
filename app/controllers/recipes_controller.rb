@@ -5,14 +5,15 @@ class RecipesController < ApplicationController
     @recipe = Recipe.all
   end
 
+  def new
+    @recipe = Recipe.new
+  end
+
   def create
     @recipe = Recipe.new(spoon_id: params['recipe']['spoon_id'])
     if @recipe.save
       @user_recipe = UserRecipe.create(recipe_id: @recipe.id, user_id: current_user.id )
     end
-    p current_user
-    p @recipe
-    p @user_recipe
   end
 
   def home
