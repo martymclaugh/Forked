@@ -89,10 +89,30 @@ ul li:last-child {
 	position: absolute;
   bottom: 5%;
   left: 5%;
-  right: 5%;
+  right: 25%;
   color: #fff;
   padding: .5em;
 }
 .ingredient-item:hover .ingredient-name{
+	display: block;
+}
+.ingredient-item:hover{
+	width: 120%;
+}
+
+.ingredient-item .ingredient-delete {
+	display: none;
+	position: absolute;
+  top: 5%;
+  left: 5%;
+  right: 0%;
+	background-repeat:no-repeat;
+	border: none;
+	cursor:pointer;
+	overflow: hidden;
+	outline:none;
+  padding: .5em;
+}
+.ingredient-item:hover .ingredient-delete{
 	display: block;
 }
