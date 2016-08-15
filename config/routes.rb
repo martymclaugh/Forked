@@ -1,7 +1,6 @@
 Rails.application.routes.draw do
-  get 'twilio/send_text_message'
 
-  get 'twilio/create'
+  get 'messages/reply'
 
   # root 'searches#index'
 
