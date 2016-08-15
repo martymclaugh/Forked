@@ -10,9 +10,6 @@ class RecipesController < ApplicationController
     if @recipe.save
       @user_recipe = UserRecipe.create(recipe_id: @recipe.id, user_id: current_user.id )
     end
-    p current_user
-    p @recipe
-    p @user_recipe
   end
 
   def home
