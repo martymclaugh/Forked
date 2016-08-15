@@ -2,9 +2,9 @@ class IngredientsController < ApplicationController
 
   def create
     search = search_ingredients
-    @ingredient = Ingredient.new(name: search[0]["name"], spoon_id: search[0]["id"], image: search[0]["image"])
-    if @ingredient.save
-      @useringredient = UserIngredient.create(user_id: current_user.id, ingredient_id: @ingredient.id)
+    ingredient = Ingredient.find_or_create_by(name: search[0]["name"], spoon_id: search[0]["id"], image: search[0]["image"])
+    if ingredient.valid?
+      @useringredient = UserIngredient.find_or_create_by(user_id: current_user.id, ingredient_id: ingredient.id)
     end
   end
 
