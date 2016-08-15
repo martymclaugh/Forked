@@ -1,6 +1,6 @@
 class User < ApplicationRecord
-  has_many :user_ingredients, foreign_key: :user_id
-  has_many :user_recipes, foreign_key: :user_id
+  has_many :user_ingredients
+  has_many :user_recipes
   has_many :ingredients, through: :user_ingredients, foreign_key: :ingredient_id
   has_many :recipes, through: :user_recipes, foreign_key: :recipe_id
   has_many :likes

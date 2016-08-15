@@ -15,12 +15,12 @@
 				<img src="<%= Recipe.find(@recipe.id).image %>">
 			</div>
 		</div>
-		<div>
+		<div class="center">
 			<ul class="recipe-nav">
-				<li><h4><a class="active" href="#like"><span class="fa fa-thumbs-up"></span>  Like</a></h4></li>
-				<li><h4><a href="#made"><span class="fa fa-cutlery"></span>  I Made It</a></h4></li>
-				<li><h4><a href="#share"><span class="fa fa-share-alt"></span>  Share</a></h4></li>
-				<li><h4><a href="#print"><span class="fa fa-print"></span>  Print</a></h4></li>
+				<li><h6><a class="active" href="#like"><span class="fa fa-thumbs-up"></span>  Like</a></h6></li>
+				<li><h6><a href="#made"><span class="fa fa-cutlery"></span>  I Made It</a></h6></li>
+				<li><h6><a href="#share"><span class="fa fa-share-alt"></span>  Share</a></h6></li>
+				<li><h6><a href="#print"><span class="fa fa-print"></span>  Print</a></h6></li>
 			</ul>
 		</div>
 
@@ -34,6 +34,10 @@
 		</div>
 
 		<% Recipe.find(@recipe.id).ingredients.each do |ingredient| %>
+		
+		<div class="col-sm-6 col-lg-6 col-md-6">
+
+
 		<div class="row">
 			<div class="col-sm-1 col-lg-1 col-md-1 left">
 				<span class="fa-stack fa-lg ingredient-check">
@@ -44,6 +48,7 @@
 			<div class="col-sm-11 col-lg-11 col-md-11 left">
 				<h4 class=""><%= ingredient.name %></h4><br>
 			</div>
+		</div>
 		</div>
 
 		<% end %>
@@ -65,20 +70,14 @@
 		<div class="row">
 			<div class="col-sm-1 col-lg-1 col-md-1 left">
 				
-				
 				<span class="fa-stack fa-lg">
 			  		<i class="fa fa-circle-thin fa-stack-2x"></i>
 			  		<i class="directions fa-stack-1x"><%= i %></i>
 				</span>
 
-			<!-- 	<span class="fa-stack fa-lg ingredient-check">
-			  		<i class="fa fa-circle-thin fa-stack-2x"></i>
-			  		<i class="fa fa-check fa-stack-1x">1</i>
-				</span> -->
-
 			</div>
-			<div class="col-sm-11 col-lg-11 col-md-11 left">
-				<h4 class=""><%= ingredient.name %></h4><br>
+			<div class="col-sm-11 col-lg-11 col-md-11 left" >
+				<h4 id="<%= i %>"><%= ingredient.name %></h4><br>
 			</div>
 		</div>
 

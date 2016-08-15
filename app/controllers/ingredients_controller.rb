@@ -1,16 +1,20 @@
 class IngredientsController < ApplicationController
+
   def create
     search = search_ingredients
-    @ingredient = Ingredient.new(name: search[0]["name"], spoon_id: search[0]["id"], image: search[0]["image"])
-    if @ingredient.save
-      @useringredient = UserIngredient.create(user_id: current_user.id, ingredient_id: @ingredient.id)
+    ingredient = Ingredient.find_or_create_by(name: search[0]["name"], spoon_id: search[0]["id"], image: search[0]["image"])
+    if ingredient.valid?
+      @useringredient = UserIngredient.find_or_create_by(user_id: current_user.id, ingredient_id: ingredient.id)
     end
+    redirect_to user_path(current_user)
   end
 
   def destroy
-    @ingredient = UserIngredient.find_by_user_id_and_ingredient_id(current_user.id, params[:ingredient_id])
+    ingredient = UserIngredient.find_by(user_id: current_user.id, ingredient_id: params[:id])
+    puts "*" *100
+    UserIngredient.destroy(ingredient.id)
+    redirect_to user_path(current_user)
   end
-
 
   private
 
@@ -26,8 +30,4 @@ class IngredientsController < ApplicationController
     }
   end
 
-  def destroy
-    p params
-    # redirect_to
-  end
 end

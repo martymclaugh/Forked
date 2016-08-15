@@ -1,4 +1,3 @@
-
 // This is a manifest file that'll be compiled into application.js, which will include all the files
 // listed below.
 //
@@ -13,6 +12,7 @@
 //
 //= require jquery
 //= require jquery_ujs
+//= require cocoon
 //= require turbolinks
 //= require_tree .
 
@@ -20,8 +20,10 @@
 $(document).on("ready", function(){
 	$('.ingredient-check').on('click', recipeDone)
 	$('.directions').on('click', directionDone)
-    $('.ingredient-image').on('mouseenter', showIngredientName ) 
-    $('.ingredient-image').on('mouseleave', hideIngredientName )
+    // $('.ingredient-image').on('mouseenter', showIngredientName )
+    // $('.ingredient-image').on('mouseleave', hideIngredientName )
+		// $('.ingredient-name').on('mouseenter', showIngredientName )
+		// $('.ingredient-name').on('mouseleave', hideIngredientName )
 })
 
 
@@ -34,16 +36,17 @@ function directionDone(){
 	$(this).html('')
 	$(this).addClass('fa fa-check')
 	$(this).parent().css('color', 'green')
+	$(this).parent().parent().siblings().css('color', 'gray')
+
+
 }
 
-function showIngredientName(){
-    var idSuffix = $(this).attr("value")
-    nameSelector = $('#ingredient-' + idSuffix)
-    nameSelector.show()
-}
-
-function hideIngredientName(){
-      nameSelector.hide()
-}
-
-  
+// function showIngredientName(){
+//     var idSuffix = $(this).attr("value")
+//     nameSelector = $('#ingredient-' + idSuffix)
+//     nameSelector.show()
+// }
+//
+// function hideIngredientName(){
+//       nameSelector.hide()
+// }

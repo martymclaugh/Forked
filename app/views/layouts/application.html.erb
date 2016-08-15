@@ -66,34 +66,122 @@
         </ul>
 
         <ul class="nav navbar-nav navbar-right">
-          <li><a href="/">Home</a></li>
+          <li><%= link_to "Sign Out", '/sign_out', method: :delete %></li>
         </ul>
 
 
+        <ul class="nav navbar-nav navbar-right" style="margin-top: 1em">
+          <li><img src="<%= current_user.img_url %>"></li>
+        </ul>
 
         <ul class="nav navbar-nav navbar-right">
-        <li><%= link_to "Sign Out", '/sign_out', method: :delete %></li>
-
-
-        </ul>
-
-
-
-        <ul class="nav navbar-nav navbar-left">
           <li><a href="/users/profile"><%= "#{current_user.name}"%></a></li>
         </ul>
 
-        <ul class="nav navbar-nav navbar-left" style="margin-top: 1em">
-          <li><img src="<%= current_user.img_url %>"></li>
+
+         <ul class="nav navbar-nav navbar-right">
+          <li><a href="/recipes/new"><span class="fa fa-plus"></span> Create New Recipe </a></li>
         </ul>
+
+        <ul class="nav navbar-nav navbar-right">
+          <li><a href="/recipes/search"><span class="fa fa-search"></span> Find Recipes </a></li>
+        </ul>
+
+
+
       </div>
     </div>
   </nav>
 
-    <% else %>
-      <a class="btn btn-primary btn-lg" href="/auth/facebook" role="button"><span class="fa fa-facebook-official"></span> Log in with Facebook</a>
-    <% end %>
 
+
+    <% else %>
+
+  <nav class="navbar navbar-default">
+    <div class="container-fluid">
+      <!-- Brand and toggle get grouped for better mobile display -->
+      <div class="navbar-header">
+        <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+          <span class="sr-only">Toggle navigation</span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </button>
+        <a class="navbar-brand" href="/">Forked</a>
+      </div>
+
+
+      <!-- Collect the nav links, forms, and other content for toggling -->
+      <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+        <ul class="nav navbar-nav">
+        </ul>
+
+
+
+
+        <ul class="nav navbar-nav navbar-right">
+          <li><a href="/auth/facebook" data-toggle="modal" data-target="#Login">Sign In</a></li>
+        </ul>
+
+
+        <ul class="nav navbar-nav navbar-right">
+          <li><a href="/recipes/search"><span class="fa fa-search"></span> Find Recipes </a></li>
+        </ul>
+
+
+      </div>
+    </div>
+  </nav>
+
+
+  <div class="container">
+
+  <div class="modal fade" id="Login" role="dialog">
+    <div class="modal-dialog">
+
+      <div class="modal-content">
+        <div class="modal-header center"  style="padding:35px 50px;">
+          <button type="button" class="close white" data-dismiss="modal">&times;</button>
+          <h1 class="modal-title">Forked</h1>
+        </div>
+
+        <div class="modal-body">
+           <form role="form">
+            <div class="form-group">
+              <label for="email"><span class="fa fa-user"></span> Email</label>
+              <input type="text" class="form-control" id="email" placeholder="Enter email">
+            </div>
+
+            <div class="form-group">
+              <label for="password">Password</label>
+              <input type="text" class="form-control" id="password" placeholder="Enter password">
+            </div>
+
+
+              <button type="submit" class="btn btn-success btn-block">Login</button><br>
+
+              <h4 class="center">Or</h4>
+
+              <a href="/auth/facebook" role="button" class="btn btn-primary btn-block"><span class="fa fa-facebook-official"></span> Log in with Facebook</a>
+          </form>
+        </div>
+
+        <div>
+
+        </div>
+        <div class="modal-footer">
+          <p>No Facebook Account?<a href="#"> Sign Up Here </a></p>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+</div>
+
+
+     <!--  <a class="btn btn-primary btn-lg" href="/auth/facebook" role="button"><span class="fa fa-facebook-official"></span> Log in with Facebook</a> -->
+    <% end %>
     <%= yield %>
 
 

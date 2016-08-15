@@ -1,11 +1,4 @@
-<!DOCTYPE html>
-<html>
-  <head>
-    <meta charset="utf-8">
-    <title></title>
-  </head>
-  <body>
-    <form action="/recipes/search_results" method="get">
+<!-- <form action="/recipes/search_results" method="get">
       Cuisine<br>
       <input type="text" name="cuisine" placeholder="American, French..."><br><br>
       All Ingredients<br>
@@ -17,6 +10,39 @@
       Specific Recipe?<br>
       <input type="text" name="query" placeholder="burger, sushi..."><br><br>
       <input type="submit" value="Submit">
-    </form>
-  </body>
-</html>
+</form> -->
+
+<div class="container">
+  <div class="col-sm-10">
+    <form action='/recipes/search_results' method='GET'>
+
+     <fieldset class="form-group">
+      <label for="Cuisine">Cuisine</label>
+      <input type="text" class="form-control" id="cuisine"  name="cuisine"placeholder="American, French...">
+     </fieldset>
+
+    <fieldset class="form-group">
+      <label for="ingredients">Ingredients</label>
+      <textarea style="resize:none;" class="form-control" rows="3" id="content" name="ingredients" placeholder="beef, chicken, corn..."></textarea>
+    </fieldset>
+
+    <fieldset class="form-group">
+      <label for="Allergies">Allergies</label>
+      <input type="text" class="form-control" id="allergies"  name="allergies"placeholder="peanuts, shellfish...">
+     </fieldset>
+
+
+    <fieldset class="form-group">
+      <label for="Cuisine">Course</label>
+      <input type="text" class="form-control" id="cuisine"  name="course"placeholder="main dish, dessert...">
+
+     </fieldset>
+
+      <fieldset class="form-group">
+      <label for="specific_recipe">Specific Recipe</label>
+      <input type="text" class="form-control" id="query"  name="query"placeholder="burger, sushi...">
+     </fieldset>
+
+    <button type="submit" class="btn btn-primary">Submit</button>
+  </form>
+</div>
