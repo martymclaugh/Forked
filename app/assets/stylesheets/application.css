@@ -16,8 +16,11 @@
 
 
 .contain{
-
     padding:30px;
+}
+
+.pad10{
+    padding:10px;
 }
 
 .center{
@@ -31,4 +34,39 @@
 
 .right{
 	text-align: right;
+}
+
+.recipe-nav{
+	list-style-type: none;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    background-color: #333;
+}
+
+
+.recipe-nav li {
+    float: left;
+    padding-left: 125px;
+    padding-right: 125px;
+}
+
+ul li a {
+    display: block;
+    color: white;
+    text-align: center;
+    padding: 14px 16px;
+    text-decoration: none;
+}
+
+ul li a:hover {
+    background-color: orange;
+}
+
+ul li {
+    border-right: 1px solid #bbb;
+}
+
+ul li:last-child {
+    border-right: none;
 }

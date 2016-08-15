@@ -16,7 +16,7 @@ UserIngredient.delete_all
 end
 
 100.times do
-  Recipe.create(title: Faker::Pokemon.name, steps: Faker::Lorem.sentences(rand(4..8)), spoon_id: Faker::PhoneNumber.phone_number, cuisine: ["American", "Chinese", "French", "Mexican"].sample, course: ["main dish", "side dish", "dessert", "appetizer"].sample, image: Faker::Avatar.image)
+  Recipe.create(title: Faker::Pokemon.name, steps: ["do something", "do something a second time", "do something a third time for three times as long", "this is the fourth step"], spoon_id: Faker::PhoneNumber.phone_number, cuisine: ["American", "Chinese", "French", "Mexican"].sample, course: ["main dish", "side dish", "dessert", "appetizer"].sample, image: Faker::Avatar.image)
 end
 
 500.times do

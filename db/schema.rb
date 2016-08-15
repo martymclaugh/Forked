@@ -43,7 +43,7 @@ ActiveRecord::Schema.define(version: 20160814182029) do
 
   create_table "recipes", force: :cascade do |t|
     t.string   "title"
-    t.text     "steps"
+    t.string   "steps"
     t.string   "spoon_id"
     t.string   "cooktime"
     t.string   "cuisine"
