@@ -5,10 +5,6 @@ class RecipesController < ApplicationController
     @recipe = Recipe.all
   end
 
-  def new
-    @recipe = Recipe.new
-  end
-
   def create
     @recipe = Recipe.new(spoon_id: params['recipe']['spoon_id'])
     if @recipe.save
@@ -24,10 +20,6 @@ class RecipesController < ApplicationController
     @recipe = Recipe.find(params[:id])
   end
 
-  def search
-     @recipe = Recipe.new
-  end
-
   def preview
     @recipe = search_recipe(params[:id])
     @ingredients = search_ingredient(params[:id])
@@ -39,13 +31,9 @@ class RecipesController < ApplicationController
 
   private
 
-  def recipe_params
-    params.require(:recipe).permit(:title, ingredients_attributes: [:id, :name, :_destroy], directions_attributes: [:id, :step, :_destroy])
-  end
-
   def search
-
-    @ingredients = params[:recipe][:ingredients].split(" ").join(",").to_s
+    @ingredients = params[:ingredients].split(" ").join(",").to_s
+    @ingredients
     parameters = {
      "fillIngredients" => false,
      "includeIngredients" => @ingredients,

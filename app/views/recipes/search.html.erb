@@ -1,34 +1,48 @@
-<div class="container">
+<form action="/recipes/search_results" method="get">
+      Cuisine<br>
+      <input type="text" name="cuisine" placeholder="American, French..."><br><br>
+      All Ingredients<br>
+      <textarea rows="4" cols="50" name="ingredients" placeholder="beef, chicken, corn..."></textarea><br><br>
+      Allergies<br>
+      <input type="text" name="allergies" placeholder="peanuts, shellfish..."><br><br>
+      Which Course?<br>
+      <input type="text" name="course" placeholder="main dish, dessert..."><br><br>
+      Specific Recipe?<br>
+      <input type="text" name="query" placeholder="burger, sushi..."><br><br>
+      <input type="submit" value="Submit">
+</form>
+
+<!-- <div class="container">
   <div class="col-sm-10">
     <form action='/recipes/search_results' method='GET'>
      
      <fieldset class="form-group">
       <label for="Cuisine">Cuisine</label>
-      <input type="text" class="form-control" id="cuisine"  name="recipe[cuisine]"placeholder="American, French...">
+      <input type="text" class="form-control" id="cuisine"  name="cuisine"placeholder="American, French...">
      </fieldset>
 
     <fieldset class="form-group">
       <label for="ingredients">Ingredients</label>
-      <textarea style="resize:none;" class="form-control" rows="3" id="content" name="recipe[ingredients]" placeholder="beef, chicken, corn..."></textarea>
+      <textarea style="resize:none;" class="form-control" rows="3" id="content" name="ingredients" placeholder="beef, chicken, corn..."></textarea>
     </fieldset>
   
     <fieldset class="form-group">
       <label for="Allergies">Allergies</label>
-      <input type="text" class="form-control" id="allergies"  name="recipe[allergies]"placeholder="peanuts, shellfish...">
+      <input type="text" class="form-control" id="allergies"  name="allergies"placeholder="peanuts, shellfish...">
      </fieldset>
 
 
     <fieldset class="form-group">
       <label for="Cuisine">Course</label>
-      <input type="text" class="form-control" id="cuisine"  name="recipe[course]"placeholder="main dish, dessert...">
+      <input type="text" class="form-control" id="cuisine"  name="course"placeholder="main dish, dessert...">
 
      </fieldset>
 
       <fieldset class="form-group">
       <label for="specific_recipe">Specific Recipe</label>
-      <input type="text" class="form-control" id="specific_recipe"  name="recipe[specific_recipe]"placeholder="burger, sushi...">
+      <input type="text" class="form-control" id="query"  name="query"placeholder="burger, sushi...">
      </fieldset>
 
     <button type="submit" class="btn btn-primary">Submit</button>
   </form>
-</div>
+</div> -->
