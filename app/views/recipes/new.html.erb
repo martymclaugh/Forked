@@ -1,1 +1,41 @@
-<h1>New Recipe Form</h1>
+
+<div class="container">
+<h1 class="center">Submit a New Recipe</h1>
+  <div class="col-sm-10">
+    <form action='/recipes/search_results' method='GET'>
+     
+     <fieldset class="form-group">
+      <label for="Cuisine">Cuisine</label>
+      <input type="text" class="form-control" id="cuisine"  name="recipe[cuisine]"placeholder="American, French...">
+     </fieldset>
+
+    <fieldset class="form-group">
+      <label for="ingredients">Ingredients</label>
+      <textarea style="resize:none;" class="form-control" rows="3" id="content" name="recipe[ingredients]" placeholder="beef, chicken, corn..."></textarea>
+    </fieldset>
+  
+    <fieldset class="form-group">
+      <label for="Allergies">Allergies</label>
+      <input type="text" class="form-control" id="allergies"  name="recipe[allergies]"placeholder="peanuts, shellfish...">
+     </fieldset>
+
+
+    <fieldset class="form-group">
+      <label for="Cuisine">Course</label>
+      <input type="text" class="form-control" id="cuisine"  name="recipe[course]"placeholder="main dish, dessert...">
+
+     </fieldset>
+
+     <fieldset class="form-group">
+      <label for="specific_recipe">Specific Recipe</label>
+      <input type="text" class="form-control" id="specific_recipe"  name="recipe[specific_recipe]"placeholder="burger, sushi...">
+     </fieldset>
+
+     <fieldset class="form-group">
+      <label for="image_url">Image URL</label>
+      <input type="text" class="form-control" id="image_url"  name="recipe[image_url]"placeholder="https://www.cicis.com/media/1138/pizza_trad_pepperoni.png">
+     </fieldset>
+
+    <button type="submit" class="btn btn-primary">Submit</button>
+  </form>
+</div>
