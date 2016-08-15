@@ -1,4 +1,8 @@
 Rails.application.routes.draw do
+  get 'twilio/send_text_message'
+
+  get 'twilio/create'
+
   # root 'searches#index'
 
   get '/' => 'recipes#home'
