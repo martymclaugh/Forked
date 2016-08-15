@@ -15,7 +15,7 @@
  */
 
 .container{
-    
+
 }
 .white{
 	color: white;
@@ -82,7 +82,6 @@ ul li:last-child {
     border-right: none;
 }
 
-<<<<<<< HEAD
 
 
 .brand,
@@ -148,7 +147,7 @@ ul li:last-child {
      	 color: white;
      }
 
-     
+
      .navbar-default .navbar-nav>li>a{
      	color: white;
      }
@@ -198,7 +197,7 @@ ul li:last-child {
 
     }
 
-    
+
 
     .navbar {
         min-height: 0;
@@ -223,7 +222,6 @@ ul li:last-child {
     }
 
 
-=======
 .ingredient-item{
 	position: relative;
 }
@@ -267,5 +265,4 @@ transform: scale(1.25);
 }
 .ingredient-item:hover .ingredient-delete{
 	display: block;
->>>>>>> 78d2a193160dde6c4186cec63d7f1bd836e5f196
 }
