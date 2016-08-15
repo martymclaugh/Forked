@@ -14,3 +14,21 @@
 //= require jquery_ujs
 //= require turbolinks
 //= require_tree .
+
+
+$(document).on("ready", function(){
+	$('.ingredient-check').on('click', recipeDone)
+	$('.directions').on('click', directionDone)
+})
+
+
+function recipeDone(){
+	$(this).css('color', 'green')
+}
+
+function directionDone(){
+	console.log("Im clicked")
+	$(this).html('')
+	$(this).addClass('fa fa-check')
+	$(this).parent().css('color', 'green')
+}
