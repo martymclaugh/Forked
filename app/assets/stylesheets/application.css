@@ -14,7 +14,9 @@
  *= require_self
  */
 
-
+.container{
+    
+}
 .white{
 	color: white;
 }
@@ -80,6 +82,148 @@ ul li:last-child {
     border-right: none;
 }
 
+<<<<<<< HEAD
+
+
+.brand,
+.address-bar {
+    display: none;
+
+}
+
+.navbar-brand {
+    text-transform: uppercase;
+    font-weight: 900;
+    letter-spacing: 2px;
+    color: white;
+}
+
+
+.navbar-nav {
+    text-transform: uppercase;
+    font-weight: 400;
+    letter-spacing: 3px;
+}
+.img-full {
+    min-width: 100%;
+}
+
+
+.brand-before,
+.brand-name {
+    text-transform: capitalize;
+}
+
+.brand-before {
+    margin: 15px 0;
+}
+
+
+.brand-name {
+    margin: 0;
+    font-size: 4em;
+}
+
+.tagline-divider {
+    margin: 15px auto 3px;
+    max-width: 250px;
+    border-color: #999999;
+}
+
+
+
+
+.intro-text {
+    text-transform: uppercase;
+    font-size: 1.25em;
+    font-weight: 400;
+    letter-spacing: 1px;
+}
+
+
+
+
+@media screen and (min-width:768px) {
+      .navbar-default .navbar-brand{
+     	 color: white;
+     }
+
+     
+     .navbar-default .navbar-nav>li>a{
+     	color: white;
+     }
+
+    .navbar-default .navbar-nav>li>a:hover {
+	    color: orange;
+	}
+
+	.navbar-default .navbar-brand:hover {
+	    color: orange;
+	}
+
+
+
+      .brand {
+        display: inherit;
+        margin: 0;
+        padding: 30px 0 10px;
+        text-align: center;
+        text-shadow: 1px 1px 2px rgba(0,0,0,0.5);
+        font-family: "Josefin Slab","Helvetica Neue",Helvetica,Arial,sans-serif;
+        font-size: 5em;
+        font-weight: 700;
+        line-height: normal;
+
+    }
+
+    .top-divider {
+        margin-top: 0;
+    }
+
+    .img-left {
+        float: left;
+        margin-right: 25px;
+    }
+
+    .address-bar {
+        display: inherit;
+        margin: 0;
+        padding: 0 0 40px;
+        text-align: center;
+        text-shadow: 1px 1px 2px rgba(0,0,0,0.5);
+        text-transform: uppercase;
+        font-size: 1.25em;
+        font-weight: 400;
+        letter-spacing: 3px;
+
+    }
+
+    
+
+    .navbar {
+        min-height: 0;
+        color: white;
+    }
+
+    .navbar-default {
+        background: #fff;
+        background: rgba(0,0,0,0.9);
+
+    }
+}
+
+
+}
+
+@media screen and (min-width:1200px) {
+    .box:after {
+        content: '';
+        display: table;
+        clear: both;
+    }
+
+
+=======
 .ingredient-item{
 	position: relative;
 }
@@ -123,4 +267,5 @@ transform: scale(1.25);
 }
 .ingredient-item:hover .ingredient-delete{
 	display: block;
+>>>>>>> 78d2a193160dde6c4186cec63d7f1bd836e5f196
 }
