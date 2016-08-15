@@ -32,11 +32,11 @@
 
             <div class="ingredient-item" style="display: inline-block; float: left;">
                 <img class="ingredient-image" style="display: inline-block; float: left;" src="<%= ingredient.image %>" value="<%= ingredient.name %>">
-                <div class="ingredient-name">
-                    <p id="ingredient-<%= ingredient.name %>"><%= ingredient.name %></p>
-                </div>
+                <!-- <div class="ingredient-name"> -->
+                    <p class="ingredient-name"><%= ingredient.name %></p>
+                <!-- </div> -->
                 <div class="ingredient-delete">
-                  <%= button_to "X", {:controller => :ingredients, :action => 'destroy', :id => ingredient.id, :class => "delete-button" }, :method => :delete %>
+                  <%= button_to "X", {:controller => :ingredients, :action => 'destroy', :id => ingredient.id }, :method => :delete %>
                 </div>
             </div>
             <% end %>

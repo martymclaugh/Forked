@@ -225,6 +225,7 @@ ul li:last-child {
 .ingredient-item{
 	position: relative;
 }
+
 .button_to {
 	background-color: transparent;
 	border: none;
@@ -241,16 +242,18 @@ ul li:last-child {
   color: black;
   padding: .5em;
 }
+
 .ingredient-item:hover .ingredient-name{
 	display: block;
 }
+
 .ingredient-image:hover {
 
 transform: scale(1.25);
 
 }
 
-.ingredient-item .ingredient-delete {
+/*.ingredient-item .ingredient-delete {
 	display: none;
 	position: absolute;
   top: 5%;
@@ -262,7 +265,7 @@ transform: scale(1.25);
 	overflow: hidden;
 	outline:none;
   padding: .5em;
-}
+}*/
 .ingredient-item:hover .ingredient-delete{
 	display: block;
 }
