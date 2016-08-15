@@ -27,8 +27,8 @@
 
     <div class="user-fridge">
       <h4>My Ingredients:</h4>
-
         <% current_user.ingredients.each do |ingredient| %>
+
           <div class="ingredient-item">
             <img class="ingredient-image" src="<%= ingredient.image %>" value="<%= ingredient.name %>">
             <p id="ingredient-<%= ingredient.name %>" style="display: none;";><%= ingredient.name %></p>

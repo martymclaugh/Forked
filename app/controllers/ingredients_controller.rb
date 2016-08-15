@@ -21,4 +21,9 @@ class IngredientsController < ApplicationController
       "servings" => 1
     }
   end
+
+  def destroy
+    p params
+    # redirect_to
+  end
 end
