@@ -1,2 +1,3 @@
 class Step < ApplicationRecord
+	
 end
