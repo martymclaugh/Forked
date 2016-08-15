@@ -6,6 +6,7 @@ class IngredientsController < ApplicationController
     if ingredient.valid?
       @useringredient = UserIngredient.find_or_create_by(user_id: current_user.id, ingredient_id: ingredient.id)
     end
+    redirect_to user_path(current_user)
   end
 
   def destroy

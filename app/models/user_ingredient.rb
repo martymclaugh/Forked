@@ -5,3 +5,4 @@ class UserIngredient < ApplicationRecord
   validates :ingredient_id, uniqueness: { scope: :user_id,
     message: "You already have this ingredient in your fridge" }
 end
+n
