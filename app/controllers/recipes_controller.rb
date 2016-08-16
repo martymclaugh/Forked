@@ -5,6 +5,10 @@ class RecipesController < ApplicationController
     @recipe = Recipe.all
   end
 
+  def show
+    @recipe = Recipe.find(params[:id])
+  end
+
   def create
     @recipe = Recipe.new(spoon_id: params['recipe']['spoon_id'], title: params['recipe']["title"], image: params['recipe']['image'])
     if @recipe.save
@@ -28,9 +32,6 @@ class RecipesController < ApplicationController
     @recipe_of_the_day = @recipes.pop
   end
 
-  def show
-    @recipe = Recipe.find(params[:id])
-  end
 
   def preview
     @recipe = search_recipe(params[:id])
@@ -64,7 +65,7 @@ class RecipesController < ApplicationController
               query: parameters,
               headers: headers )
    puts "inside of populate_initial"
-   p response['results']
+   pp response['results']
   end
 
   def search
@@ -105,6 +106,8 @@ class RecipesController < ApplicationController
     response = HTTParty.get( "https://spoonacular-recipe-food-nutrition-v1.p.mashape.com/recipes/#{id.to_i}/analyzedInstructions?stepBreakdown=true",
               #  query: parameters,
                headers: headers )
+
+    pp response
     if response.parsed_response.length == 0
       redirect_to "/"
     elsif response[0].has_key?("steps")
