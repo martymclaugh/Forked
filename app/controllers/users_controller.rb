@@ -11,6 +11,8 @@ class UsersController < ApplicationController
 
   def set_auth
     @auth = session[:omniauth] if session[:omniauth]
+    puts "***" *20
+    p @auth
   end
 
 end

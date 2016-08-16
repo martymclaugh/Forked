@@ -1,6 +1,6 @@
 class User < ApplicationRecord
-  has_many :user_ingredients, foreign_key: :user_id
-  has_many :user_recipes, foreign_key: :user_id
+  has_many :user_ingredients
+  has_many :user_recipes
   has_many :ingredients, through: :user_ingredients, foreign_key: :ingredient_id
   has_many :recipes, through: :user_recipes, foreign_key: :recipe_id
   has_many :likes
@@ -15,7 +15,8 @@ class User < ApplicationRecord
       provider: auth['provider'],
       uid: auth['uid'],
       name: auth['info']['name'],
-      img_url: auth['info']['image']
+      img_url: auth['info']['image'] + "?type=large"
+
     )
   end
 
