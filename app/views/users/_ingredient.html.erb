@@ -1,0 +1,9 @@
+<div class="ingredient-item">
+    <img class="ingredient-image" src="<%= @ingredient.image %>" value="<%= @ingredient.name %>">
+    <div class="ingredient-name">
+        <p><%= @ingredient.name %></p>
+    </div>
+    <div class="ingredient-delete">
+        <%= button_to "X", {:controller => :ingredients, :action => 'destroy', :id => @ingredient.id }, :method => :delete %>
+    </div>
+</div>

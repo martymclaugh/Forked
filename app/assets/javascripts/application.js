@@ -20,10 +20,7 @@
 $(document).on("ready", function(){
 	$('.ingredient-check').on('click', recipeDone)
 	$('.directions').on('click', directionDone)
-    // $('.ingredient-image').on('mouseenter', showIngredientName )
-    // $('.ingredient-image').on('mouseleave', hideIngredientName )
-		// $('.ingredient-name').on('mouseenter', showIngredientName )
-		// $('.ingredient-name').on('mouseleave', hideIngredientName )
+	addIngredient();
 })
 
 
@@ -41,12 +38,18 @@ function directionDone(){
 
 }
 
-// function showIngredientName(){
-//     var idSuffix = $(this).attr("value")
-//     nameSelector = $('#ingredient-' + idSuffix)
-//     nameSelector.show()
-// }
-//
-// function hideIngredientName(){
-//       nameSelector.hide()
-// }
+function addIngredient(){
+	$('#ingredient-add').on('click', function(event){
+		event.preventDefault();
+		var formData = $('Input#ingredient_ingredient').serialize()
+		$.ajax({
+			url: '/ingredients',
+			method: 'POST',
+			data: formData
+		})
+		.done(function(response){
+			$('.ingredients-list').append(response);
+			$('#ingredient-form')[0].reset();
+		})
+	})
+}
