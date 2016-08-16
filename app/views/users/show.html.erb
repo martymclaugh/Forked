@@ -21,7 +21,16 @@
 
 <div class="user-profile-bottom">
     img_url = <%= current_user.img_url %>
-    <div class="user-friend-list"></div>
+    <div class="user-friend-list">
+        <div class="form-group">
+          <%= form_tag friendship_path, :method => 'get', :class => "navbar-form navbar-right" do %>
+          <p>
+            <%= text_field_tag :search, params[:search] %>
+            <%= submit_tag "Search", :name => nil %>
+          </p>
+          <% end %>
+        </div>
+    </div>
     <div class="container">
         <div class="row">
             <div class="user-ingredients">
