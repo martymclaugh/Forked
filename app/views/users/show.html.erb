@@ -38,10 +38,12 @@ image = <%= @user.image %>
                     <div class="fridge-list">
                         <h4>My Ingredients:</h4>
                         <div >
-                            <%= form_for(:ingredient, :url => ingredients_path, :html => {
-                            :id => 'ingredient-form'}) do |f|%>
-                            <%= f.text_field :ingredient, placeholder: "Enter new ingredient" %>
-                            <%= submit_tag ("Add"), :id => 'ingredient-add'%>
+                            <% if current_user.id == @user.id %>
+                                <%= form_for(:ingredient, :url => ingredients_path, :html => {
+                                :id => 'ingredient-form'}) do |f|%>
+                                <%= f.text_field :ingredient, placeholder: "Enter new ingredient" %>
+                                <%= submit_tag ("Add"), :id => 'ingredient-add'%>
+                                <% end %>
                             <% end %>
                         </div>
                         <div class="ingredients-list">
