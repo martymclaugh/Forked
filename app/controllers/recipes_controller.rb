@@ -13,18 +13,24 @@ class RecipesController < ApplicationController
   end
 
   def home
-      if current_user
+      if current_user.ingredients.count > 5
         @ingredient_array = []
-        current_user.ingredients.all.map{|ingredient| @ingredient_array << ingredient.name}
+        current_user.ingredients.each{|ingredient| @ingredient_array << ingredient.name}
+        puts "logged in"
         p @ingredient_array
       else
-        sample_ingredients = [chocolate, broccoli, milk, cheddar, steak, bacon, beans, apples, cabbage, lettuce, shrimp, tempeh, macaroni, spaghetti, mushroom, carrot, onion, flour, butter, oil]
-        p @ingredient_array << sample_ingredients.sample
+        @ingredient_array= []
+        sample_ingredients = ["chocolate", "broccoli", "milk", "cheddar", "steak", "bacon", "beans", "apples", "cabbage", "lettuce", "shrimp", "tempeh", "macaroni", "spaghetti", "mushroom", "carrot", "onion", "flour", "butter", "oil"]
+        5.times{@ingredient_array << sample_ingredients.sample}
+        @ingredient_array
       end
-    p @recipe_of_the_day.class
+    puts "***recipes***" *5
+    pp @recipes = populate_initial(@ingredient_array)
     p @recipes.class
-    @recipes = populate_initial(@ingredient_array)
-    @recipe_of_the_day = search_recipe(rand(100000..800000))
+    puts "***recipe of the day***" *5
+    p @recipe_of_the_day = search_recipe(@recipes.pop["id"])
+    # @recipe_of_the_day = search_recipe(rand(100000..800000)) #This is working
+    p @recipe_of_the_day.class
   end
 
   def show
@@ -44,7 +50,7 @@ class RecipesController < ApplicationController
 
   def populate_initial(ingredients)
 
-    @ingredients = ingredients.split(" ").join(",").to_s
+    @ingredients = ingredients.join(",").to_s
     @ingredients
     parameters = {
      "fillIngredients" => false,
@@ -62,7 +68,7 @@ class RecipesController < ApplicationController
    response = HTTParty.get("https://spoonacular-recipe-food-nutrition-v1.p.mashape.com/recipes/searchComplex",
               query: parameters,
               headers: headers )
-
+   puts "inside of populate_initial"
    p response['results']
   end
 
@@ -104,7 +110,8 @@ class RecipesController < ApplicationController
     response = HTTParty.get( "https://spoonacular-recipe-food-nutrition-v1.p.mashape.com/recipes/#{id.to_i}/analyzedInstructions?stepBreakdown=true",
               #  query: parameters,
                headers: headers )
-    pp response[0]['steps']
+    pp response
+    # pp response[0]['steps']
   end
 
   def search_ingredient(id)
