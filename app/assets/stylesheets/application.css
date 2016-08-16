@@ -272,7 +272,7 @@ transform: scale(1.5);
 	display: block;
 }
 .ingredients-list {
-	height: 30%;
+	height: 400px;
 	width: auto%;
 	overflow: scroll;
 }
@@ -282,7 +282,7 @@ transform: scale(1.5);
 }
 
 .saved-recipe-list {
-	height: 30%;
+	height: 400px;
 	width: auto%;
 	overflow: scroll;
 }

@@ -3,6 +3,8 @@
   <% if logged_in? %>
     <%= form_for(:recipe, :url => recipes_path) do |f|%>
       <%= f.hidden_field :spoon_id, :value => params[:id] %>
+      <%= f.hidden_field :title, :value => @ingredients["title"] %>
+      <%= f.hidden_field :image, :value => @ingredients["image"] %>
       <%= submit_tag ("Save")%>
     <% end %>
   <% end %>

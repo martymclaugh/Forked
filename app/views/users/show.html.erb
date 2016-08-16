@@ -53,10 +53,10 @@
 
     <div class="user-recipes">
         <h4>My Forks:</h4>
-        <% current_user.recipes.each do |recipe| %>
         <div class="saved-recipe-list">
-            <img src="<%= recipe.image %>">
-            <p class="recipe-name"><%= recipe.title %></p>
+        <% current_user.recipes.each do |recipe| %>
+            <img style="width:10%" src="<%= recipe.image %>">
+            <a href="/recipes/preview/<%= recipe.spoon_id  %>"><%= recipe.title %></a>
         </div>
         <% end %>
     </div>
