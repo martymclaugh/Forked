@@ -24,13 +24,8 @@ class RecipesController < ApplicationController
         5.times{@ingredient_array << sample_ingredients.sample}
         @ingredient_array
       end
-    puts "***recipes***" *5
-    pp @recipes = populate_initial(@ingredient_array)
-    p @recipes.class
-    puts "***recipe of the day***" *5
-    p @recipe_of_the_day = search_recipe(@recipes.pop["id"])
-    # @recipe_of_the_day = search_recipe(rand(100000..800000)) #This is working
-    p @recipe_of_the_day.class
+    @recipes = populate_initial(@ingredient_array)
+    @recipe_of_the_day = @recipes.pop
   end
 
   def show
@@ -38,7 +33,9 @@ class RecipesController < ApplicationController
   end
 
   def preview
-    @recipe = search_recipe(params[:id])
+    p @recipe = search_recipe(params[:id])
+    p "*" *100
+    p @recipe
     @ingredients = search_ingredient(params[:id])
   end
 
@@ -110,8 +107,11 @@ class RecipesController < ApplicationController
     response = HTTParty.get( "https://spoonacular-recipe-food-nutrition-v1.p.mashape.com/recipes/#{id.to_i}/analyzedInstructions?stepBreakdown=true",
               #  query: parameters,
                headers: headers )
-    pp response
-    # pp response[0]['steps']
+    if response[0]['steps'].count > 0
+      response[0]['steps']
+    else
+      @error = "sorry try again later"
+    end
   end
 
   def search_ingredient(id)
@@ -123,6 +123,7 @@ class RecipesController < ApplicationController
     response = HTTParty.get( "https://spoonacular-recipe-food-nutrition-v1.p.mashape.com/recipes/#{id.to_i}/information",
               #  query: parameters,
                headers: headers )
+    puts "entered search ingredients"
     pp response
   end
 
