@@ -37,7 +37,7 @@
 
   <body>
 
-  <% if current_user %>
+  <% if logged_in? %>
   <nav class="navbar navbar-default">
     <div class="container-fluid">
       <!-- Brand and toggle get grouped for better mobile display -->
@@ -62,7 +62,9 @@
 
 
         <ul class="nav navbar-nav navbar-right" style="margin-top: 1em">
-          <li><img style="width: 30%;" src="<%= current_user.image %>"></li>
+          <% if current_user.image %>
+            <li><img style="width: 30%;" src="<%= current_user.image %>"></li>
+          <% end %>
         </ul>
 
         <ul class="nav navbar-nav navbar-right">
