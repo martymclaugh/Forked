@@ -19,9 +19,9 @@
                               <span>Welcome to Forked!!</span>
                             </h2>
                             <br>
-                           
+
                             <br>
-                            
+
                         </div>
                     </div><!-- /header-text -->
           </div>
@@ -33,9 +33,9 @@
                             <h2>
                                 <span>Welcome to Forked!!</span>
                             </h2>
-                       
+
                             <br>
-                            
+
                         </div>
                     </div><!-- /header-text -->
           </div>
@@ -47,10 +47,10 @@
                             <h2>
                                 <span>Welcome to Forked!!</span>
                             </h2>
-                        
-                          
+
+
                             <br>
-                            
+
                         </div>
                     </div><!-- /header-text -->
           </div>
@@ -69,31 +69,27 @@
 
 
 <div class="contain">
-  <div class="row">
+  <div>
   <div class="recipe-of-the-day">
     <h2 class="left">So Hot Right Now: <a href="/recipes/preview/<%= @recipe_of_the_day['id'] %>"><%= @recipe_of_the_day['title'] %></a></h2>
   </div>
 
-  <% @recipes.each do |recipe| %>
-  <li> <a href="/recipes/preview/<%= recipe['id'] %>"><img style="width:13%;" src="<%= recipe["image"] %>" alt="<%= recipe["title"] %>"><%= recipe['title'] %></a> </li>
-  <p>Used Ingredients: <%= recipe["usedIngredientCount"] %></p>
-  <p>Missing Ingredients: <%= recipe["missedIngredientCount"] %></p>
-
-  <% end %>
-
     <% @recipes.each do |recipe| %>
-    <div class="col-sm-3 col-lg-3 col-md-3">
-      <div>
+      <div class="menu-category list-group" style="position: relative; width: 25%; float: left;">
         <div class="thumbnail">
-          <div class="caption" style="height: 550px";>
+          <div class="caption" style="height: auto;">
           	<div>
-          		<img src="<%= recipe['image'] %>" style="width: 100%; height: auto";>
+          		<img src="<%= recipe['image'] %>" style="width: 80%; height: auto";>
           	</div>
 
           	<div>
           		<small class="left">Check it out!</small>
               <h3 class="left"><a href="/recipes/preview/<%= recipe['id'] %>"><%= recipe['title'] %></a></h3>
           		<h5 class="left">
+                <% if logged_in? %>
+                  <p>Used Ingredients: <%= recipe["usedIngredientCount"] %></p>
+                  <p>Missing Ingredients: <%= recipe["missedIngredientCount"] %></p>
+                <% end %>
                 <span class="fa fa-star"></span>
                 <span class="fa fa-star"></span>
                 <span class="fa fa-star"></span>
@@ -105,9 +101,8 @@
           </div>
         </div>
 
-        
+
         <br>
       </div>
-    </div>
     <% end %>
   </div>
