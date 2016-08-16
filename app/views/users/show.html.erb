@@ -1,7 +1,7 @@
 <div class="user-profile-top">
     <div class="user-image left">
         <% if @user.image %>
-            <img src="<%= @user.img_url %>" height="500" width="500" style="border: black solid 2px;" ;>
+            <img src="<%= @user.image %>" height="500" width="500" style="border: black solid 2px;" ;>
         <% else %>
             <img src="http://sd.keepcalm-o-matic.co.uk/i/keep-calm-my-profile-picture-is-under-construction.png" height="500" width="500">
         <% end %>
@@ -18,7 +18,6 @@
 </div>
 
 <div class="user-profile-bottom">
-image = <%= @user.image %>
     <div class="user-friend-list">
         <div class="form-group">
           <%= form_tag friendships_path, :method => 'get', :class => "navbar-form navbar-left" do %>
