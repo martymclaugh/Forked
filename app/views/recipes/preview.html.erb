@@ -16,9 +16,13 @@
 </div>
 <h2>Instructions</h2>
 <div style="border:4px solid black;">
+  <% if @error %>
+      <%= @error %>
+  <% else %>
     <% @recipe.each do |step| %>
     <p>
         <b><%= step['number'] %></b>:
         <%= step['step'] %></p>
     <% end %>
+  <% end %>
 </div>
