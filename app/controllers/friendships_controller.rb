@@ -5,6 +5,7 @@ class FriendshipsController < ApplicationController
       @friends = User.search(params[:search])
       if @friends.length > 0
         @friends
+        p @friends
       else
         @errors = "No users matched your search criteria"
       end
