@@ -1,0 +1,8 @@
+<% @friends.each do |friend| %>
+  <% if friend.img_url %>
+    <img src="<%= current_user.img_url %>" height="500" width="500" style="border: black solid 2px;" ;>
+  <% else %>
+    <img src="http://sd.keepcalm-o-matic.co.uk/i/keep-calm-my-profile-picture-is-under-construction.png" height="50" width="50">
+  <% end %>
+    <%= link_to "#{friend.name}", user_path(friend) %>
+<% end %>

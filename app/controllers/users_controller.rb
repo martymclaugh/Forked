@@ -3,7 +3,7 @@ class UsersController < ApplicationController
   helper_method :set_auth
   # headers['Access-Control-Allow-Origin'] = 'http://localhost:9000'
   def show
-    @user = current_user
+    @user = User.find(params[:id])
   end
 
 

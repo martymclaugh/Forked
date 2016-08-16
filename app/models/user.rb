@@ -19,7 +19,13 @@ class User < ApplicationRecord
       uid: auth['uid'],
       name: auth['info']['name'],
       image: auth['info']['image'] + "?type=large"
-
     )
   end
+
+  def self.search(search)
+    search_param = search.downcase
+    p search_param
+    where("lower(name) LIKE ?", "%#{search_param}%")
+  end
+
 end

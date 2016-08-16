@@ -1,27 +1,36 @@
 <div class="user-profile-top">
     <div class="user-image left">
-        <% if current_user.image %>
-        <img src="<%= current_user.image %>" height="500" width="500" style="border: black solid 2px;" ;>
-    <% else %>
-        <img src="http://sd.keepcalm-o-matic.co.uk/i/keep-calm-my-profile-picture-is-under-construction.png" height="50" width="50">
+        <% if @user.image %>
+            <img src="<%= @user.img_url %>" height="500" width="500" style="border: black solid 2px;" ;>
+        <% else %>
+            <img src="http://sd.keepcalm-o-matic.co.uk/i/keep-calm-my-profile-picture-is-under-construction.png" height="500" width="500">
         <% end %>
     </div>
     <div class="container">
       <div class="row">
     <div class="user-information col-sm-4">
-        <h3><%= current_user.name %></h3>
+        <h3><%= @user.name %></h3>
         <p>Place holder for chef score</p>
         <p>Place holder for favorite meal</p>
         <p>Recipe count:
-            <%= current_user.recipes.count %></p>
+            <%= @user.recipes.count %></p>
     </div>
   </div>
   </div>
 </div>
 
 <div class="user-profile-bottom">
-    image = <%= current_user.image %>
-    <div class="user-friend-list"></div>
+image = <%= @user.image %>
+    <div class="user-friend-list">
+        <div class="form-group">
+          <%= form_tag friendships_path, :method => 'get', :class => "navbar-form navbar-left" do %>
+          <p>
+            <%= text_field_tag :search, params[:search] %>
+            <%= submit_tag "Find Friends", :name => nil %>
+          </p>
+          <% end %>
+        </div>
+    </div>
     <div class="container">
         <div class="row">
             <div class="user-ingredients">
@@ -33,7 +42,7 @@
                         <%= submit_tag ("Add")%>
                         <% end %>
                         <div class="ingredients-list">
-                            <% current_user.ingredients.each do |ingredient| %>
+                            <% @user.ingredients.each do |ingredient| %>
 
                             <div class="ingredient-item">
                                 <img class="ingredient-image" src="<%= ingredient.image %>" value="<%= ingredient.name %>">
@@ -55,7 +64,7 @@
     <div class="user-recipes">
         <h4>My Forks:</h4>
         <div class="saved-recipe-list">
-        <% current_user.recipes.each do |recipe| %>
+        <% @user.recipes.each do |recipe| %>
             <img style="width:10%" src="<%= recipe.image %>">
             <a href="/recipes/preview/<%= recipe.spoon_id  %>"><%= recipe.title %></a>
         </div>
