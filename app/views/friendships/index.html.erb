@@ -4,5 +4,5 @@
   <% else %>
     <img src="http://sd.keepcalm-o-matic.co.uk/i/keep-calm-my-profile-picture-is-under-construction.png" height="50" width="50">
   <% end %>
-  <p><%= friend.name %></p>
+    <%= link_to "#{friend.name}", user_path(friend) %>
 <% end %>

@@ -1,7 +1,7 @@
 <div class="user-profile-top">
     <div class="user-image left">
-        <% if current_user.img_url %>
-            <img src="<%= current_user.img_url %>" height="500" width="500" style="border: black solid 2px;" ;>
+        <% if @user.img_url %>
+            <img src="<%= @user.img_url %>" height="500" width="500" style="border: black solid 2px;" ;>
         <% else %>
             <img src="http://sd.keepcalm-o-matic.co.uk/i/keep-calm-my-profile-picture-is-under-construction.png" height="50" width="50">
         <% end %>
@@ -9,11 +9,11 @@
     <div class="container">
       <div class="row">
     <div class="user-information col-sm-4">
-        <h3><%= current_user.name %></h3>
+        <h3><%= @user.name %></h3>
         <p>Place holder for chef score</p>
         <p>Place holder for favorite meal</p>
         <p>Recipe count:
-            <%= current_user.recipes.count %></p>
+            <%= @user.recipes.count %></p>
     </div>
   </div>
   </div>
@@ -41,7 +41,7 @@
                         <%= submit_tag ("Add")%>
                         <% end %>
                         <div class="ingredients-list">
-                            <% current_user.ingredients.each do |ingredient| %>
+                            <% @user.ingredients.each do |ingredient| %>
 
                             <div class="ingredient-item">
                                 <img class="ingredient-image" src="<%= ingredient.image %>" value="<%= ingredient.name %>">
@@ -63,7 +63,7 @@
     <div class="user-recipes">
         <h4>My Forks:</h4>
         <div class="saved-recipe-list">
-        <% current_user.recipes.each do |recipe| %>
+        <% @user.recipes.each do |recipe| %>
             <img style="width:10%" src="<%= recipe.image %>">
             <a href="/recipes/preview/<%= recipe.spoon_id  %>"><%= recipe.title %></a>
         </div>
