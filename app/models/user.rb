@@ -24,7 +24,8 @@ class User < ApplicationRecord
 
   def self.search(search)
     search_param = search.downcase
-    where("lower(title) LIKE ?", "%#{search_param}%")
+    p search_param
+    where("lower(name) LIKE ?", "%#{search_param}%")
   end
 
 end
