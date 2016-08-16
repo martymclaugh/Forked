@@ -5,6 +5,9 @@ class User < ApplicationRecord
   has_many :recipes, through: :user_recipes, foreign_key: :recipe_id
   has_many :likes
   has_many :makes
+  has_many :friendships
+  has_many :friends, :through => :friendships, :source => :friend
+
 
   def self.sign_in_from_omniauth(auth)
     find_by(provider: auth['provider'], uid: auth['uid']) || create_user_from_omniauth(auth)
