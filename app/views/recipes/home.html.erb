@@ -74,9 +74,10 @@
     <h2 class="left">So Hot Right Now: <a href="/recipes/preview/<%= @recipe_of_the_day['id'] %>"><%= @recipe_of_the_day['title'] %></a></h2>
   </div>
 
+  <div class="grid center" data-masonry='{ "itemSelector": ".grid-item", "columnWidth": 200 }'>
     <% @recipes.each do |recipe| %>
-      <div class="menu-category list-group" style="position: relative; width: 25%; float: left;">
-        <div class="thumbnail">
+      <div>
+        <div class="thumbnail grid-item">
           <div class="caption" style="height: auto;">
           	<div>
           		<img src="<%= recipe['image'] %>" style="width: 80%; height: auto";>
@@ -105,4 +106,5 @@
         <br>
       </div>
     <% end %>
+    </div>
   </div>

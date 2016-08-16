@@ -34,7 +34,7 @@
 		</div>
 
 		<% Recipe.find(@recipe.id).ingredients.each do |ingredient| %>
-		
+
 		<div class="col-sm-6 col-lg-6 col-md-6">
 
 
@@ -69,7 +69,7 @@
 		<% Recipe.find(@recipe.id).ingredients.each_with_index do |ingredient, i| %>
 		<div class="row">
 			<div class="col-sm-1 col-lg-1 col-md-1 left">
-				
+
 				<span class="fa-stack fa-lg">
 			  		<i class="fa fa-circle-thin fa-stack-2x"></i>
 			  		<i class="directions fa-stack-1x"><%= i %></i>
@@ -83,8 +83,8 @@
 
 		<% end %>
 
- 
 
-		
+
+
 
 	</div>
