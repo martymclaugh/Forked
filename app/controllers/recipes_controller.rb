@@ -33,9 +33,7 @@ class RecipesController < ApplicationController
   end
 
   def preview
-    p @recipe = search_recipe(params[:id])
-    p "*" *100
-    p @recipe
+    @recipe = search_recipe(params[:id])
     @ingredients = search_ingredient(params[:id])
   end
 
