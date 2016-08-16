@@ -5,6 +5,10 @@ class RecipesController < ApplicationController
     @recipe = Recipe.all
   end
 
+  def show
+    @recipe = Recipe.find(params[:id])
+  end
+
   def create
     @recipe = Recipe.new(spoon_id: params['recipe']['spoon_id'], title: params['recipe']["title"], image: params['recipe']['image'])
     if @recipe.save
@@ -28,9 +32,6 @@ class RecipesController < ApplicationController
     @recipe_of_the_day = @recipes.pop
   end
 
-  def show
-    @recipe = Recipe.find(params[:id])
-  end
 
   def preview
     @recipe = search_recipe(params[:id])
