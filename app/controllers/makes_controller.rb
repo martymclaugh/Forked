@@ -1,0 +1,2 @@
+class MakesController < ApplicationController
+end
