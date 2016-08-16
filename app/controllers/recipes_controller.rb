@@ -105,12 +105,13 @@ class RecipesController < ApplicationController
     response = HTTParty.get( "https://spoonacular-recipe-food-nutrition-v1.p.mashape.com/recipes/#{id.to_i}/analyzedInstructions?stepBreakdown=true",
               #  query: parameters,
                headers: headers )
-                p response
-      if response[0].has_key?("steps")
+    if response.parsed_response.length == 0
+      redirect_to "/"
+    elsif response[0].has_key?("steps")
         response[0]["steps"]
-      else
-        @error = "*sorry try again later"
-      end
+    else
+      @error = "*sorry try again later"
+    end
   end
 
   def search_ingredient(id)
