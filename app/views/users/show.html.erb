@@ -54,9 +54,11 @@ image = <%= @user.image %>
                                 <div class="ingredient-name">
                                     <p><%= ingredient.name %></p>
                                 </div>
-                                <div class="ingredient-delete">
-                                    <%= button_to "X", {:controller => :ingredients, :action => 'destroy', :id => ingredient.id }, :method => :delete %>
-                                </div>
+                                <% if current_user.id == @user.id %>
+                                    <div class="ingredient-delete">
+                                        <%= button_to "X", {:controller => :ingredients, :action => 'destroy', :id => ingredient.id }, :method => :delete %>
+                                    </div>
+                                <% end %>
                             </div>
                             <% end %>
                         </div>
