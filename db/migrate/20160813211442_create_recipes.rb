@@ -8,6 +8,7 @@ class CreateRecipes < ActiveRecord::Migration[5.0]
       t.string :cuisine
       t.string :course
       t.string :image
+      t.float :rating, default: 5
 
       t.timestamps
     end
