@@ -13,6 +13,17 @@
  *= require_tree .
  *= require_self
  */
+
+.ingredient-list{
+    overflow: hidden;
+}
+
+
+
+ .grid-item {
+    width: 20%;
+}
+
 .container {
     margin-top: 20px;
 }
@@ -48,9 +59,9 @@
     padding: 15px;
 }
 
-.carousel-control .glyphicon-chevron-left, 
-.carousel-control .glyphicon-chevron-right, 
-.carousel-control .icon-prev, 
+.carousel-control .glyphicon-chevron-left,
+.carousel-control .glyphicon-chevron-right,
+.carousel-control .icon-prev,
 .carousel-control .icon-next {
     position: absolute;
     top: 45%;
@@ -70,12 +81,12 @@
 
 .carousel-control.left span{
 
-    padding-left: 30px; 
+    padding-left: 30px;
 
 }
 .carousel-control.right span {
 
-    padding-right: 60px; 
+    padding-right: 60px;
 }
 
 .carousel-control.left span:hover,
@@ -163,16 +174,18 @@
     padding: 0;
     overflow: hidden;
     background-color: #333;
+    display: flex;
+    justify-content: space-around;
 }
 
-
 .recipe-nav li {
-    float: left;
+
     padding-left: 80px;
     padding-right: 80px;
 }
 
 ul li a {
+    margin-left: 0;
     display: block;
     color: white;
     text-align: center;
