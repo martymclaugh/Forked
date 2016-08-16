@@ -62,7 +62,7 @@
         </ul>
 
         <ul class="nav navbar-nav navbar-right">
-          <li><a href="/users/profile"><%= "#{current_user.name}"%></a></li>
+          <li><%= link_to "#{current_user.name}", user_path(current_user) %></li>
         </ul>
 
 
