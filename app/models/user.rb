@@ -6,7 +6,7 @@ class User < ApplicationRecord
   has_many :likes
   has_many :makes
   has_many :friendships
-  has_many :friends, :through => :friendships, :source => :friend
+  has_many :friends, :through => :friendships, foreign_key: :friend_id
 
 
   def self.sign_in_from_omniauth(auth)
