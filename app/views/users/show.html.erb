@@ -21,12 +21,14 @@
 image = <%= @user.image %>
     <div class="user-friend-list">
         <div class="form-group">
-          <%= form_tag friendships_path, :method => 'get', :class => "navbar-form navbar-left" do %>
-          <p>
-            <%= text_field_tag :search, params[:search] %>
-            <%= submit_tag "Find Friends", :name => nil %>
-          </p>
-          <% end %>
+            <% if current_user.id == @user.id %>
+              <%= form_tag friendships_path, :method => 'get', :class => "navbar-form navbar-left" do %>
+              <p>
+                <%= text_field_tag :search, params[:search] %>
+                <%= submit_tag "Find Friends", :name => nil %>
+              </p>
+              <% end %>
+            <% end %>
         </div>
     </div>
     <div class="container">
