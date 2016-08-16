@@ -13,7 +13,7 @@ class RecipesController < ApplicationController
   end
 
   def home
-      if current_user.ingredients.count > 5
+      if logged_in? && current_user.ingredients.count > 5
         @ingredient_array = []
         current_user.ingredients.each{|ingredient| @ingredient_array << ingredient.name}
         puts "logged in"
