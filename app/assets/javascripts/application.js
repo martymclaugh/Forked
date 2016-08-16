@@ -20,7 +20,7 @@
 $(document).on("ready", function(){
 	$('.ingredient-check').on('click', recipeDone)
 	$('.directions').on('click', directionDone)
-	addIngredient()
+	addIngredient();
 })
 
 
@@ -39,19 +39,17 @@ function directionDone(){
 }
 
 function addIngredient(){
-	$('#ingredient-form').on('submit', function(event){
+	$('#ingredient-add').on('click', function(event){
 		event.preventDefault();
 		var formData = $('Input#ingredient_ingredient').serialize()
-		console.log(formData);
 		$.ajax({
 			url: '/ingredients',
 			method: 'POST',
 			data: formData
 		})
 		.done(function(response){
-			console.log(response);
-			// var html = "<div class='ingredient-item'> <img class='ingredient-image' src='" + response.image + "' value='"+ response.name + "'><div class='ingredient-name'> <p>" + response.name + "</p></div> <div class='ingredient-delete'> <%= button_to 'X', {:controller => :ingredients, :action => 'destroy', :id => " + response.id + "}, :method => :delete %> </div> </div>"
 			$('.ingredients-list').append(response);
+			$('#ingredient-form')[0].reset();
 		})
 	})
 }
