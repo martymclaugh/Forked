@@ -11,7 +11,7 @@ Ingredient.delete_all
 UserRecipe.delete_all
 RecipeIngredient.delete_all
 UserIngredient.delete_all
-10.times do
+50.times do
   User.create(provider: "Facebook", uid: Faker::PhoneNumber.phone_number, name: Faker::Name.name)
 end
 
@@ -34,3 +34,18 @@ end
 500.times do
   RecipeIngredient.create(recipe_id: rand(1...100), ingredient_id: rand(1...500))
 end
+
+i=1
+50.times do
+  user_ids =(1..50).to_a
+  4.times do
+    user_ids.delete(i)
+    idx = user_ids.sample
+    Friendship.create(user_id: i, friend_id: idx)
+    Friendship.create(user_id: idx, friend_id: i)
+    user_ids.delete(idx)
+  end
+  i += 1
+end
+
+
