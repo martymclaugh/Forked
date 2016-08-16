@@ -1,7 +1,7 @@
 <div class="user-profile-top">
     <div class="user-image left">
         <% if current_user.img_url %>
-        <img src="<%= current_user.img_url %>" height="200" width="200" style="border: black solid 2px;" ;>
+        <img src="<%= current_user.img_url %>" height="500" width="500" style="border: black solid 2px;" ;>
     <% else %>
         <img src="http://sd.keepcalm-o-matic.co.uk/i/keep-calm-my-profile-picture-is-under-construction.png" height="50" width="50">
         <% end %>
@@ -20,6 +20,7 @@
 </div>
 
 <div class="user-profile-bottom">
+    img_url = <%= current_user.img_url %>
     <div class="user-friend-list"></div>
     <div class="container">
         <div class="row">
