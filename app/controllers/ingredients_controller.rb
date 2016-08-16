@@ -1,12 +1,16 @@
 class IngredientsController < ApplicationController
 
   def create
-    search = search_ingredients
-    ingredient = Ingredient.find_or_create_by(name: search[0]["name"], spoon_id: search[0]["id"], image: search[0]["image"])
-    if ingredient.valid?
-      @useringredient = UserIngredient.find_or_create_by(user_id: current_user.id, ingredient_id: ingredient.id)
+      search = search_ingredients
+      @ingredient = Ingredient.find_or_create_by(name: search[0]["name"], spoon_id: search[0]["id"], image: search[0]["image"])
+      if @ingredient.valid?
+        @useringredient = UserIngredient.find_or_create_by(user_id: current_user.id, ingredient_id: @ingredient.id)
+      end
+    if request.xhr?
+      render template: 'users/_ingredient', layout: false
+    else
+      redirect_to user_path(current_user)
     end
-    redirect_to user_path(current_user)
   end
 
   def destroy
@@ -25,7 +29,7 @@ class IngredientsController < ApplicationController
        "Content-Type" => "application/x-www-form-urlencoded"
     },
     query:{
-      "ingredientList" => params[:ingredient][:ingredient],
+      "ingredientList" => params["ingredient"]["ingredient"],
       "servings" => 1
     }
   end

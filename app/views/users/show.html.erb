@@ -7,20 +7,21 @@
         <% end %>
     </div>
     <div class="container">
-      <div class="row">
-    <div class="user-information col-sm-4">
-        <h3><%= current_user.name %></h3>
-        <p>Place holder for chef score</p>
-        <p>Place holder for favorite meal</p>
-        <p>Recipe count:
-            <%= current_user.recipes.count %></p>
+        <div class="row">
+            <div class="user-information col-sm-4">
+                <h3><%= current_user.name %></h3>
+                <p>Place holder for chef score</p>
+                <p>Place holder for favorite meal</p>
+                <p>Recipe count:
+                    <%= current_user.recipes.count %></p>
+            </div>
+        </div>
     </div>
-  </div>
-  </div>
 </div>
 
 <div class="user-profile-bottom">
-    image = <%= current_user.image %>
+    image =
+    <%= current_user.image %>
     <div class="user-friend-list"></div>
     <div class="container">
         <div class="row">
@@ -28,10 +29,12 @@
                 <div class="user-fridge col-sm-4">
                     <div class="fridge-list">
                         <h4>My Ingredients:</h4>
-                        <%= form_for(:ingredient, :url => ingredients_path) do |f|%>
-                        <%= f.text_field :ingredient, placeholder: "Enter new ingredient" %>
-                        <%= submit_tag ("Add")%>
-                        <% end %>
+                        <div id="ingredient-form">
+                            <%= form_for(:ingredient, :url => ingredients_path) do |f|%>
+                            <%= f.text_field :ingredient, placeholder: "Enter new ingredient" %>
+                            <%= submit_tag ("Add"), :id => 'ingredient-add'%>
+                            <% end %>
+                        </div>
                         <div class="ingredients-list">
                             <% current_user.ingredients.each do |ingredient| %>
 
@@ -55,7 +58,7 @@
     <div class="user-recipes">
         <h4>My Forks:</h4>
         <div class="saved-recipe-list">
-        <% current_user.recipes.each do |recipe| %>
+            <% current_user.recipes.each do |recipe| %>
             <img style="width:10%" src="<%= recipe.image %>">
             <a href="/recipes/preview/<%= recipe.spoon_id  %>"><%= recipe.title %></a>
         </div>
