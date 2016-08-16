@@ -15,7 +15,7 @@ class User < ApplicationRecord
       provider: auth['provider'],
       uid: auth['uid'],
       name: auth['info']['name'],
-      img_url: auth['info']['image'] + "?type=large"
+      image: auth['info']['image'] + "?type=large"
 
     )
   end
