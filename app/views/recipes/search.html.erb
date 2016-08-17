@@ -14,9 +14,13 @@
 
     <% if logged_in? %>
       <fieldset class="form-group">
-        <div class="checkbox" id="users-ingredients">
-          <label><input type="checkbox" value="">Use your ingredients</label>
+        <div class="checkbox" >
+          <label class="users-ingredients"><input type="checkbox" value=""><div class="users-ingredients">Use your ingredients</div></label>
         </div>
+      </fieldset>
+      <fieldset style="display:none;" class="form-group" id="my-ingredients">
+        <label for="ingredients">My Ingredients</label>
+        <textarea style="resize:none;" class="form-control" rows="3" id="content" name="ingredients" value="<%= user_ingredient_search(current_user) %>" readonly></textarea>
       </fieldset>
     <% end %>
 
