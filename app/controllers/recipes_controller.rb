@@ -10,12 +10,27 @@ class RecipesController < ApplicationController
   end
 
   def create
-    p params
-    p "*" * 100
-    @recipe = Recipe.new(spoon_id: params['ingredients']['id'], title: params['ingredients']["title"], image: params['ingredients']['image'])
-    if @recipe.save
-      @user_recipe = UserRecipe.create(recipe_id: @recipe.id, user_id: current_user.id )
+    recipe = Recipe.create(title: params[:recipe][:title], cooktime: params[:recipe][:cooktime], cuisine: params[:cuisine], course: params[:recipe][:course])
+    p recipe.id
+    p params[:user_id]
+    UserRecipe.create(recipe_id: recipe.id, user_id: params[:user_id])
+    steps = params[:steps].split("\r\n")
+    ingredients = params[:ingredients].split(',')
+
+    steps.each_with_index do |step, index|
+      number = index + 1
+      Step.create(step_number: number, recipe_id: recipe.id, step_text: step)
     end
+
+    ingredients.each do |ingredient|
+      this_ingredient = Ingredient.find_or_create_by(name: ingredient)
+      RecipeIngredient.create(recipe_id: recipe.id, ingredient_id: this_ingredient.id)
+    end
+    # @recipe = Recipe.new(spoon_id: params['recipe']['spoon_id'], title: params['recipe']["title"], image: params['recipe']['image'])
+    # if @recipe.save
+    #   @user_recipe = UserRecipe.create(recipe_id: @recipe.id, user_id: current_user.id )
+    # end
+    redirect_to recipe_path(recipe)
   end
 
   def home
