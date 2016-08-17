@@ -1,24 +1,77 @@
-<h1><%= @ingredients['title'] %></h1><br>
-<img style="border:6px solid black; width: 50%;" src="<%= @ingredients['image'] %>" alt="<%= @ingredients['title'] %>"/>
-  <% if logged_in? %>
-    <%= form_for(:recipe, :url => recipes_path) do |f|%>
-      <%= f.hidden_field :spoon_id, :value => params[:id] %>
-      <%= submit_tag ("Save")%>
-    <% end %>
-  <% end %>
-<p>Ready in:
-    <%= @ingredients['readyInMinutes'] %>
-    minutes</p>
-<div style="border:4px solid black;">
+
+<div class="contain">
+  <div class="row">
+    <div class="col-sm-4 col-lg-4 col-md-4 title-div">
+      <h1><%= @ingredients['title'] %></h1>
+      </div>
+      <div class="col-sm-8 col-lg-8 col-md-8">
+        <img style="border: 2px solid black;" src="<%= @ingredients["image"] %>">
+      </div>
+    </div>
+    <br>
+    <div class="center">
+      <ul class="recipe-nav">
+        <li><h6><a href="#share"><span class="fa fa-share-alt"></span>  SHARE</a></h6></li>
+        <% if logged_in? %>
+        <li><h6><span class="fa fa-thumbs-up"></span><%= link_to "LIKE", likes_path(ingredients: @ingredients), method: 'post' %></h6></li>
+        <li><h6><span class="fa fa-spoon"></span><%= link_to "I MADE IT", makes_path(ingredients: @ingredients), method: 'post' %></h6></li>
+        <li><h6><span class="fa fa-cutlery"></span><%= link_to "FORK IT", recipes_path(ingredients: @ingredients), method: 'post' %></h6></li>
+         <% end %>
+      </ul>
+  </div>
+
+  <div class="row">
+    <div class="col-sm-6 col-lg-6 col-md-6 left">
+      <h3 class="ingredients-div">Ingredients</h3>
+    </div>
+  </div>
+
+
+  <div class="ingredient-list">
     <% @ingredients["extendedIngredients"].each do |ingredient| %>
-    <li><%= ingredient["originalString"] %></li>
+    <div class="col-sm-6 col-lg-6 col-md-6">
+      <div class="row">
+        <div class="col-sm-1 col-lg-1 col-md-1 left">
+          <span class="fa-stack fa-lg ingredient-check">
+            <i class="fa fa-circle-thin fa-stack-2x"></i>
+            <i class="fa fa-plus fa-stack-1x"></i>
+          </span>
+        </div>
+        <div class="col-sm-11 col-lg-11 col-md-11 left">
+          <h4 class=""><%= ingredient["originalString"] %></h4><br>
+        </div>
+      </div>
+    </div>
     <% end %>
-</div>
-<h2>Instructions</h2>
-<div style="border:4px solid black;">
-    <% @recipe.each do |step| %>
-    <p>
-        <b><%= step['number'] %></b>:
-        <%= step['step'] %></p>
-    <% end %>
+  </div>
+
+
+  <div class="row">
+    <div class="col-sm-6 col-lg-6 col-md-6 left">
+      <h3 class="directions-div" >Directions</h3>
+    </div>
+
+    <div class="col-sm-6 col-lg-6 col-md-6 right">
+      <h4><span class="fa fa-clock-o"></span> Ready in <%= @ingredients['readyInMinutes']%> Minutes </h4>
+    </div>
+  </div>
+
+  <% if @error %>
+  <%= @error %>
+  <% else %>
+  <% @recipe.each do |step| %>
+  <div class="row">
+    <div class="col-sm-1 col-lg-1 col-md-1 left" style="padding-left: 30px;">
+      <span class="fa-stack fa-lg">
+        <i class="fa fa-circle-thin fa-stack-2x"></i>
+        <i class="directions fa-stack-1x"><%= step['number'] %></i>
+      </span>
+    </div>
+    <div class="col-sm-11 col-lg-11 col-md-11 left" >
+      <h4 id="<%= step['number']  %>"><%= step['step'] %></h4><br>
+    </div>
+  </div>
+
+  <% end %>
+  <% end %>
 </div>

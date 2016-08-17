@@ -1,54 +1,107 @@
+<div class="container">
+  <div class="row">
+    <!-- Carousel -->
+      <div id="carousel-example-generic" class="carousel slide" data-ride="carousel">
+      <!-- Indicators -->
+      <ol class="carousel-indicators">
+          <li data-target="#carousel-example-generic" data-slide-to="0" class="active"></li>
+          <li data-target="#carousel-example-generic" data-slide-to="1"></li>
+          <li data-target="#carousel-example-generic" data-slide-to="2"></li>
+      </ol>
+      <!-- Wrapper for slides -->
+      <div class="carousel-inner">
+          <div class="item active">
+            <img src="http://troppa-nl.com/wp-content/uploads/2015/08/pizza-stock.jpg" alt="First slide">
+                    <!-- Static Header -->
+                    <div class="header-text hidden-xs">
+                        <div class="col-md-12 text-center">
+                            <h2>
+                              <span>Welcome to Forked!!</span>
+                            </h2>
+                            <br>
+
+                            <br>
+
+                        </div>
+                    </div><!-- /header-text -->
+          </div>
+          <div class="item">
+            <img src="http://az616578.vo.msecnd.net/files/2016/07/18/636044104859117199985990752_tacos.jpg" alt="Second slide">
+            <!-- Static Header -->
+                    <div class="header-text hidden-xs">
+                        <div class="col-md-12 text-center">
+                            <h2>
+                                <span>Welcome to Forked!!</span>
+                            </h2>
+
+                            <br>
+
+                        </div>
+                    </div><!-- /header-text -->
+          </div>
+          <div class="item">
+            <img src="https://static01.nyt.com/images/2015/07/27/dining/27SPAGHETTI/27SPAGHETTI-superJumbo.jpg" alt="Third slide">
+            <!-- Static Header -->
+                    <div class="header-text hidden-xs">
+                        <div class="col-md-12 text-center">
+                            <h2>
+                                <span>Welcome to Forked!!</span>
+                            </h2>
+
+
+                            <br>
+
+                        </div>
+                    </div><!-- /header-text -->
+          </div>
+      </div>
+      <!-- Controls -->
+      <a class="left carousel-control" href="#carousel-example-generic" data-slide="prev">
+          <span class="glyphicon glyphicon-chevron-left"></span>
+      </a>
+      <a class="right carousel-control" href="#carousel-example-generic" data-slide="next">
+          <span class="glyphicon glyphicon-chevron-right"></span>
+      </a>
+    </div><!-- /carousel -->
+  </div>
+</div>
+
+
+  <div>
+  <div class="recipe-of-the-day">
+    <h2 class="left">So Hot Right Now: <a href="/recipes/preview/<%= @recipe_of_the_day['id'] %>"><%= @recipe_of_the_day['title'] %></a></h2>
+  </div>
+
+  <div class="grid center" data-masonry='{ "itemSelector": ".grid-item", "columnWidth": 200 }'>
 
 <div class="contain">
-  <div class="row">
     <% @recipes.each do |recipe| %>
-    <div class="col-sm-3 col-lg-3 col-md-3">
       <div>
-        <div class="thumbnail">
-          <div class="caption" style="height: 550px";>
+        <div class="thumbnail grid-item">
+          <div class="caption" style="height: auto;">
           	<div>
-          		<img src="<%= recipe.image %>" style="width: 100%; height: auto";>
+            <a href="/recipes/preview/<%= recipe['id'] %>"><img src="<%= recipe['image'] %>" style="width: 80%; height: auto";></a>
+
           	</div>
 
           	<div>
-          		<small class="left">Recipe of the Day</small>
-              <h3 class="left"><a href="/recipes/<%= recipe.id %>"><%= recipe.title %></a></h3>
+          		<small class="left">Check it out!</small>
+              <h3 class="left"><a href="/recipes/preview/<%= recipe['id'] %>"><%= recipe['title'] %></a></h3>
           		<h5 class="left">
-                <span class="fa fa-star"></span>
-                <span class="fa fa-star"></span>
-                <span class="fa fa-star"></span>
-                <span class="fa fa-star-half-o"></span>
-                <span class="fa fa-star-o"></span>
+                <% if logged_in? %>
+                  <p>Used Ingredients: <%= recipe["usedIngredientCount"] %></p>
+                  <p>Missing Ingredients: <%= recipe["missedIngredientCount"] %></p>
+                <% end %>
+
               </h5>
           	</div>
-
-          	<hr>
-          	<div>
-          		<div class="row">
-          			<div class="col-sm-3 col-lg-3 col-md-3">
-                  <% if User.find(UserRecipe.find(recipe.id).user_id).img_url == nil %>
-                   <img src="<%= Recipe.find(recipe.id).image %>" style="width: 50px; height: auto">
-                  <% else %>
-          				  <img src="<%= User.find(UserRecipe.find(recipe.id).user_id).img_url %>">
-                  <% end %>
-          			</div>
-          			<div class="col-sm-9 col-lg-9 col-md-9">
-          				<p>Reciped Submitted by: <%= User.find(UserRecipe.find(recipe.id).user_id).name %> </p>
-          			</div>
-
-                <div class="col-sm-9 col-lg-9 col-md-9">
-                  <p><span class="fa fa-heart"></span> <%= rand(1..100) %>&nbsp;&nbsp;
-                  <span class="fa fa-cutlery"></span> <%= rand(1..100) %></p>
-                </div>
-          		</div>
-          	</div>
-
 
           </div>
         </div>
 
+
         <br>
       </div>
-    </div>
     <% end %>
+    </div>
   </div>

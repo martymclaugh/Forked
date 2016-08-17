@@ -10,7 +10,14 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160815181832) do
+ActiveRecord::Schema.define(version: 20160816050219) do
+
+  create_table "friendships", force: :cascade do |t|
+    t.integer  "user_id"
+    t.integer  "friend_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
 
   create_table "ingredients", force: :cascade do |t|
     t.string   "name"
@@ -50,8 +57,9 @@ ActiveRecord::Schema.define(version: 20160815181832) do
     t.string   "cuisine"
     t.string   "course"
     t.string   "image"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.float    "rating",     default: 5.0
+    t.datetime "created_at",               null: false
+    t.datetime "updated_at",               null: false
   end
 
   create_table "steps", force: :cascade do |t|
@@ -80,9 +88,10 @@ ActiveRecord::Schema.define(version: 20160815181832) do
     t.string   "provider"
     t.string   "uid"
     t.string   "name"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.string   "img_url"
+    t.string   "image"
+    t.integer  "chef_score", default: 50
+    t.datetime "created_at",              null: false
+    t.datetime "updated_at",              null: false
   end
 
 end

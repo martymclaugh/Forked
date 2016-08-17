@@ -3,7 +3,7 @@ class UsersController < ApplicationController
   helper_method :set_auth
   # headers['Access-Control-Allow-Origin'] = 'http://localhost:9000'
   def show
-    @user = current_user
+    @user = User.find(params[:id])
   end
 
 
@@ -11,6 +11,8 @@ class UsersController < ApplicationController
 
   def set_auth
     @auth = session[:omniauth] if session[:omniauth]
+    puts "***" *20
+    p @auth
   end
 
 end

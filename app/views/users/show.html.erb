@@ -1,55 +1,90 @@
 <div class="user-profile-top">
     <div class="user-image left">
-        <% if current_user.img_url %>
-        <img src="<%= current_user.img_url %>" height="200" width="200" style="border: black solid 2px;" ;>
-    <% else %>
-        <img src="http://sd.keepcalm-o-matic.co.uk/i/keep-calm-my-profile-picture-is-under-construction.png" height="50" width="50">
+        <% if @user.image %>
+            <img src="<%= @user.image %>" height="500" width="500" style="border: black solid 2px;" ;>
+        <% else %>
+            <img src="http://sd.keepcalm-o-matic.co.uk/i/keep-calm-my-profile-picture-is-under-construction.png" height="500" width="500">
         <% end %>
     </div>
+    <div class="container">
+      <div class="row">
+    <div class="user-information col-sm-4">
+        <h3><%= @user.name %></h3>
+        <% if logged_in? %>
+          <% if @user != current_user && @user.friends.include?(current_user)%>
+            Your Friend
+            <%= button_to "Unfriend", {:controller => :friendships,
+              :action => 'destroy', :id => @user.id }, :method => :delete %>
+          <% else%>
+            Not Your Friend
+            <%= button_to "Add friend", {:controller => :friendships,
+              :id => @user.id }, :method => :post %>
+          <% end %>
+        <% end %>
 
-    <div class="user-information center">
-        <h3><%= current_user.name %></h3>
         <p>Place holder for chef score</p>
         <p>Place holder for favorite meal</p>
         <p>Recipe count:
-            <%= current_user.recipes.count %></p>
+            <%= @user.recipes.count %></p>
     </div>
 </div>
 
 <div class="user-profile-bottom">
-    <div class="user-friend-list"></div>
-
-    <div class="user-ingredients">
-        <div class="user-fridge">
-            <h4>My Ingredients:</h4>
-
-            <%= form_for(:ingredient, :url => ingredients_path) do |f|%>
-            <%= f.text_field :ingredient, placeholder: "Enter new ingredient" %>
-            <%= submit_tag ("Add")%>
+    <div class="user-friend-list">
+        <div class="form-group">
+            <% if current_user.id == @user.id %>
+              <%= form_tag friendships_path, :method => 'get', :class => "navbar-form navbar-left" do %>
+              <p>
+                <%= text_field_tag :search, params[:search] %>
+                <%= submit_tag "Find Friends", :name => nil %>
+              </p>
+              <% end %>
             <% end %>
-            <div class="ingredients-list col-sm-6" style="height: 200px; width: 30%; overflow: scroll;">
-            <% current_user.ingredients.each do |ingredient| %>
+        </div>
+    </div>
+    <div class="container">
+        <div class="row">
+            <div class="user-ingredients">
+                <div class="user-fridge col-sm-4">
+                    <div class="fridge-list">
+                        <h4>My Ingredients:</h4>
+                        <div >
+                            <% if current_user.id == @user.id %>
+                                <%= form_for(:ingredient, :url => ingredients_path, :html => {
+                                :id => 'ingredient-form'}) do |f|%>
+                                <%= f.text_field :ingredient, placeholder: "Enter new ingredient" %>
+                                <%= submit_tag ("Add"), :id => 'ingredient-add'%>
+                                <% end %>
+                            <% end %>
+                        </div>
+                        <div class="ingredients-list">
+                            <% @user.ingredients.each do |ingredient| %>
 
-            <div class="ingredient-item" style="display: inline-block; float: left;">
-                <img class="ingredient-image" style="display: inline-block; float: left;" src="<%= ingredient.image %>" value="<%= ingredient.name %>">
-                <div class="ingredient-name">
-                    <p id="ingredient-<%= ingredient.name %>"><%= ingredient.name %></p>
-                </div>
-                <div class="ingredient-delete">
-                  <%= button_to "X", {:controller => :ingredients, :action => 'destroy', :id => ingredient.id, :class => "delete-button" }, :method => :delete %>
+                            <div class="ingredient-item">
+                                <img class="ingredient-image" src="<%= ingredient.image %>" value="<%= ingredient.name %>">
+                                <div class="ingredient-name">
+                                    <p><%= ingredient.name %></p>
+                                </div>
+                                <% if current_user.id == @user.id %>
+                                    <div class="ingredient-delete">
+                                        <%= button_to "X", {:controller => :ingredients, :action => 'destroy', :id => ingredient.id }, :method => :delete %>
+                                    </div>
+                                <% end %>
+                            </div>
+                            <% end %>
+                        </div>
+                    </div>
                 </div>
             </div>
-            <% end %>
-          </div>
         </div>
     </div>
 
     <div class="user-recipes">
-        <h4>Saved Recipes:</h4>
-        <% current_user.recipes.each do |recipe| %>
+        <h4>My Forks:</h4>
         <div class="saved-recipe-list">
-            <img src="<%= recipe.image %>">
-            <p class="recipe-name"><%= recipe.title %></p>
+        <% @user.recipes.each do |recipe| %>
+            <img style="width:10%" src="<%= recipe.image %>">
+            <a href="/recipes/preview/<%= recipe.spoon_id  %>"><%= recipe.title %></a>
         </div>
         <% end %>
     </div>
