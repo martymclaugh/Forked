@@ -6,6 +6,7 @@ class ApplicationController < ActionController::Base
   helper_method :logged_in?
   helper_method :update_score
   helper_method :subtract_score
+  helper_method :user_ingredient_search
 
   def index
   end
@@ -33,5 +34,12 @@ class ApplicationController < ActionController::Base
     User.update(user_id, chef_score: new_score)
   end
 
-
+  def user_ingredient_search(user)
+    user_ingredients_string = ""
+    user.ingredients.each do |ingredient|
+      user_ingredients_string += ingredient
+      user_ingredients_string += ", "
+    end
+    user_ingredients_string.chomp(", ")
+  end
 end
