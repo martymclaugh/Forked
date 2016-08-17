@@ -23,6 +23,18 @@
 #home-grid{
     margin-left: 100px;
 }
+
+.ingredients-list{
+    overflow: hidden;
+    background-color: blue;
+}
+
+.friendships-list{
+    /*overflow: hidden;*/
+    background-color: blue;
+}
+
+
 .ingredient-list{
     overflow: hidden;
 }
@@ -35,8 +47,11 @@
     /*background-color: green;*/
 }
 
+.ingredient-list{
+    overflow: hidden;
+}
 
- .grid-item {
+.grid-item {
     width: 20%;
 }
 
