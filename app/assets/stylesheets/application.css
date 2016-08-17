@@ -26,11 +26,12 @@
 
 .ingredients-list{
     overflow: hidden;
-    /*background-color: blue;*/
+    background-color: blue;
 }
 
 .friendships-list{
-    /*background-color: blue;*/
+    /*overflow: hidden;*/
+    background-color: blue;
 }
 
 
