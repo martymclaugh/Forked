@@ -1,4 +1,4 @@
-<div class="container">
+<div class="contain">
     <div class="row">
         <div class="col-sm-4 col-md-4 col-lg-4">
             <% if @user.image %>
@@ -10,18 +10,16 @@
 
         <div class="col-sm-8 col-md-8  col-lg-8">
         <h3><%= @user.name %></h3>
-        <h4>Chef Score: <%= @user.chef_score %></h4>
-        <h1><%#= Recipe.where(user_id: @user.id).length %></h1>
-        <h1><%#= Recipe.where(user_id: @user.id) %></h1>
+        <h4><span class="fa fa-cutlery"></span> Chef Score: <%= @user.chef_score %></h4>
+        <h4><span class="fa fa-spoon"></span> <%= @user.name %>'s recipe count: <%= UserRecipe.where(user_id: 11).length %></h4>
         </div>
     </div>
-
 
      <% if logged_in? %>
           <% if @user != current_user && @user.friends.include?(current_user)%>
             <%= button_to "Unfriend", {:controller => :friendships,
               :action => 'destroy', :id => @user.id },  :class => 'btn btn-primary', :method => :delete %>
-          <% elsif @user == current_user %>
+          <%# elsif @user == current_user %>
           <% else%>
             <%= button_to "Add friend", {:controller => :friendships,
               :id => @user.id},  :class => 'btn btn-primary', :method => :post %>
@@ -31,14 +29,51 @@
     <hr>
     <div class="row">
          <div class="col-sm-3 col-md-3 col-lg-3">
-            <h1>Friends </h1>
+            <h4>Friends </h4>
+            <div class="form-group">
+            <% if current_user.id == @user.id %>
+              <%= form_tag friendships_path, :method => 'get', :class => "navbar-form navbar-left" do %>
+              <p>
+                <%= text_field_tag :search, params[:search] %>
+                <%= submit_tag "Find Friends",:class => 'btn btn-primary', :name => nil %>
+              </p>
+              <% end %>
+            <% end %>
+        </div>
+
          </div>
          <div class="col-sm-3 col-md-3 col-lg-3">
-             <h1>My Ingredients</h1>
+             <h4>My Ingredients:</h4>
+                <div >
+                    <% if current_user.id == @user.id %>
+                        <%= form_for(:ingredient, :url => ingredients_path, :html => {
+                        :id => 'ingredient-form'}) do |f|%>
+                        <%= f.text_field :ingredient, placeholder: "Enter new ingredient" %>
+                        <%= submit_tag ("Add"),:class => 'btn btn-primary', :id => 'ingredient-add'%>
+                        <% end %>
+                    <% end %>
+                </div>
+                <div class="ingredients-list">
+                    <% @user.ingredients.each do |ingredient| %>
+
+                    <div class="ingredient-item">
+                        <img class="ingredient-image" src="<%= ingredient.image %>" value="<%= ingredient.name %>">
+                        <div class="ingredient-name">
+                            <p><%= ingredient.name %></p>
+                        </div>
+                        <% if current_user.id == @user.id %>
+                            <div class="ingredient-delete">
+                                <%= button_to "X", {:controller => :ingredients, :action => 'destroy', :id => ingredient.id }, :method => :delete %>
+                            </div>
+                        <% end %>
+                    </div>
+                    <% end %>
+                </div>
          </div>
          <div class="col-sm-3 col-md-3 col-lg-3">
-             <h1> My Forked recipes</h1>
-         </div>
+              <h4>My Forks:</h4>
+
+            </div>
          <div class="col-sm-3 col-md-3 col-lg-3">
             <h1>My recipes</h1>
          </div>
@@ -48,3 +83,5 @@
 
 
 </div>
+
+
