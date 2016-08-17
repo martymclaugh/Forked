@@ -9,7 +9,7 @@
         </div>
 
         <div class="col-sm-8 col-md-8  col-lg-8">
-            <h3><%= @user.name %></h3>
+        <h3><%= @user.name %></h3>
             <h4><span class="fa fa-cutlery"></span> Chef Score: <%= @user.chef_score %></h4>
             <h4><span class="fa fa-spoon"></span> <%= @user.name %>'s recipe count: <%= UserRecipe.where(user_id: @user.id).length %></h4>
             <h4><span class="fa fa-user"></span> <%= @user.name %>'s friends count: <%= Friendship.where(friend_id: @user.id).length %></h4>
@@ -101,6 +101,7 @@
                     <% end %>
 
                 </div>
+             <div class="col-sm-3 col-md-3 col-lg-3">
                 <div class="friendships-list">
                     <% Friendship.where(friend_id: @user.id).each do |friend| %>
 
@@ -114,7 +115,7 @@
                         <% end %>
                     </div>
                 </div>
-
+                </div>
             </div>
             <div class="col-sm-3 col-md-3 col-lg-3">
                <h4>My Ingredients:</h4>
@@ -152,7 +153,4 @@
             <h1>My recipes</h1>
         </div>
     </div>
-
 </div>
-
-
