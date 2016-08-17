@@ -37,7 +37,7 @@ class ApplicationController < ActionController::Base
   def user_ingredient_search(user)
     user_ingredients_string = ""
     user.ingredients.each do |ingredient|
-      user_ingredients_string += ingredient
+      user_ingredients_string += ingredient.name
       user_ingredients_string += ", "
     end
     user_ingredients_string.chomp(", ")
