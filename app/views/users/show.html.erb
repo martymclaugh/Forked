@@ -49,8 +49,13 @@
                 </div>
                 <div class="friendships-list">
                     <% Friendship.where(friend_id: @user.id).each do |friend| %>
-                    <h4><img src="<%= User.find(friend.user_id).image %>" style="width: 30%">
-                        <%= User.find(friend.user_id).name %></h4>
+
+                    <% if User.find(friend.user_id).image == nil %>
+                        <img src="https://dadadee.com/assets/user_missing_medium-edce384836db8136d7ba5bf78dc5212db38e5fe6454c9091a847e429a7b0cfe6.png" style="width: 30%">
+                    <% else  %>
+                        <img src="<%= User.find(friend.user_id).image %>" style="width: 30%">
+                    <% end %>
+                    <a href="/users/<%= User.find(friend.user_id).id %>"><%= User.find(friend.user_id).name %></a></h4>
                         <br>
                         <% end %>
                     </div>
