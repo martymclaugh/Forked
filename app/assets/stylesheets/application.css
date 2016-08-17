@@ -409,7 +409,7 @@ transform: scale(1.5);
 }
 .ingredients-list {
 	height: 400px;
-	width: auto%;
+	width: auto;
 	overflow: scroll;
 }
 .ingredient-item {
