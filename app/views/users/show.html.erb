@@ -1,11 +1,11 @@
-<div class="contain">
+<div class="container">
     <div class="row">
         <div class="col-sm-4 col-md-4 col-lg-4">
             <% if @user.image %>
-            <img src="<%= @user.image %>"  style="border: black solid 2px; " ;>
+                <img src="<%= @user.image %>"  style="border: black solid 2px; " ;>
             <% else %>
-            <img src="http://sd.keepcalm-o-matic.co.uk/i/keep-calm-my-profile-picture-is-under-construction.png" height="500" width="500">
-            <% end %>
+                <img src="http://sd.keepcalm-o-matic.co.uk/i/keep-calm-my-profile-picture-is-under-construction.png" height="500" width="500">
+        <% end %>
         </div>
 
         <div class="col-sm-8 col-md-8  col-lg-8">
@@ -15,6 +15,7 @@
             <h4><span class="fa fa-user"></span> <%= @user.name %>'s friends count: <%= Friendship.where(friend_id: @user.id).length %></h4>
         </div>
     </div>
+
 
      <% if logged_in? %>
           <% if @user != current_user && @user.friends.include?(current_user)%>
@@ -82,10 +83,10 @@
           <% else%>
             <%= button_to "Add friend", {:controller => :friendships,
               :id => @user.id},  :class => 'btn btn-primary', :method => :post %>
-
           <% end %>
+        <% end %>
 
-          <hr>
+    <hr>
           <div class="row">
            <div class="col-sm-3 col-md-3 col-lg-3">
               <h4>Friends </h4>
@@ -101,7 +102,7 @@
                     <% end %>
 
                 </div>
-             <div class="col-sm-3 col-md-3 col-lg-3">
+
                 <div class="friendships-list">
                     <% Friendship.where(friend_id: @user.id).each do |friend| %>
 
@@ -116,7 +117,7 @@
                     </div>
                 </div>
                 </div>
-            </div>
+
             <div class="col-sm-3 col-md-3 col-lg-3">
                <h4>My Ingredients:</h4>
                <div >
@@ -153,4 +154,8 @@
             <h1>My recipes</h1>
         </div>
     </div>
+
+
+
+
 </div>

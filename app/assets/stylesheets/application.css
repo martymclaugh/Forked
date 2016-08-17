@@ -31,7 +31,7 @@
 
 .friendships-list{
     /*overflow: hidden;*/
-    background-color: blue;
+    /*background-color: blue;*/
 }
 
 
@@ -43,7 +43,8 @@
     /*height: 400px;*/
     width: auto;
      /*overflow-y: scroll;*/
-    /*overflow: scroll;*/
+    overflow: scroll;
+    /*padding-left: 100;*/
     /*background-color: green;*/
 }
 
