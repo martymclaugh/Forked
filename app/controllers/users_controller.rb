@@ -15,9 +15,9 @@ class UsersController < ApplicationController
     # p @auth
   end
 
-  def user_ingredient_search
+  def user_ingredient_search(user)
     user_ingredients_string = ""
-    current_user.ingredients.each do |ingredient|
+    user.ingredients.each do |ingredient|
       user_ingredients_string += ingredient
       user_ingredients_string += ", "
     end
