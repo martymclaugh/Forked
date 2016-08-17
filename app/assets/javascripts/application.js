@@ -41,6 +41,7 @@ function directionDone(){
 function addIngredient(){
 	$('#ingredient-add').on('click', function(event){
 		event.preventDefault();
+		console.log(event);
 		var formData = $('Input#ingredient_ingredient').serialize()
 		$.ajax({
 			url: '/ingredients',
