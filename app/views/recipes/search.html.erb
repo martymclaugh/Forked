@@ -7,10 +7,18 @@
       <input type="text" class="form-control" id="cuisine"  name="cuisine"placeholder="American, French...">
      </fieldset>
 
-    <fieldset class="form-group">
+    <fieldset class="form-group" id="custom-ingredients">
       <label for="ingredients">Ingredients</label>
       <textarea style="resize:none;" class="form-control" rows="3" id="content" name="ingredients" placeholder="beef, chicken, corn..."></textarea>
     </fieldset>
+
+    <% if logged_in? %>
+      <fieldset class="form-group">
+        <div class="checkbox" id="users-ingredients">
+          <label><input type="checkbox" value="">Use your ingredients</label>
+        </div>
+      </fieldset>
+    <% end %>
 
     <fieldset class="form-group">
       <label for="Allergies">Allergies</label>
