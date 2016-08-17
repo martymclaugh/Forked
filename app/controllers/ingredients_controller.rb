@@ -3,11 +3,12 @@ class IngredientsController < ApplicationController
   def create
       p "ding!!!!"
       search = search_ingredients
-      @ingredient = Ingredient.find_by(name: search[0]["name"], spoon_id: search[0]["id"], image: search[0]["image"])
+      @ingredient = Ingredient.find_by(spoon_id: search[0]["id"])
+      unless @ingredient
+        @ingredient = Ingredient.create(name: search[0]["name"], spoon_id: search[0]["id"], image: search[0]["image"])
+      end
       p @ingredient
-      if @ingredient.save
-        p "*" * 100
-        p @ingredient
+      if @ingredient.valid?
         @useringredient = UserIngredient.find_or_create_by(user_id: current_user.id, ingredient_id: @ingredient.id)
       end
     if request.xhr?
