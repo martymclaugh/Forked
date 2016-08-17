@@ -15,6 +15,7 @@ class RecipesController < ApplicationController
       if @recipe.save
         @user_recipe = UserRecipe.create(recipe_id: @recipe.id, user_id: current_user.id )
         redirect_to "/recipes/preview/#{@recipe.spoon_id}"
+        add_score(current_user.id, 25)
       end
     else
       @recipe = Recipe.create(title: params[:recipe][:title], cooktime: params[:recipe][:cooktime], cuisine: params[:cuisine], course: params[:recipe][:course])
@@ -30,6 +31,7 @@ class RecipesController < ApplicationController
         RecipeIngredient.create(recipe_id: @recipe.id, ingredient_id: this_ingredient.id)
       end
       redirect_to recipe_path(@recipe)
+      add_score(current_user.id, 300)
     end
   end
 
