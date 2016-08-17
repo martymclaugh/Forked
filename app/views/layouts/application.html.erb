@@ -62,7 +62,7 @@
 
 
         <ul class="nav navbar-nav navbar-right" style="margin-top: 1em">
-          <% if current_user.image %>
+          <% if current_user.image.respond_to? %>
             <li><img id="small-fb-image" style="width: 30%;" src="<%= current_user.image %>"></li>
           <% end %>
         </ul>
