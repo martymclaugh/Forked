@@ -1,0 +1,2 @@
+class UserDinnerParty < ApplicationRecord
+end
