@@ -69,10 +69,10 @@
 
   <div>
   <div class="recipe-of-the-day">
-    <h2 class="left">So Hot Right Now: <a href="/recipes/preview/<%= @recipe_of_the_day['id'] %>"><%= @recipe_of_the_day['title'] %></a></h2>
+    <h2 class="center">So Hot Right Now: <a href="/recipes/preview/<%= @recipe_of_the_day['id'] %>"><%= @recipe_of_the_day['title'] %></a></h2>
   </div>
 
-  <div class="grid center" data-masonry='{ "itemSelector": ".grid-item", "columnWidth": 200 }'>
+  <div id="home-grid" class="grid center" data-masonry='{ "itemSelector": ".grid-item", "columnWidth": 200 }'>
 
 <div class="contain">
     <% @recipes.each do |recipe| %>

@@ -15,10 +15,14 @@
  */
 
 #small-fb-image{
-    margin-bottom: 10px;
+    margin-bottom: 15px;
+    width: 30%;
+    text-align: center;
 }
 
-
+#home-grid{
+    margin-left: 100px;
+}
 .ingredient-list{
     overflow: hidden;
 }
@@ -449,7 +453,8 @@ transform: scale(1.5);
     }
 
     .preview-image{
-        width: 60%
+        width: 60%;
+        margin-left: 75px;
     }
 
     .image-div{
@@ -512,6 +517,11 @@ transform: scale(1.5);
     }
 
 
+   #small-fb-image{
+    margin-left: 150px;
+    width: 30%;
+
+}
 
 
     .navbar {
