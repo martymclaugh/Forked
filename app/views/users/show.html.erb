@@ -20,7 +20,7 @@
           <div id="dinner-party-invitiations" class="col-sm-4 col-md-4 col-lg-4">
             <h3>Invitations</h3>
             <ul>
-              <% @user.user_invitation.invitation.each do |invitiation| %>
+              <% @user.invitations.each do |invitiation| %>
               <li>
                 <h4><%= invitation.cuisine %> Dinner Party</h4>
                 <h4> with <a href="/users/<%= invitation.creator_id %>"><%= invitation.creator_id %></a></h4>
