@@ -10,6 +10,18 @@
       <div class="row">
     <div class="user-information col-sm-4">
         <h3><%= @user.name %></h3>
+        <% if logged_in? %>
+          <% if @user != current_user && @user.friends.include?(current_user)%>
+            Your Friend
+            <%= button_to "Unfriend", {:controller => :friendships,
+              :action => 'destroy', :id => @user.id }, :method => :delete %>
+          <% else%>
+            Not Your Friend
+            <%= button_to "Add friend", {:controller => :friendships,
+              :id => @user.id }, :method => :post %>
+          <% end %>
+        <% end %>
+
         <p>Place holder for chef score</p>
         <p>Place holder for favorite meal</p>
         <p>Recipe count:

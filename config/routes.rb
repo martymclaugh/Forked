@@ -14,7 +14,7 @@ Rails.application.routes.draw do
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
   resources :recipes, :ingredients, :users
 
-  resources :friendships, only: [:index]
+  resources :friendships, only: [:index, :create, :destroy]
   resources :makes, only: [:create, :index]
   resources :likes, only: [:create, :index]
 end
