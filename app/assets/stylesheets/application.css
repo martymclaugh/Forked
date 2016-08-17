@@ -23,13 +23,35 @@
 #home-grid{
     margin-left: 100px;
 }
+
+.ingredients-list{
+    overflow: hidden;
+    background-color: blue;
+}
+
+.friendships-list{
+    /*overflow: hidden;*/
+    background-color: blue;
+}
+
+
 .ingredient-list{
     overflow: hidden;
 }
 
+.friendships-list{
+    /*height: 400px;*/
+    width: auto;
+     /*overflow-y: scroll;*/
+    /*overflow: scroll;*/
+    /*background-color: green;*/
+}
 
+.ingredient-list{
+    overflow: hidden;
+}
 
- .grid-item {
+.grid-item {
     width: 20%;
 }
 
@@ -413,7 +435,7 @@ transform: scale(1.5);
 }
 .ingredients-list {
 	height: 400px;
-	width: auto%;
+	width: auto;
 	overflow: scroll;
 }
 .ingredient-item {
@@ -423,7 +445,7 @@ transform: scale(1.5);
 
 .saved-recipe-list {
     height: 400px;
-    width: auto%;
+    width: auto;
     overflow: scroll;
 }
 
