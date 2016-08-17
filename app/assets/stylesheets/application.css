@@ -173,6 +173,8 @@
     margin: 0;
     padding: 0;
     overflow: hidden;
+    letter-spacing: 5%;
+    font-size: 130%;
     background-color: #333;
     display: flex;
     justify-content: space-around;
@@ -409,4 +411,12 @@ transform: scale(1.5);
 	height: 400px;
 	width: auto%;
 	overflow: scroll;
+}
+
+.recipe-nav a:hover {
+  color: orange;
+  text-transform: uppercase;
+  outline: none;
+  background: none;
+  text-decoration: none;
 }
