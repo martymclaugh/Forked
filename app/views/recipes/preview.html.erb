@@ -27,27 +27,24 @@
             </h6>
         </li>
         <% if logged_in? %>
-        <li>
+          <li>
             <h6>
-                <a class="active" href="#like">
-                    <span class="fa fa-thumbs-up"></span>
-                    Like it</a>
+              <span class="fa fa-thumbs-up"></span>
+              <%= link_to "LIKE", likes_path(ingredients: @ingredients), method: 'post' %>
             </h6>
-        </li>
-        <li>
-            <h6>
-                <a href="#made">
-                    <span class="fa fa-spoon"></span>
-                    Made It</a>
-            </h6>
-        </li>
-        <li>
-            <h6>
-                <a href="#print">
-                    <span class="fa fa-cutlery"></span>
-                    Fork it</a>
-            </h6>
-        </li>
+          </li>
+            <li>
+              <h6>
+                <span class="fa fa-spoon"></span>
+                <%= link_to "I MADE IT", makes_path(ingredients: @ingredients), method: 'post' %>
+              </h6>
+            </li>
+            <li>
+              <h6>
+                <span class="fa fa-cutlery"></span>
+                <%= link_to "FORK IT", recipes_path(ingredients: @ingredients), method: 'post' %>
+              </h6>
+            </li>
         <% end %>
     </ul>
 </div>
