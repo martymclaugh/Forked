@@ -4,6 +4,9 @@ class ApplicationController < ActionController::Base
   protect_from_forgery unless: -> { request.format.json? }
   helper_method :current_user
   helper_method :logged_in?
+  helper_method :update_score
+  helper_method :subtract_score
+  helper_method :user_ingredient_search
 
   def index
   end
@@ -19,6 +22,24 @@ class ApplicationController < ActionController::Base
     session[:user_id].present?
   end
 
+  def add_score(user, score)
+    new_score = user.chef_score + score
+    user_id = user.id
+    User.update(user_id, chef_score: new_score)
+  end
 
+  def subtract_score(user, score)
+    new_score = user.chef_score + score
+    user_id = user.id
+    User.update(user_id, chef_score: new_score)
+  end
 
+  def user_ingredient_search(user)
+    user_ingredients_string = ""
+    user.ingredients.each do |ingredient|
+      user_ingredients_string += ingredient
+      user_ingredients_string += ", "
+    end
+    user_ingredients_string.chomp(", ")
+  end
 end

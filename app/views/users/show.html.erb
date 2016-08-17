@@ -16,19 +16,73 @@
         </div>
     </div>
 
+     <% if logged_in? %>
+          <% if @user != current_user && @user.friends.include?(current_user)%>
+            <%= button_to "Unfriend", {:controller => :friendships,
+              :action => 'destroy', :id => @user.id },  :class => 'btn btn-primary', :method => :delete %>
 
+            <a href="#" data-toggle="modal" data-target="#Invitation">Invite to Dinner Party</a>
 
+              <div class="container">
 
+                  <div class="modal fade" id="Invitation" role="dialog">
+                    <div class="modal-dialog">
 
-    <% if logged_in? %>
-    <% if @user != current_user && @user.friends.include?(current_user)%>
-    <%= button_to "Unfriend", {:controller => :friendships,
-      :action => 'destroy', :id => @user.id },  :class => 'btn btn-primary', :method => :delete %>
-      <% elsif @user == current_user %>
-      <% else%>
-      <%= button_to "Add friend", {:controller => :friendships,
-          :id => @user.id},  :class => 'btn btn-primary', :method => :post %>
-          <% end %>
+                      <div class="modal-content">
+                        <div class="modal-header center"  style="padding:35px 50px;">
+                          <button type="button" class="close white" data-dismiss="modal">&times;</button>
+                          <h1 class="modal-title">New Invitation</h1>
+                        </div>
+
+                        <div class="modal-body">
+
+                            <form action='/invitations' method='post'>
+
+                                <fieldset style="display:none">
+                                  <input type="hidden" name="user_id" value="<%=current_user.id%>">
+                                 </fieldset>
+
+                                 <fieldset style="display:none">
+                                  <input type="hidden" name="friend_id" value="<%=params[:id]%>">
+                                 </fieldset>
+
+                                 <fieldset class="form-group">
+                                  <label for="Cuisine">Cuisine</label>
+                                  <input type="text" class="form-control" id="cuisine"  name="invitation[cuisine]"placeholder="American, French...">
+                                 </fieldset>
+
+                                <fieldset class="form-group">
+                                  <label for="Datetime">Proposed date and time</label>
+                                  <input type="datetime" class="form-control" id="datetime"  name="invitation[datetime]"placeholder='<%= "#{DateTime.now}"%>'>
+                                 </fieldset>
+
+                                <fieldset class="form-group">
+                                  <label for="Location">Location</label>
+                                  <input type="text" class="form-control" id="location"  name="invitation[location]" placeholder="1234 Folsom, San Francisco, CA">
+                                </fieldset>
+
+                                <button type="submit" class="btn btn-primary">Submit</button>
+                              </form>
+                        </div>
+
+                        <div>
+
+                        </div>
+                        <div class="modal-footer">
+                            Footers are so cool!
+                        </div>
+                      </div>
+
+                    </div>
+                  </div>
+
+                </div>
+
+          <% elsif @user == current_user %>
+          <% else%>
+            <%= button_to "Add friend", {:controller => :friendships,
+              :id => @user.id},  :class => 'btn btn-primary', :method => :post %>
+
           <% end %>
 
           <hr>
@@ -98,9 +152,6 @@
             <h1>My recipes</h1>
         </div>
     </div>
-
-
-
 
 </div>
 

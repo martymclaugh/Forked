@@ -1,6 +1,5 @@
 class UsersController < ApplicationController
   before_action :set_auth
-  helper_method :set_auth
   # headers['Access-Control-Allow-Origin'] = 'http://localhost:9000'
   def show
     @user = User.find(params[:id])
@@ -14,5 +13,6 @@ class UsersController < ApplicationController
     # puts "***" *20
     # p @auth
   end
+
 
 end

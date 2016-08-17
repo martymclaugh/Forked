@@ -17,4 +17,5 @@ Rails.application.routes.draw do
   resources :friendships, only: [:index, :create, :destroy]
   resources :makes, only: [:create, :index]
   resources :likes, only: [:create, :index]
+  resources :invitations
 end
