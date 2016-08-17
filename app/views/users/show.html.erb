@@ -10,9 +10,9 @@
 
         <div class="col-sm-8 col-md-8  col-lg-8">
         <h3><%= @user.name %></h3>
-        <h4>Chef Score: <%= @user.chef_score %></h4>
-        <h1><%#= Recipe.where(user_id: @user.id).length %></h1>
-        <h1><%#= Recipe.where(user_id: @user.id) %></h1>
+            <h4><span class="fa fa-cutlery"></span> Chef Score: <%= @user.chef_score %></h4>
+            <h4><span class="fa fa-spoon"></span> <%= @user.name %>'s recipe count: <%= UserRecipe.where(user_id: @user.id).length %></h4>
+            <h4><span class="fa fa-user"></span> <%= @user.name %>'s friends count: <%= Friendship.where(friend_id: @user.id).length %></h4>
         </div>
     </div>
 
@@ -87,19 +87,75 @@
         <% end %>
 
     <hr>
-    <div class="row">
-         <div class="col-sm-3 col-md-3 col-lg-3">
-            <h1>Friends </h1>
-         </div>
-         <div class="col-sm-3 col-md-3 col-lg-3">
-             <h1>My Ingredients</h1>
-         </div>
-         <div class="col-sm-3 col-md-3 col-lg-3">
-             <h1> My Forked recipes</h1>
-         </div>
-         <div class="col-sm-3 col-md-3 col-lg-3">
+          <div class="row">
+           <div class="col-sm-3 col-md-3 col-lg-3">
+              <h4>Friends </h4>
+              <div class="form-group">
+                <div>
+                    <% if current_user.id == @user.id %>
+                    <%= form_tag friendships_path, :method => 'get', :class => "navbar-form navbar-left" do %>
+                    <p>
+                        <%= text_field_tag :search, params[:search] %>
+                        <%= submit_tag "Find Friends",:class => 'btn btn-primary', :name => nil %>
+                    </p>
+                    <% end %>
+                    <% end %>
+
+                </div>
+             <div class="col-sm-3 col-md-3 col-lg-3">
+                <div class="friendships-list">
+                    <% Friendship.where(friend_id: @user.id).each do |friend| %>
+
+                    <% if User.find(friend.user_id).image == nil %>
+                        <img src="https://dadadee.com/assets/user_missing_medium-edce384836db8136d7ba5bf78dc5212db38e5fe6454c9091a847e429a7b0cfe6.png" style="width: 30%">
+                    <% else  %>
+                        <img src="<%= User.find(friend.user_id).image %>" style="width: 30%">
+                    <% end %>
+                    <a href="/users/<%= User.find(friend.user_id).id %>"><%= User.find(friend.user_id).name %></a></h4>
+                        <br>
+                        <% end %>
+                    </div>
+                </div>
+                </div>
+            </div>
+            <div class="col-sm-3 col-md-3 col-lg-3">
+               <h4>My Ingredients:</h4>
+               <div >
+                <% if current_user.id == @user.id %>
+                <%= form_for(:ingredient, :url => ingredients_path, :html => {
+                    :id => 'ingredient-form'}) do |f|%>
+                    <%= f.text_field :ingredient, placeholder: "Enter new ingredient" %>
+                    <%= submit_tag ("Add"),:class => 'btn btn-primary', :id => 'ingredient-add'%>
+                    <% end %>
+                    <% end %>
+                </div>
+                <div class="ingredients-list">
+                    <% @user.ingredients.each do |ingredient| %>
+
+                    <div class="ingredient-item">
+                        <img class="ingredient-image" src="<%= ingredient.image %>" value="<%= ingredient.name %>">
+                        <div class="ingredient-name">
+                            <p><%= ingredient.name %></p>
+                        </div>
+                        <% if current_user.id == @user.id %>
+                        <div class="ingredient-delete">
+                            <%= button_to "X", {:controller => :ingredients, :action => 'destroy', :id => ingredient.id }, :method => :delete %>
+                        </div>
+                        <% end %>
+                    </div>
+                    <% end %>
+                </div>
+            </div>
+            <div class="col-sm-3 col-md-3 col-lg-3">
+              <h4>My Forks:</h4>
+
+          </div>
+          <div class="col-sm-3 col-md-3 col-lg-3">
             <h1>My recipes</h1>
-         </div>
+        </div>
     </div>
-    
+
+
+
+
 </div>
