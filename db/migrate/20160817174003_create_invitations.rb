@@ -4,6 +4,7 @@ class CreateInvitations < ActiveRecord::Migration[5.0]
       t.string :cuisine
       t.datetime :datetime
       t.string :location
+      t.integer :creator_id
 
       t.timestamps
     end
