@@ -31,7 +31,8 @@
     /*height: 400px;*/
     width: auto;
      /*overflow-y: scroll;*/
-    /*overflow: scroll;*/
+    overflow: scroll;
+    /*padding-left: 100;*/
     /*background-color: green;*/
 }
 
