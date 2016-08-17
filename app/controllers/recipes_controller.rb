@@ -5,6 +5,10 @@ class RecipesController < ApplicationController
     @recipe = Recipe.all
   end
 
+  def show
+    @recipe = Recipe.find(params[:id])
+  end
+
   def create
     p params
     p "*" * 100
@@ -30,9 +34,6 @@ class RecipesController < ApplicationController
     @recipe_of_the_day = @recipes.pop
   end
 
-  def show
-    @recipe = Recipe.find(params[:id])
-  end
 
   def preview
     @recipe = search_recipe(params[:id])
@@ -65,6 +66,7 @@ class RecipesController < ApplicationController
    response = HTTParty.get("https://spoonacular-recipe-food-nutrition-v1.p.mashape.com/recipes/searchComplex",
               query: parameters,
               headers: headers )
+
    response['results']
   end
 
@@ -106,6 +108,8 @@ class RecipesController < ApplicationController
     response = HTTParty.get( "https://spoonacular-recipe-food-nutrition-v1.p.mashape.com/recipes/#{id.to_i}/analyzedInstructions?stepBreakdown=true",
               #  query: parameters,
                headers: headers )
+
+    pp response
     if response.parsed_response.length == 0
       redirect_to "/"
     elsif response[0].has_key?("steps")
