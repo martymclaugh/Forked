@@ -10,9 +10,12 @@ class RecipesController < ApplicationController
   end
 
   def create
+    "*" * 100
+    p params
+    "*" * 100
     recipe = Recipe.create(title: params[:recipe][:title], cooktime: params[:recipe][:cooktime], cuisine: params[:cuisine], course: params[:recipe][:course])
-    p recipe.id
-    p params[:user_id]
+    # p recipe.id
+    # p params[:user_id]
     UserRecipe.create(recipe_id: recipe.id, user_id: params[:user_id])
     steps = params[:steps].split("\r\n")
     ingredients = params[:ingredients].split(',')
@@ -124,7 +127,7 @@ class RecipesController < ApplicationController
               #  query: parameters,
                headers: headers )
 
-    pp response
+    # pp response
     if response.parsed_response.length == 0
       redirect_to "/"
     elsif response[0].has_key?("steps")
