@@ -15,8 +15,9 @@ class FriendshipsController < ApplicationController
   def create
     friend = Friendship.create(user_id: current_user.id, friend_id: params[:id])
     friend2 = Friendship.create(user_id: params[:id], friend_id: current_user.id)
-    add_score(current_user.id, 50)
-    add_score(params[:id], 50)
+    user = User.find(params[:id])
+    add_score(current_user, 50)
+    add_score(user, 50)
      if friend.valid? && friend2.valid?
        redirect_to "/users/#{params[:id]}"
      else
@@ -29,8 +30,9 @@ class FriendshipsController < ApplicationController
     friend2 = Friendship.find_by(user_id: params[:id], friend_id: current_user.id)
     Friendship.destroy(friend.id)
     Friendship.destroy(friend2.id)
-    subtract_score(current_user.id, 50)
-    subtract_score(params[:id], 50)
+    user = User.find(params[:id])
+    subtract_score(current_user, 50)
+    subtract_score(user, 50)
     redirect_to "/users/#{params[:id]}"
   end
 

@@ -21,13 +21,15 @@ class ApplicationController < ActionController::Base
     session[:user_id].present?
   end
 
-  def add_score(user_id, score)
+  def add_score(user, score)
     new_score = user.chef_score + score
+    user_id = user.id
     User.update(user_id, chef_score: new_score)
   end
 
-  def subtract_score(user_id, score)
-    new_score = user.chef_score - score
+  def subtract_score(user, score)
+    new_score = user.chef_score + score
+    user_id = user.id
     User.update(user_id, chef_score: new_score)
   end
 
