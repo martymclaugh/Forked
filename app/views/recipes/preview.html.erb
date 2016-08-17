@@ -1,17 +1,11 @@
 
 <div class="contain">
   <div class="row">
-    <div class="col-sm-4 col-lg-4 col-md-4">
+    <div class="col-sm-4 col-lg-4 col-md-4 title-div">
       <h1><%= @ingredients['title'] %></h1>
-      <span class="fa fa-star"></span>
-      <span class="fa fa-star"></span>
-      <span class="fa fa-star"></span>
-      <span class="fa fa-star-half-o"></span>
-      <span class="fa fa-star-o"></span>
-
       </div>
       <div class="col-sm-8 col-lg-8 col-md-8">
-        <img style="height: 300px; border: 2px solid black;" src="<%= @ingredients["image"] %>">
+        <img style="border: 2px solid black;" src="<%= @ingredients["image"] %>">
       </div>
     </div>
     <br>
@@ -28,9 +22,10 @@
 
   <div class="row">
     <div class="col-sm-6 col-lg-6 col-md-6 left">
-      <h3>Ingredients</h3>
+      <h3 class="ingredients-div">Ingredients</h3>
     </div>
   </div>
+
 
   <div class="ingredient-list">
     <% @ingredients["extendedIngredients"].each do |ingredient| %>
@@ -53,7 +48,7 @@
 
   <div class="row">
     <div class="col-sm-6 col-lg-6 col-md-6 left">
-      <h3>Directions</h3>
+      <h3 class="directions-div" >Directions</h3>
     </div>
 
     <div class="col-sm-6 col-lg-6 col-md-6 right">
