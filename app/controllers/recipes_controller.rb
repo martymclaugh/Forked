@@ -17,19 +17,19 @@ class RecipesController < ApplicationController
         redirect_to "/recipes/preview/#{@recipe.spoon_id}"
       end
     else
-      recipe = Recipe.create(title: params[:recipe][:title], cooktime: params[:recipe][:cooktime], cuisine: params[:cuisine], course: params[:recipe][:course])
-      UserRecipe.create(recipe_id: recipe.id, user_id: params[:user_id])
-      steps = params[:steps].split("\r\n")
-      ingredients = params[:ingredients].split(',')
-      steps.each_with_index do |step, index|
+      @recipe = Recipe.create(title: params[:recipe][:title], cooktime: params[:recipe][:cooktime], cuisine: params[:cuisine], course: params[:recipe][:course])
+      @user_recipe = UserRecipe.create(recipe_id: @recipe.id, user_id: params[:recipe][:user_id])
+      @steps = params[:steps].split("\r\n")
+      @ingredients = params[:ingredients].split(',')
+      @steps.each_with_index do |step, index|
         number = index + 1
-        Step.create(step_number: number, recipe_id: recipe.id, step_text: step)
+        Step.create(step_number: number, recipe_id: @recipe.id, step_text: step)
       end
-      ingredients.each do |ingredient|
+      @ingredients.each do |ingredient|
         this_ingredient = Ingredient.find_or_create_by(name: ingredient)
-        RecipeIngredient.create(recipe_id: recipe.id, ingredient_id: this_ingredient.id)
+        RecipeIngredient.create(recipe_id: @recipe.id, ingredient_id: this_ingredient.id)
       end
-      redirect_to recipe_path(recipe)
+      redirect_to recipe_path(@recipe)
     end
   end
 
@@ -96,7 +96,6 @@ class RecipesController < ApplicationController
      "cuisine" => params[:cuisine],
      "type" => params[:course],
      "imitLicense" => false,
-     "excludeIngredients" => "eggs",
      "offset" => 0,
      "ranking" => 2,
      "query" => params[:query],
