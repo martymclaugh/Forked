@@ -1,31 +1,31 @@
 
 <div class="contain">
   <div class="row">
-    <div class="col-sm-4 col-lg-4 col-md-4">
+    <div class="col-sm-4 col-lg-4 col-md-4 title-div">
       <h1><%= @ingredients['title'] %></h1>
+      </div>
+      <div class="col-sm-8 col-lg-8 col-md-8">
+        <img style="border: 2px solid black;" src="<%= @ingredients["image"] %>">
+      </div>
     </div>
-    <div class="col-sm-8 col-lg-8 col-md-8">
-      <img src="<%= @ingredients["image"] %>">
-    </div>
-  </div>
-  <br>
-  <div class="center">
-    <ul class="recipe-nav">
-      <li><h6><a href="#share"><span class="fa fa-share-alt"></span>  Share</a></h6></li>
-      <% if logged_in? %>
-      <li><h6><a class="active" href="#like"><span class="fa fa-thumbs-up"></span>  Like</a></h6></li>
-      <li><h6><a href="#made"><span class="fa fa-spoon"></span>  I Made It</a></h6></li>
-
-      <li><h6><a href="#print"><span class="fa fa-cutlery"></span>  Fork This</a></h6></li>
-      <% end %>
-    </ul>
+    <br>
+    <div class="center">
+      <ul class="recipe-nav">
+        <li><h6><a href="#share"><span class="fa fa-share-alt"></span>  SHARE</a></h6></li>
+        <% if logged_in? %>
+        <li><h6><span class="fa fa-thumbs-up"></span><%= link_to "LIKE", likes_path(ingredients: @ingredients), method: 'post' %></h6></li>
+        <li><h6><span class="fa fa-spoon"></span><%= link_to "I MADE IT", makes_path(ingredients: @ingredients), method: 'post' %></h6></li>
+        <li><h6><span class="fa fa-cutlery"></span><%= link_to "FORK IT", recipes_path(ingredients: @ingredients), method: 'post' %></h6></li>
+         <% end %>
+      </ul>
   </div>
 
   <div class="row">
     <div class="col-sm-6 col-lg-6 col-md-6 left">
-      <h3>Ingredients</h3>
+      <h3 class="ingredients-div">Ingredients</h3>
     </div>
   </div>
+
 
   <div class="ingredient-list">
     <% @ingredients["extendedIngredients"].each do |ingredient| %>
@@ -48,7 +48,7 @@
 
   <div class="row">
     <div class="col-sm-6 col-lg-6 col-md-6 left">
-      <h3>Directions</h3>
+      <h3 class="directions-div" >Directions</h3>
     </div>
 
     <div class="col-sm-6 col-lg-6 col-md-6 right">

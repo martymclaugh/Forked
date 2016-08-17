@@ -81,8 +81,8 @@ class RecipesController < ApplicationController
    response = HTTParty.get("https://spoonacular-recipe-food-nutrition-v1.p.mashape.com/recipes/searchComplex",
               query: parameters,
               headers: headers )
-   puts "inside of populate_initial"
-   pp response['results']
+
+   response['results']
   end
 
   def search
@@ -111,7 +111,7 @@ class RecipesController < ApplicationController
               query: parameters,
               headers: headers )
 
-  p response['results']
+  response['results']
   end
 
   def search_recipe(id)
@@ -143,8 +143,6 @@ class RecipesController < ApplicationController
     response = HTTParty.get( "https://spoonacular-recipe-food-nutrition-v1.p.mashape.com/recipes/#{id.to_i}/information",
               #  query: parameters,
                headers: headers )
-    puts "entered search ingredients"
-    pp response
   end
 
 end

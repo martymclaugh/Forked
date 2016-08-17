@@ -14,6 +14,11 @@
  *= require_self
  */
 
+#small-fb-image{
+    margin-bottom: 10px;
+}
+
+
 .ingredient-list{
     overflow: hidden;
 }
@@ -173,6 +178,8 @@
     margin: 0;
     padding: 0;
     overflow: hidden;
+    letter-spacing: 5%;
+    font-size: 130%;
     background-color: #333;
     display: flex;
     justify-content: space-around;
@@ -186,6 +193,7 @@
 
 ul li a {
     margin-left: 0;
+    margin-top: 15px;
     display: block;
     color: white;
     text-align: center;
@@ -214,6 +222,7 @@ ul li:last-child {
 }
 
 .navbar-brand {
+    margin-top: 15px;
     text-transform: uppercase;
     font-weight: 900;
     letter-spacing: 2px;
@@ -332,6 +341,9 @@ ul li:last-child {
         background: rgba(0,0,0,0.9);
 
     }
+    .preview-image{
+        width: 60%
+    }
 }
 
 
@@ -406,7 +418,118 @@ transform: scale(1.5);
 }
 
 .saved-recipe-list {
-	height: 400px;
-	width: auto%;
-	overflow: scroll;
+    height: 400px;
+    width: auto%;
+    overflow: scroll;
+}
+
+.preview-image{
+        width: 60%
+    }
+
+
+
+@media screen and (max-width:767px) {
+      .navbar-default .navbar-brand{
+         color: white;
+         margin-top: 0px;
+     }
+
+
+     .navbar-default .navbar-nav>li>a{
+        color: white;
+     }
+
+    .navbar-default .navbar-nav>li>a:hover {
+        color: orange;
+    }
+
+    .navbar-default .navbar-brand:hover {
+        color: orange;
+    }
+
+    .preview-image{
+        width: 60%
+    }
+
+    .image-div{
+        width: 100%;
+        text-align: center;
+    }
+    .title-div{
+        text-align: center;
+    }
+
+    .directions-div{
+        text-align: center;
+    }
+
+    .ingredients-div{
+         text-align: center;
+    }
+
+
+    .top-divider {
+        margin-top: 0;
+    }
+
+    .img-left {
+        float: left;
+        margin-right: 25px;
+    }
+
+    .address-bar {
+        display: inherit;
+        margin: 0;
+        padding: 0 0 40px;
+        text-align: center;
+        text-shadow: 1px 1px 2px rgba(0,0,0,0.5);
+        text-transform: uppercase;
+        font-size: 1.25em;
+        font-weight: 400;
+        letter-spacing: 3px;
+
+    }
+
+
+    .recipe-nav{
+
+        list-style-type: none;
+        margin: 0;
+        padding: 0;
+        overflow: hidden;
+        background-color: #333;
+        flex-wrap:  wrap;
+        display: flex;
+        justify-content: space-around;
+    }
+
+    .recipe-nav li {
+        border-right: none;
+        border-bottom: 1px solid white;
+        padding-left: 80px;
+        padding-right: 80px;
+    }
+
+
+
+
+    .navbar {
+        min-height: 0;
+        color: white;
+    }
+
+    .navbar-default {
+        background: #fff;
+        background: rgba(0,0,0,0.9);
+
+    }
+}
+
+.recipe-nav a:hover {
+  color: orange;
+  text-transform: uppercase;
+  outline: none;
+  background: none;
+  text-decoration: none;
 }
