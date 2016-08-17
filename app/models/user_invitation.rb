@@ -1,4 +1,4 @@
 class UserInvitation < ApplicationRecord
-  # has_one :user
-  # has_one :invitation
+  belongs_to :user, foreign_key: :invited_id
+  belongs_to :invitation
 end
