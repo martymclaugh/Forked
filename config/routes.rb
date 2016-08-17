@@ -15,4 +15,6 @@ Rails.application.routes.draw do
   resources :recipes, :ingredients, :users
 
   resources :friendships, only: [:index, :create, :destroy]
+  resources :makes, only: [:create, :index]
+  resources :likes, only: [:create, :index]
 end

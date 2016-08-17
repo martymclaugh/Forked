@@ -32,12 +32,14 @@
 <div class="user-profile-bottom">
     <div class="user-friend-list">
         <div class="form-group">
-          <%= form_tag friendships_path, :method => 'get', :class => "navbar-form navbar-left" do %>
-          <p>
-            <%= text_field_tag :search, params[:search] %>
-            <%= submit_tag "Find Friends", :name => nil %>
-          </p>
-          <% end %>
+            <% if current_user.id == @user.id %>
+              <%= form_tag friendships_path, :method => 'get', :class => "navbar-form navbar-left" do %>
+              <p>
+                <%= text_field_tag :search, params[:search] %>
+                <%= submit_tag "Find Friends", :name => nil %>
+              </p>
+              <% end %>
+            <% end %>
         </div>
     </div>
     <div class="container">
@@ -46,10 +48,13 @@
                 <div class="user-fridge col-sm-4">
                     <div class="fridge-list">
                         <h4>My Ingredients:</h4>
-                        <div id="ingredient-form">
-                            <%= form_for(:ingredient, :url => ingredients_path) do |f|%>
-                            <%= f.text_field :ingredient, placeholder: "Enter new ingredient" %>
-                            <%= submit_tag ("Add"), :id => 'ingredient-add'%>
+                        <div >
+                            <% if current_user.id == @user.id %>
+                                <%= form_for(:ingredient, :url => ingredients_path, :html => {
+                                :id => 'ingredient-form'}) do |f|%>
+                                <%= f.text_field :ingredient, placeholder: "Enter new ingredient" %>
+                                <%= submit_tag ("Add"), :id => 'ingredient-add'%>
+                                <% end %>
                             <% end %>
                         </div>
                         <div class="ingredients-list">
@@ -60,9 +65,11 @@
                                 <div class="ingredient-name">
                                     <p><%= ingredient.name %></p>
                                 </div>
-                                <div class="ingredient-delete">
-                                    <%= button_to "X", {:controller => :ingredients, :action => 'destroy', :id => ingredient.id }, :method => :delete %>
-                                </div>
+                                <% if current_user.id == @user.id %>
+                                    <div class="ingredient-delete">
+                                        <%= button_to "X", {:controller => :ingredients, :action => 'destroy', :id => ingredient.id }, :method => :delete %>
+                                    </div>
+                                <% end %>
                             </div>
                             <% end %>
                         </div>

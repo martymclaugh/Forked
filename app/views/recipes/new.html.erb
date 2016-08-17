@@ -2,8 +2,8 @@
 <div class="container">
 <h1 class="center">Submit a New Recipe</h1>
   <div class="col-sm-10">
-    <form action='/recipes/search_results' method='GET'>
-     
+    <form action='/recipes/search_results' method='post'>
+
      <fieldset class="form-group">
       <label for="Cuisine">Cuisine</label>
       <input type="text" class="form-control" id="cuisine"  name="recipe[cuisine]"placeholder="American, French...">
@@ -13,7 +13,7 @@
       <label for="ingredients">Ingredients</label>
       <textarea style="resize:none;" class="form-control" rows="3" id="content" name="recipe[ingredients]" placeholder="beef, chicken, corn..."></textarea>
     </fieldset>
-  
+
     <fieldset class="form-group">
       <label for="Allergies">Allergies</label>
       <input type="text" class="form-control" id="allergies"  name="recipe[allergies]"placeholder="peanuts, shellfish...">

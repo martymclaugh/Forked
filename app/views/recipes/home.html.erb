@@ -67,19 +67,21 @@
 </div>
 
 
-
-<div class="contain">
   <div>
   <div class="recipe-of-the-day">
     <h2 class="left">So Hot Right Now: <a href="/recipes/preview/<%= @recipe_of_the_day['id'] %>"><%= @recipe_of_the_day['title'] %></a></h2>
   </div>
 
+  <div class="grid center" data-masonry='{ "itemSelector": ".grid-item", "columnWidth": 200 }'>
+
+<div class="contain">
     <% @recipes.each do |recipe| %>
-      <div class="menu-category list-group" style="position: relative; width: 25%; float: left;">
-        <div class="thumbnail">
+      <div>
+        <div class="thumbnail grid-item">
           <div class="caption" style="height: auto;">
           	<div>
-          		<img src="<%= recipe['image'] %>" style="width: 80%; height: auto";>
+            <a href="/recipes/preview/<%= recipe['id'] %>"><img src="<%= recipe['image'] %>" style="width: 80%; height: auto";></a>
+
           	</div>
 
           	<div>
@@ -90,11 +92,7 @@
                   <p>Used Ingredients: <%= recipe["usedIngredientCount"] %></p>
                   <p>Missing Ingredients: <%= recipe["missedIngredientCount"] %></p>
                 <% end %>
-                <span class="fa fa-star"></span>
-                <span class="fa fa-star"></span>
-                <span class="fa fa-star"></span>
-                <span class="fa fa-star-half-o"></span>
-                <span class="fa fa-star-o"></span>
+
               </h5>
           	</div>
 
@@ -105,4 +103,5 @@
         <br>
       </div>
     <% end %>
+    </div>
   </div>
