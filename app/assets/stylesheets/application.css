@@ -347,7 +347,7 @@ ul li:last-child {
 }
 
 
-}
+
 
 @media screen and (min-width:1200px) {
     .box:after {
@@ -409,7 +409,7 @@ transform: scale(1.5);
 }
 .ingredients-list {
 	height: 400px;
-	width: auto%;
+	width: auto;
 	overflow: scroll;
 }
 .ingredient-item {
@@ -419,12 +419,12 @@ transform: scale(1.5);
 
 .saved-recipe-list {
     height: 400px;
-    width: auto%;
+    width: auto;
     overflow: scroll;
 }
 
 .preview-image{
-        width: 60%
+        width: 60%;
     }
 
 
@@ -449,7 +449,7 @@ transform: scale(1.5);
     }
 
     .preview-image{
-        width: 60%
+        width: 60%;
     }
 
     .image-div{
