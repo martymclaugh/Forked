@@ -21,6 +21,7 @@ $(document).on("ready", function(){
 	$('.ingredient-check').on('click', recipeDone)
 	$('.directions').on('click', directionDone)
 	addIngredient();
+	hideCustomIngredients();
 })
 
 
@@ -52,5 +53,12 @@ function addIngredient(){
 			$('.ingredients-list').append(response);
 			$('#ingredient-form')[0].reset();
 		})
+	})
+}
+
+function hideCustomIngredients(){
+	$('.users-ingredients').on('click', function(){
+		$('#custom-ingredients').toggle();
+		$('#my-ingredients').toggle();
 	})
 }
