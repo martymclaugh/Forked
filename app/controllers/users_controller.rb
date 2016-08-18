@@ -3,6 +3,11 @@ class UsersController < ApplicationController
   # headers['Access-Control-Allow-Origin'] = 'http://localhost:9000'
   def show
     @user = User.find(params[:id])
+    @invitations = []
+    @user.user_invitations.each do |user_invitation|
+      @invitations << Invitation.find(user_invitation.invitation_id)
+    end
+    @invitations
   end
 
 

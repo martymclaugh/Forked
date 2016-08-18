@@ -15,26 +15,6 @@ UserIngredient.delete_all
   User.create(provider: "Facebook", uid: Faker::PhoneNumber.phone_number, name: Faker::Name.name)
 end
 
-100.times do
-  Recipe.create(title: Faker::Pokemon.name, steps: ["do something", "do something a second time", "do something a third time for three times as long", "this is the fourth step"], spoon_id: Faker::PhoneNumber.phone_number, cuisine: ["American", "Chinese", "French", "Mexican"].sample, course: ["main dish", "side dish", "dessert", "appetizer"].sample, image: Faker::Avatar.image)
-end
-
-500.times do
-  Ingredient.create(name: Faker::SlackEmoji.food_and_drink, image: Faker::Avatar.image, spoon_id: Faker::PhoneNumber.phone_number)
-end
-
-100.times do
-  UserRecipe.create(user_id: rand(1...10), recipe_id: rand(1...100))
-end
-
-500.times do
-  UserIngredient.create(user_id: rand(1...10), ingredient_id: rand(1...500))
-end
-
-500.times do
-  RecipeIngredient.create(recipe_id: rand(1...100), ingredient_id: rand(1...500))
-end
-
 i=1
 50.times do
   user_ids =(1..50).to_a
