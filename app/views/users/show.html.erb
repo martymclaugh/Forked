@@ -86,19 +86,19 @@
           <% end %>
         <% end %>
 
-    <hr>
+        <hr>
           <div class="row">
            <div class="col-sm-3 col-md-3 col-lg-3">
               <h4>Friends </h4>
               <div class="form-group">
                 <div>
                     <% if current_user.id == @user.id %>
-                    <%= form_tag friendships_path, :method => 'get', :class => "navbar-form navbar-left" do %>
-                    <p>
-                        <%= text_field_tag :search, params[:search] %>
-                        <%= submit_tag "Find Friends",:class => 'btn btn-primary', :name => nil %>
-                    </p>
-                    <% end %>
+                        <%= form_tag friendships_path, :method => 'get', :class => "navbar-form navbar-left" do %>
+                        <p>
+                            <%= text_field_tag :search, params[:search] %>
+                            <%= submit_tag "Find Friends",:class => 'btn btn-primary', :name => nil %>
+                        </p>
+                        <% end %>
                     <% end %>
 
                 </div>
@@ -148,6 +148,13 @@
             </div>
             <div class="col-sm-3 col-md-3 col-lg-3">
               <h4>My Forks:</h4>
+
+                <div class="forked-list">
+                    <% UserRecipe.where(user_id: @user.id).each do |recipe| %>
+                    <a href="/recipes/<%= recipe.recipe_id %>">link</a>
+                    <% end %>
+                </div>
+            </div>
 
           </div>
           <div class="col-sm-3 col-md-3 col-lg-3">
