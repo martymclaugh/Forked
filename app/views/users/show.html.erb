@@ -65,14 +65,15 @@
                                         <p><%= invitation.location %></p>
 
                                     </fieldset>
-                                <form class="right" action="/dinner_parties" method="post">
+                                <form  style="display: inline-block;" action="/dinner_parties" method="post">
                                   <button type="submit" class="btn btn-primary">Accept</button>
                                   <input type="hidden" name="invitation_id" value="<%=invitation.id %>">
                                   <input type="hidden" name="user_id" value="<%=@user.id %>">
                                 </form>
 
-                                <form style="display: inline;" class="right" action="/invitations" method="delete">
+                                <form style="display: inline-block;" action="/invitations" method="post">
                                   <button type="submit" class="btn btn-primary">Deny</button>
+                                  <input type="hidden" name="_method" value="delete">
                                   <input type="hidden" name="invitation_id" value="<%=invitation.id %>">
                                   <input type="hidden" name="user_id" value="<%=@user.id %>">
                                 </form>

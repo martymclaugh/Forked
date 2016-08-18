@@ -13,4 +13,7 @@ class InvitationsController < ApplicationController
     redirect_to user_path(User.find(params[:user_id]))
     # Create 2 new user_invitation objects
   end
+  def destroy
+    UserInvitation.where(invitation_id: params[:invitation_id], user_id: params[:user_id]).delete_all
+  end
 end
