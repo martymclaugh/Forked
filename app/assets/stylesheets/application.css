@@ -42,12 +42,14 @@ padding-left: 6.5%;
 }
 
 .preview-link{
-  font-size: 120%;
+  font-size: 100%;
   padding-right: 10%
 }
 
 .fb-share-button{
     padding-top: 25px;
+    height: 200px;
+
 }
 
 #home-grid{
@@ -236,6 +238,7 @@ padding-left: 6.5%;
 }
 
 .recipe-nav{
+    height: 100px;
 	list-style-type: none;
     margin: 0;
     padding: 0;
@@ -255,11 +258,11 @@ padding-left: 6.5%;
 
 ul li a {
     margin-left: 0;
-    margin-top: 15px;
     display: block;
     color: white;
     text-align: center;
     padding: 14px 16px;
+    margin-top: 5px;
     text-decoration: none;
 }
 
