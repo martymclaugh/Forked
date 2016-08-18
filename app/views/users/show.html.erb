@@ -212,14 +212,13 @@
           <div class="row profile-row">
             <div style="border: solid #D3D3D3 2px; text-align: center;"  class="col-sm-3 col-md-3 col-lg-3">
                 <div></div>
-                <h4>Friends
-                </h4>
+                <h4><%= @user.first_name %>'s Friends</h4>
                 <div class="form-group">
                     <div>
                         <% if current_user.id == @user.id %>
                         <%= form_tag friendships_path, :method => 'get', :class => "navbar-form navbar-left" do %>
                         <p>
-                            <%= text_field_tag :search, params[:search] %>
+                            <%= text_field_tag :search, params[:search], :placeholder => "Type a name..." %>
                             <%= submit_tag "Find Friends",:class => 'btn btn-primary', :name => nil %>
                         </p>
                         <% end %>
@@ -244,15 +243,16 @@
         </div>
 
         <div style="border: solid #D3D3D3 2px; text-align: center;" class="col-sm-3 col-md-3 col-lg-3">
-            <h4>My Ingredients:</h4>
+            <h4><%= @user.first_name %>'s Ingredients</h4>
             <div >
              <% if current_user.id == @user.id %>
              <%= form_for(:ingredient, :url => ingredients_path, :html => {
                 :id => 'ingredient-form'}) do |f|%>
-                <%= f.text_field :ingredient, placeholder: "Enter new ingredient" %>
+                <%= f.text_field :ingredient, placeholder: "Enter new ingredient" %> <br>
                 <%= submit_tag ("Add"),:class => 'btn btn-primary', :id => 'ingredient-add'%>
                 <% end %>
                 <% end %>
+
             </div>
             <div class="ingredients-list">
                 <% @user.ingredients.each do |ingredient| %>
@@ -272,7 +272,7 @@
             </div>
         </div>
         <div style="border: solid #D3D3D3 2px; text-align: center;"  class="col-sm-3 col-md-3 col-lg-3">
-          <h4>My Forks:</h4>
+          <h4><%= @user.first_name %>'s Forks</h4>
           <div class="forked-list">
              <% @user.recipes.each do |recipe| %>
             <li><img style="width:25%" src="<%= recipe.image %>">
