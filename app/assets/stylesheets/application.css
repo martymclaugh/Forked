@@ -30,6 +30,9 @@
     text-align: center;
 }
 
+.preview-link{
+  font-size: 100%;
+}
 
 .fb-share-button{
     padding-top: 25px;
