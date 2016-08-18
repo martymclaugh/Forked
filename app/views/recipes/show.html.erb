@@ -34,17 +34,17 @@
 				<% if logged_in? %>
 				<li>
 					<h6 class="preview-link">
-						<%= link_to " LIKE", likes_path(ingredients: @ingredients), :class => 'fa fa-thumbs-up', method: 'post'  %>
+						<%= link_to " LIKE", likes_path(ingredients: @ingredients, id: @recipe.id), :class => 'fa fa-thumbs-up', method: 'post'   %>
 					</h6>
 				</li>
 				<li>
 					<h6 class="preview-link">
-						<%= link_to " I MADE IT", makes_path(ingredients: @ingredients), :class => 'fa fa-spoon', method: 'post' %>
+						<%= link_to " I MADE IT", makes_path(ingredients: @ingredients, id: @recipe.id), :class => 'fa fa-spoon', method: 'post' %>
 					</h6>
 				</li>
 				<li>
 					<h6 class="preview-link">
-						<%= link_to "  FORK IT", recipes_path(ingredients: @ingredients), :class => 'fa fa-cutlery', method: 'post' %>
+						<%= link_to "  FORK IT", recipes_path(ingredients: @ingredients, recipe_id: @recipe.id), :class => 'fa fa-cutlery', method: 'post' %>
 					</h6 class="preview-link">
 				</li>
 				<% end %>

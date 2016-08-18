@@ -59,7 +59,7 @@ padding-left: 6.5%;
 
 .ingredients-list{
     overflow: hidden;
-    border: solid gray 2px;
+    /*border: solid gray 2px;*/
     text-align: left;
 }
 
@@ -68,7 +68,7 @@ padding-left: 6.5%;
     height: 411px;
     overflow: scroll;
     padding-right: 15%;
-    border: solid gray 2px;
+    /*border: solid gray 2px;*/
     text-align: left;
     width: auto;
 }
@@ -78,10 +78,22 @@ padding-left: 6.5%;
     height: 416px;
     padding-left: 5%;
     overflow: scroll;
-    border: solid gray 2px;
+    /*border: solid gray 2px;*/
     text-align: left;
 }
 
+.forked-list::-webkit-scrollbar {
+    background-color: transparent;
+    }
+
+
+.friendships-list::-webkit-scrollbar {
+    background-color: transparent;
+    }
+
+    .ingredients-list::-webkit-scrollbar {
+    background-color: transparent;
+    }
 .profile-row{
     padding-left: 15%;
 }
