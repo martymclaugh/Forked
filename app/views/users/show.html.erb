@@ -7,7 +7,7 @@
             <img src="http://sd.keepcalm-o-matic.co.uk/i/keep-calm-my-profile-picture-is-under-construction.png" height="500" width="500">
             <% end %>
         </div>
-        <div id="user-info" class="col-sm-3 col-md-3  col-lg-3">
+        <div id="user-info" class="col-sm-4 col-md-4  col-lg-4">
 
             <h3><%= @user.name %></h3>
             <h4>
@@ -209,7 +209,7 @@
 
           <hr>
           <div class="row profile-row">
-            <div style="border: solid #D3D3D3 2px; text-align: center;"  class="col-sm-3 col-md-3 col-lg-3">
+            <div  class="col-sm-3 col-md-3 col-lg-3 center">
                 <div></div>
                 <h4><%= @user.first_name %>'s Friends</h4>
                 <div class="form-group">
@@ -241,14 +241,14 @@
             </div>
         </div>
 
-        <div style="border: solid #D3D3D3 2px; text-align: center;" class="col-sm-3 col-md-3 col-lg-3">
+        <div class="col-sm-3 col-md-3 col-lg-3 center">
             <h4><%= @user.first_name %>'s Ingredients</h4>
             <div >
              <% if current_user.id == @user.id %>
              <%= form_for(:ingredient, :url => ingredients_path, :html => {
                 :id => 'ingredient-form'}) do |f|%>
                 <%= f.text_field :ingredient, placeholder: "Enter new ingredient" %> <br>
-                <%= submit_tag ("Add"),:class => 'btn btn-primary', :id => 'ingredient-add'%>
+                <%= submit_tag ("Add"),:class => 'btn btn-primary', :id => 'ingredient-add'%> <br>
                 <% end %>
                 <% end %>
 
@@ -270,12 +270,12 @@
                 <% end %>
             </div>
         </div>
-        <div style="border: solid #D3D3D3 2px; text-align: center;"  class="col-sm-3 col-md-3 col-lg-3">
-          <h4><%= @user.first_name %>'s Forks</h4>
+        <div class="col-sm-3 col-md-3 col-lg-3 center">
+          <h4><%= @user.first_name %>'s Forks</h4> <br> <br> <br>
           <div class="forked-list">
              <% @user.recipes.each do |recipe| %>
             <li><img style="width:25%" src="<%= recipe.image %>">
-            <a href="/recipes/preview/<%= recipe.spoon_id  %>"><%= recipe.title %></a></li>
+            <a href="/recipes/<%= recipe.id  %>"><%= recipe.title %></a></li>
         <% end %>
         </div>
     </div>

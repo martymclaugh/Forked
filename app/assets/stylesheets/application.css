@@ -19,9 +19,11 @@ padding-left: 6.5%;
 
 }
 
-.col-sm-3.col-md-3.col-lg-3{
-  max-height: 540px;
+
+.boarder{
+    border: black solid 2px; "
 }
+
 
 .invitations {
   color: black;
@@ -41,12 +43,14 @@ padding-left: 6.5%;
 }
 
 .preview-link{
-  font-size: 120%;
+  font-size: 100%;
   padding-right: 10%
 }
 
 .fb-share-button{
     padding-top: 25px;
+    height: 200px;
+
 }
 
 #home-grid{
@@ -55,7 +59,7 @@ padding-left: 6.5%;
 
 .ingredients-list{
     overflow: hidden;
-    border: solid gray 2px;
+    /*border: solid gray 2px;*/
     text-align: left;
 }
 
@@ -64,7 +68,7 @@ padding-left: 6.5%;
     height: 411px;
     overflow: scroll;
     padding-right: 15%;
-    border: solid gray 2px;
+    /*border: solid gray 2px;*/
     text-align: left;
     width: auto;
 }
@@ -74,10 +78,22 @@ padding-left: 6.5%;
     height: 416px;
     padding-left: 5%;
     overflow: scroll;
-    border: solid gray 2px;
+    /*border: solid gray 2px;*/
     text-align: left;
 }
 
+.forked-list::-webkit-scrollbar {
+    background-color: transparent;
+    }
+
+
+.friendships-list::-webkit-scrollbar {
+    background-color: transparent;
+    }
+
+    .ingredients-list::-webkit-scrollbar {
+    background-color: transparent;
+    }
 .profile-row{
     padding-left: 15%;
 }
@@ -235,6 +251,7 @@ padding-left: 6.5%;
 }
 
 .recipe-nav{
+    height: 100px;
 	list-style-type: none;
     margin: 0;
     padding: 0;
@@ -254,11 +271,11 @@ padding-left: 6.5%;
 
 ul li a {
     margin-left: 0;
-    margin-top: 15px;
     display: block;
     color: white;
     text-align: center;
     padding: 14px 16px;
+    margin-top: 5px;
     text-decoration: none;
 }
 

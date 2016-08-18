@@ -1,82 +1,116 @@
+<script>
+    window.fbAsyncInit = function () {
+        FB.init({appId: '676197535871171', xfbml: true, version: 'v2.7'});
+    };
+
+    (function (d, s, id) {
+        var js,
+        fjs = d.getElementsByTagName(s)[0]; if (d.getElementById(id)) { return; } js = d.createElement(s); js.id = id; js.src = "//connect.facebook.net/en_US/sdk.js"; fjs.parentNode.insertBefore(js, fjs); }(document, 'script', 'facebook-jssdk'));
+</script>
 <div class="contain">
 	<div class="row">
 		<div class="col-sm-4 col-lg-4 col-md-4">
 			<h1><%= @recipe.title %></h1>
 			<%= render "ratings" %>
-			<h3>Reciped Submitted by: <small><%= User.find(UserRecipe.find_by(recipe_id: @recipe.id).user_id).name %></small></h3>
-			<p><span class="fa fa-heart"></span>
-				<span class="fa fa-cutlery"></span> </p>
+			<h3>Reciped Submitted by: <br>
+			<small><%= User.find(UserRecipe.find_by(recipe_id: @recipe.id).user_id).name %></small></h3>
+
 			</div>
 			<div class="col-sm-8 col-lg-8 col-md-8">
-				<img src="<%= Recipe.find(@recipe.id).image %>">
+				<img src="<%= @recipe.image %>">
 			</div>
 		</div>
+			<br>
 		<div class="center">
 			<ul class="recipe-nav">
-				<li><h6><a class="active" href="#like"><span class="fa fa-thumbs-up"></span>  Like</a></h6></li>
-				<li><h6><a href="#made"><span class="fa fa-cutlery"></span>  I Made It</a></h6></li>
-				<li><h6><a href="#share"><span class="fa fa-share-alt"></span>  Share</a></h6></li>
-				<li><h6><a href="#print"><span class="fa fa-print"></span>  Print</a></h6></li>
+				<li>
+					<h6 class="preview-link">
+
+						<div style="size:120%; color: white;" class="fb-share-button active" data-href="http://www.forked-api.herokuapp.com/recipes/<%= params[:id] %>"
+							data-layout="button_count">
+						</div>
+					</h6>
+				</li>
+				<% if logged_in? %>
+				<li>
+					<h6 class="preview-link">
+						<%= link_to " LIKE", likes_path(ingredients: @ingredients, id: @recipe.id), :class => 'fa fa-thumbs-up', method: 'post'   %>
+					</h6>
+				</li>
+				<li>
+					<h6 class="preview-link">
+						<%= link_to " I MADE IT", makes_path(ingredients: @ingredients, id: @recipe.id), :class => 'fa fa-spoon', method: 'post' %>
+					</h6>
+				</li>
+				<li>
+					<h6 class="preview-link">
+						<%= link_to "  FORK IT", recipes_path(ingredients: @ingredients, recipe_id: @recipe.id), :class => 'fa fa-cutlery', method: 'post' %>
+					</h6 class="preview-link">
+				</li>
+				<% end %>
 			</ul>
 		</div>
 
-		<div class="row">
-			<div class="col-sm-6 col-lg-6 col-md-6 left">
-				<h3>Ingredients</h3>
+		<div class="row ">
+			<div class="col-sm-6 col-lg-6 col-md-6 left ">
+				<h3 class="ingredients-div">Ingredients</h3>
 			</div>
-			<div class="col-sm-6 col-lg-6 col-md-6 right pad10">
-				<h4><span class="fa fa-clock-o"></span> <%= rand(10..45)%> Minutes | <span class="fa fa-spoon"></span> <%= rand(1..8) %> Servings | <span class="fa fa-bar-chart"></span> <%= rand(45..800) %> Calories </h4>
+			<div class="col-sm-6 col-lg-6 col-md-6 left ">
+			</div>
+		</div>
+		<div class="row ">
+			<% Recipe.find(@recipe.id).ingredients.each do |ingredient| %>
+			<br>
+			<div class="col-sm-6 col-lg-6 col-md-6">
+				<div class="row">
+					<div class="col-sm-1 col-lg-1 col-md-1 left">
+						<span class="fa-stack fa-lg ingredient-check">
+							<i class="fa fa-circle-thin fa-stack-2x"></i>
+							<i class="fa fa-plus fa-stack-1x"></i>
+						</span>
+					</div>
+					<div class="col-sm-11 col-lg-11 col-md-11 left">
+						<h4 class=""><%= ingredient.name %></h4><br>
+					</div>
+				</div>
+			</div>
+			<% end %>
+		</div>
+
+
+		<div class="row" >
+			<div class="col-sm-6 col-lg-6 col-md-6 left">
+				<h3 class="directions-div">Directions</h3>
+			</div>
+
+			<div class="col-sm-6 col-lg-6 col-md-6 right">
+				<h4>
+					<span class="fa fa-clock-o"></span>
+					Ready in
+					<%= @recipe['cooktime']%>
+					Minutes
+				</h4>
 			</div>
 		</div>
 
-		<% Recipe.find(@recipe.id).ingredients.each do |ingredient| %>
 
-		<div class="col-sm-6 col-lg-6 col-md-6">
-
-
+		<% if @error %>
+		<%= @error %>
+		<% else %>
+		<% @recipe.steps.each do |step| %>
 		<div class="row">
-			<div class="col-sm-1 col-lg-1 col-md-1 left">
-				<span class="fa-stack fa-lg ingredient-check">
-			  		<i class="fa fa-circle-thin fa-stack-2x"></i>
-			  		<i class="fa fa-plus fa-stack-1x"></i>
+			<div class="col-sm-1 col-lg-1 col-md-1 left" style="padding-left: 30px;">
+				<span class="fa-stack fa-lg">
+					<i class="fa fa-circle-thin fa-stack-2x"></i>
+					<i class="directions fa-stack-1x"><%= step['step_number'] %></i>
 				</span>
 			</div>
 			<div class="col-sm-11 col-lg-11 col-md-11 left">
-				<h4 class=""><%= ingredient.name %></h4><br>
+				<h4 id="<%= step['number']  %>"><%= step['step_text'] %></h4><br>
 			</div>
-		</div>
 		</div>
 
 		<% end %>
-
-		<div class="row">
-			<div class="col-sm-6 col-lg-6 col-md-6 left">
-				<h3>Directions</h3>
-			</div>
-			<% prep = rand(10..45) %>
-			<% cook = rand(10..45) %>
-			<% ready = prep + cook %>
-			<div class="col-sm-6 col-lg-6 col-md-6 right pad10">
-				<h4><span class="fa fa-clock-o"></span> Prep: <%= prep %> Minutes | <span class="fa fa-clock-o"></span> Cook: <%= cook %> Minutes | <span class="fa fa-clock-o"></span> Ready In: <%= ready %> Minutes </h4>
-			</div>
-		</div>
-
-
-		<% Recipe.find(@recipe.id).ingredients.each_with_index do |ingredient, i| %>
-		<div class="row">
-			<div class="col-sm-1 col-lg-1 col-md-1 left">
-
-				<span class="fa-stack fa-lg">
-			  		<i class="fa fa-circle-thin fa-stack-2x"></i>
-			  		<i class="directions fa-stack-1x"><%= i %></i>
-				</span>
-
-			</div>
-			<div class="col-sm-11 col-lg-11 col-md-11 left" >
-				<h4 id="<%= i %>"><%= ingredient.name %></h4><br>
-			</div>
-		</div>
-
 		<% end %>
 
 
