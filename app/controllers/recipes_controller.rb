@@ -12,12 +12,13 @@ class RecipesController < ApplicationController
   def create
     if params['ingredients']['id'].present?
       @recipe = Recipe.new(spoon_id: params['ingredients']['id'], title: params['ingredients']["title"], image: params['ingredients']['image'])
+      p @recipe
       if @recipe.save
         @user_recipe = UserRecipe.create(recipe_id: @recipe.id, user_id: current_user.id )
         redirect_to "/recipes/preview/#{@recipe.spoon_id}"
       end
     else
-      @recipe = Recipe.create(title: params[:recipe][:title], cooktime: params[:recipe][:cooktime], cuisine: params[:cuisine], course: params[:recipe][:course])
+      @recipe = Recipe.create(title: params[:recipe][:title], cooktime: params[:recipe][:cooktime], cuisine: params[:cuisine], course: params[:recipe][:course], image: params[:recipe][:image])
       @user_recipe = UserRecipe.create(recipe_id: @recipe.id, user_id: params[:recipe][:user_id])
       @steps = params[:steps].split("\r\n")
       add_score(User.find(params[:recipe][:user_id]), 300)

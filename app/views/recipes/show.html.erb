@@ -8,7 +8,9 @@
 				<span class="fa fa-cutlery"></span> </p>
 			</div>
 			<div class="col-sm-8 col-lg-8 col-md-8">
-				<img src="<%= Recipe.find(@recipe.id).image %>">
+				<%= @recipe %>
+				<%= @recipe.image %>
+				<img src="<%= @recipe.image %>">
 			</div>
 		</div>
 		<div class="center">
