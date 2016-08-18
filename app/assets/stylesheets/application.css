@@ -31,7 +31,8 @@
 }
 
 .preview-link{
-  font-size: 100%;
+  font-size: 120%;
+  padding-right: 10%
 }
 
 .fb-share-button{
@@ -67,7 +68,7 @@
     text-align: left;
 }
 
-.row{
+.profile-row{
     padding-left: 15%;
 }
 
