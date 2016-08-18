@@ -1,100 +1,97 @@
 <div class="container">
   <div class="row">
     <!-- Carousel -->
-      <div id="carousel-example-generic" class="carousel slide" data-ride="carousel">
+    <div id="carousel-example-generic" class="carousel slide" data-ride="carousel">
       <!-- Indicators -->
       <ol class="carousel-indicators">
-          <li data-target="#carousel-example-generic" data-slide-to="0" class="active"></li>
-          <li data-target="#carousel-example-generic" data-slide-to="1"></li>
-          <li data-target="#carousel-example-generic" data-slide-to="2"></li>
+        <li data-target="#carousel-example-generic" data-slide-to="0" class="active"></li>
+        <li data-target="#carousel-example-generic" data-slide-to="1"></li>
+        <li data-target="#carousel-example-generic" data-slide-to="2"></li>
       </ol>
       <!-- Wrapper for slides -->
       <div class="carousel-inner">
-          <div class="item active">
-            <img src="http://troppa-nl.com/wp-content/uploads/2015/08/pizza-stock.jpg" alt="First slide">
-                    <!-- Static Header -->
-                    <div class="header-text hidden-xs">
-                        <div class="col-md-12 text-center">
-                            <h2>
-                              <span>Welcome to Forked!!</span>
-                            </h2>
-                            <br>
+        <div class="item active">
+          <img src="http://troppa-nl.com/wp-content/uploads/2015/08/pizza-stock.jpg" alt="First slide">
+          <!-- Static Header -->
+          <div class="header-text hidden-xs">
+            <div class="col-md-12 text-center">
 
-                            <br>
+              <br>
 
-                        </div>
-                    </div><!-- /header-text -->
-          </div>
-          <div class="item">
-            <img src="http://az616578.vo.msecnd.net/files/2016/07/18/636044104859117199985990752_tacos.jpg" alt="Second slide">
-            <!-- Static Header -->
-                    <div class="header-text hidden-xs">
-                        <div class="col-md-12 text-center">
-                            <h2>
-                                <span>Welcome to Forked!!</span>
-                            </h2>
+              <br>
 
-                            <br>
-
-                        </div>
-                    </div><!-- /header-text -->
-          </div>
-          <div class="item">
-            <img src="https://static01.nyt.com/images/2015/07/27/dining/27SPAGHETTI/27SPAGHETTI-superJumbo.jpg" alt="Third slide">
-            <!-- Static Header -->
-                    <div class="header-text hidden-xs">
-                        <div class="col-md-12 text-center">
-                            <h2>
-                                <span>Welcome to Forked!!</span>
-                            </h2>
+            </div>
+          </div><!-- /header-text -->
+        </div>
+        <div class="item">
+          <img src="http://az616578.vo.msecnd.net/files/2016/07/18/636044104859117199985990752_tacos.jpg" alt="Second slide">
+          <!-- Static Header -->
+          <div class="header-text hidden-xs">
+            <div class="col-md-12 text-center">
 
 
-                            <br>
+              <br>
 
-                        </div>
-                    </div><!-- /header-text -->
-          </div>
+            </div>
+          </div><!-- /header-text -->
+        </div>
+        <div class="item">
+          <img src="https://static01.nyt.com/images/2015/07/27/dining/27SPAGHETTI/27SPAGHETTI-superJumbo.jpg" alt="Third slide">
+          <!-- Static Header -->
+          <div class="header-text hidden-xs">
+            <div class="col-md-12 text-center">
+
+
+
+              <br>
+
+            </div>
+          </div><!-- /header-text -->
+        </div>
       </div>
       <!-- Controls -->
       <a class="left carousel-control" href="#carousel-example-generic" data-slide="prev">
-          <span class="glyphicon glyphicon-chevron-left"></span>
+        <span class="glyphicon glyphicon-chevron-left"></span>
       </a>
       <a class="right carousel-control" href="#carousel-example-generic" data-slide="next">
-          <span class="glyphicon glyphicon-chevron-right"></span>
+        <span class="glyphicon glyphicon-chevron-right"></span>
       </a>
     </div><!-- /carousel -->
   </div>
 </div>
 
 
-  <div>
+<div>
   <div class="recipe-of-the-day">
     <h2 class="center">So Hot Right Now: <a href="/recipes/preview/<%= @recipe_of_the_day['id'] %>"><%= @recipe_of_the_day['title'] %></a></h2>
   </div>
+      <% if logged_in? %>
+      <h2 class="center">Recipes found with your ingredients:</h2>
+      <% end %>
 
   <div id="home-grid" class="grid center" data-masonry='{ "itemSelector": ".grid-item", "columnWidth": 200 }'>
 
-<div class="contain">
-    <% @recipes.each do |recipe| %>
+    <div class="contain">
+      <% @recipes.each do |recipe| %>
       <div>
         <div class="thumbnail grid-item">
           <div class="caption" style="height: auto;">
           	<div>
-            <a href="/recipes/preview/<%= recipe['id'] %>"><img src="<%= recipe['image'] %>" style="width: 80%; height: auto";></a>
+              <a href="/recipes/preview/<%= recipe['id'] %>"><img src="<%= recipe['image'] %>" style="width: 80%; height: auto";></a>
 
-          	</div>
+            </div>
 
-          	<div>
-          		<small class="left">Check it out!</small>
+            <div>
+              <small class="left">Check it out!</small>
               <h3 class="left"><a href="/recipes/preview/<%= recipe['id'] %>"><%= recipe['title'] %></a></h3>
-          		<h5 class="left">
+              <h5 class="left">
                 <% if logged_in? %>
-                  <p>Used Ingredients: <%= recipe["usedIngredientCount"] %></p>
-                  <p>Missing Ingredients: <%= recipe["missedIngredientCount"] %></p>
+                <p>Used Ingredients: <%= recipe["usedIngredientCount"] %></p>
+                <p>Missing Ingredients: <%= recipe["missedIngredientCount"] %></p>
                 <% end %>
 
               </h5>
-          	</div>
+            </div>
 
           </div>
         </div>
@@ -102,6 +99,6 @@
 
         <br>
       </div>
-    <% end %>
+      <% end %>
     </div>
   </div>

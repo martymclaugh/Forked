@@ -34,39 +34,41 @@
 .fb-share-button{
     padding-top: 25px;
 }
+
 #home-grid{
     margin-left: 100px;
 }
 
 .ingredients-list{
     overflow: hidden;
-    /*background-color: blue;*/
+    border: solid gray 2px;
+    text-align: left;
 }
 
 .friendships-list{
     overflow: hidden;
-    padding-left: 5%;
-    /*background-color: blue;*/
+    height: 416px;
     overflow: scroll;
-}
-
-
-.ingredient-list{
-    overflow: hidden;
-}
-
-.friendships-list{
-    /*height: 400px;*/
+    padding-right: 15%;
+    border: solid gray 2px;
+    text-align: left;
     width: auto;
-     /*overflow-y: scroll;*/
-    overflow: scroll;
-    /*padding-left: 100;*/
-    /*background-color: green;*/
 }
 
-.ingredient-list{
+.forked-list{
     overflow: hidden;
+    height: 416px;
+    padding-left: 5%;
+    overflow: scroll;
+    border: solid gray 2px;
+    text-align: left;
 }
+
+.row{
+    padding-left: 15%;
+}
+
+
 
 .grid-item {
     width: 20%;
@@ -150,20 +152,19 @@
     left: 1.8%;
     right: auto;
     width: 96.66666666666666%;
-    color: #fff;
+    color: black;
 }
 
 .header-text h2 {
     font-size: 40px;
+
 }
 
 .header-text h2 span {
-    background-color: black;
     padding: 10px;
 }
 
 .header-text h3 span {
-    background-color: #000;
     padding: 15px;
 }
 
@@ -451,7 +452,7 @@ transform: scale(1.5);
 	display: block;
 }
 .ingredients-list {
-	height: 400px;
+	height: 416px;
 	width: auto;
 	overflow: scroll;
 }
