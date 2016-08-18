@@ -13,6 +13,13 @@
  *= require_tree .
  *= require_self
  */
+
+.friend-button{
+padding-left: 6.5%;
+
+}
+
+
 .invitations {
   color: black;
   text-decoration: none;
@@ -47,7 +54,7 @@
 
 .friendships-list{
     overflow: hidden;
-    height: 416px;
+    height: 411px;
     overflow: scroll;
     padding-right: 15%;
     border: solid gray 2px;
@@ -68,6 +75,9 @@
     padding-left: 15%;
 }
 
+.user-info-row{
+
+}
 
 
 .grid-item {

@@ -1,6 +1,6 @@
 <div class="container">
-    <div class="row">
-        <div class="col-sm-4 col-md-4 col-lg-4">
+    <div class="user-info-row">
+        <div id ="user-image" class="col-sm-3 col-md-3 col-lg-3">
             <% if @user.image %>
             <img src="<%= @user.image %>" style="border: black solid 2px; " ;>
             <% else %>
@@ -8,7 +8,7 @@
             <% end %>
         </div>
 
-        <div class="col-sm-4 col-md-4  col-lg-4">
+        <div id="user-info" class="col-sm-3 col-md-3  col-lg-3">
 
             <h3><%= @user.name %></h3>
             <h4>
@@ -26,12 +26,12 @@
                     </div>
 
                     <% if logged_in? && @user.id == current_user.id && @user.invitations.present? %>
-                    <div id="dinner-party-invitiations" class="col-sm-4 col-md-4 col-lg-4">
-                        <h3>Invitations</h3>
+                    <div id="dinner-party-invitiations" class="col-sm-3 col-md-3 col-lg-3">
+                        <h3 class="center">Invitations</h3>
                         <ul>
                             <% @invitations.each do |invitation| %>
                             <li>
-                                <a class="invitations" href="#" value="<% invitation.id %>" data-toggle="modal" data-target="#Invite-show-<%= invitation.id %>">Invitation from
+                                <a style="text-align:left;" class="invitations" href="#" value="<% invitation.id %>" data-toggle="modal" data-target="#Invite-show-<%= invitation.id %>">Invitation from
                                     <b><%=User.find(invitation.creator_id).name %></b>
                                 </a>
                             </li>
@@ -91,14 +91,11 @@
                   <% end %>
               </div>
               <% if logged_in? && @user.id == current_user.id && @user.dinner_parties.present? %>
-              <div id="dinner-party-invitiations" class="col-sm-4 col-md-4 col-lg-4">
-                <h3>Dinner Parties:</h3>
+              <div id="dinner-party-invitiations" class="col-sm-3 col-md-3 col-lg-3">
+                <h3 class="center">Dinner Parties:</h3>
                 <ul>
                     <% @dinner_parties.each do |dinner_party| %>
-                    <li>
-                        <a class="invitations" href="#" value="<% dinner_party.id %>" data-toggle="modal" data-target="#Invite-show-<%= dinner_party.id %>">Dinner Party At: <%= dinner_party.location %>
-                        </a>
-                    </li>
+                    <li><a class="invitations" style="text-align:left;" href="#" value="<% dinner_party.id %>" data-toggle="modal" data-target="#Invite-show-<%= dinner_party.id %>">Dinner Party At: <%= dinner_party.location %></a></li>
                 </ul>
 
                 <div class="container">
@@ -146,6 +143,8 @@
 
         <% if logged_in? %>
         <% if @user != current_user && @user.friends.include?(current_user)%>
+        <div class="friend-button">
+
         <%= button_to "Unfriend", {:controller => :friendships,
           :action => 'destroy', :id => @user.id },  :class => 'btn btn-primary', :method => :delete %>
 
@@ -199,10 +198,15 @@
 
         <% elsif @user == current_user %>
         <% else%>
+        <div class="friend-button">
+
         <%= button_to "Add friend", {:controller => :friendships,
           :id => @user.id},  :class => 'btn btn-primary', :method => :post %>
+
+        </div>
           <% end %>
           <% end %>
+      </div>
 
           <hr>
           <div class="row">
@@ -222,7 +226,6 @@
                         <% end %>
 
                     </div>
-                <br><br>
                 </div>
 
                 <div class="friendships-list">
@@ -279,4 +282,3 @@
     </div>
 
 </div>
-
