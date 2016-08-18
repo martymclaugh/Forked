@@ -15,12 +15,12 @@ class RecipesController < ApplicationController
       if @recipe.save
         @user_recipe = UserRecipe.create(recipe_id: @recipe.id, user_id: current_user.id )
         redirect_to "/recipes/preview/#{@recipe.spoon_id}"
-        add_score(current_user, 25)
       end
     else
       @recipe = Recipe.create(title: params[:recipe][:title], cooktime: params[:recipe][:cooktime], cuisine: params[:cuisine], course: params[:recipe][:course])
       @user_recipe = UserRecipe.create(recipe_id: @recipe.id, user_id: params[:recipe][:user_id])
       @steps = params[:steps].split("\r\n")
+      add_score(User.find(params[:recipe][:user_id]), 300)
       @ingredients = params[:ingredients].split(',')
       @steps.each_with_index do |step, index|
         number = index + 1
@@ -30,8 +30,8 @@ class RecipesController < ApplicationController
         this_ingredient = Ingredient.find_or_create_by(name: ingredient)
         RecipeIngredient.create(recipe_id: @recipe.id, ingredient_id: this_ingredient.id)
       end
+     p  params[:recipe][:user_id]
       redirect_to recipe_path(@recipe)
-      add_score(current_user, 300)
     end
   end
 
