@@ -2,111 +2,165 @@
     <div class="row">
         <div class="col-sm-4 col-md-4 col-lg-4">
             <% if @user.image %>
-                <img src="<%= @user.image %>"  style="border: black solid 2px; " ;>
-            <% else %>
-                <img src="http://sd.keepcalm-o-matic.co.uk/i/keep-calm-my-profile-picture-is-under-construction.png" height="500" width="500">
-        <% end %>
+            <img src="<%= @user.image %>" style="border: black solid 2px; " ;>
+        <% else %>
+            <img src="http://sd.keepcalm-o-matic.co.uk/i/keep-calm-my-profile-picture-is-under-construction.png" height="500" width="500">
+            <% end %>
         </div>
 
-        <div class="col-sm-4 col-md-4 col-lg-4">
+        <div class="col-sm-4 col-md-4  col-lg-4">
 
-        <h3><%= @user.name %></h3>
-            <h4><span class="fa fa-cutlery"></span> Chef Score: <%= @user.chef_score %></h4>
-            <h4><span class="fa fa-spoon"></span> <%= @user.name %>'s recipe count: <%= UserRecipe.where(user_id: @user.id).length %></h4>
-            <h4><span class="fa fa-user"></span> <%= @user.name %>'s friends count: <%= Friendship.where(friend_id: @user.id).length %></h4>
+            <h3><%= @user.name %></h3>
+            <h4>
+                <span class="fa fa-cutlery"></span>
+                Chef Score:
+                <%= @user.chef_score %></h4>
+            <h4>
+                <span class="fa fa-spoon"></span>
+                <%= @user.name %>'s recipe count:
+                <%= UserRecipe.where(user_id: @user.id).length %></h4>
+            <h4>
+                <span class="fa fa-user"></span>
+                <%= @user.name %>'s friends count:
+                <%= Friendship.where(friend_id: @user.id).length %></h4>
         </div>
 
-        <% if logged_in? && @user.id == current_user.id %>
-          <div id="dinner-party-invitiations" class="col-sm-4 col-md-4 col-lg-4">
+        <% if logged_in? && @user.id == current_user.id && @user.invitations.present? %>
+        <div id="dinner-party-invitiations" class="col-sm-4 col-md-4 col-lg-4">
             <h3>Invitations</h3>
             <ul>
-              <% @user.invitations.each do |invitiation| %>
-              <li>
-                <h4><%= invitation.cuisine %> Dinner Party</h4>
-                <h4> with <a href="/users/<%= invitation.creator_id %>"><%= invitation.creator_id %></a></h4>
-                <h4> at <%= invitation.location %></h4>
-              </li>
-              <% end %>
+                <% @invitations.each do |invitation| %>
+                <li>
+                    <a class="invitations" href="#" value="<% invitation.id %>" data-toggle="modal" data-target="#Invite-show-<%= invitation.id %>">Invitation from
+                        <b><%=User.find(invitation.creator_id).name %></b>
+                    </a>
+                </li>
             </ul>
-          </div>
+
+            <div class="container">
+
+                <div class="modal fade" id="Invite-show-<%= invitation.id %>" role="dialog">
+                    <div class="modal-dialog">
+
+                        <div class="modal-content">
+                            <div class="modal-header center" style="padding:35px 50px;">
+                                <button type="button" class="close white" data-dismiss="modal">&times;</button>
+                                <h1 class="modal-title">Dinner Party Invitation</h1>
+                            </div>
+
+                            <div class="modal-body">
+
+                                <form action='/invitations' method='post'>
+
+                                    <fieldset style="display:none">
+                                        <input type="hidden" name="user_id" value="<%=current_user.id%>">
+                                    </fieldset>
+
+                                    <fieldset style="display:none">
+                                        <input type="hidden" name="invited_id" value="<%=params[:id]%>">
+                                    </fieldset>
+
+                                    <fieldset class="form-group">
+                                        <label for="Cuisine">Cuisine:</label>
+                                        <p><%= invitation.cuisine %></p>
+                                    </fieldset>
+
+                                    <fieldset class="form-group">
+                                        <label for="Datetime">Proposed date and time:</label>
+                                        <p><%= invitation.datetime %></p>
+                                    </fieldset>
+
+                                    <fieldset class="form-group">
+                                        <label for="Location">Location:</label>
+                                        <p><%= invitation.location %></p>
+
+                                    </fieldset>
+
+                                    <button type="submit" class="btn btn-primary">Accept</button>
+                                      <input type="hidden" name="invitation_id" value="<%=invitation.id %>">
+                                      <input type="hidden" name="user_id" value="<%=@user.id %>">
+
+                                    <button type="submit" class="btn btn-primary">Deny</button>
+                                </form>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+
+            </div>
+
+            <% end %>
+        </div>
         <% end %>
     </div>
 
-
-     <% if logged_in? %>
-          <% if @user != current_user && @user.friends.include?(current_user)%>
-            <%= button_to "Unfriend", {:controller => :friendships,
+    <% if logged_in? %>
+    <% if @user != current_user && @user.friends.include?(current_user)%>
+    <%= button_to "Unfriend", {:controller => :friendships,
               :action => 'destroy', :id => @user.id },  :class => 'btn btn-primary', :method => :delete %>
 
-            <a href="#" data-toggle="modal" data-target="#Invitation">Invite to Dinner Party</a>
+    <a href="#" data-toggle="modal" data-target="#Invitation">Invite to Dinner Party</a>
 
-              <div class="container">
+    <div class="container">
 
-                  <div class="modal fade" id="Invitation" role="dialog">
-                    <div class="modal-dialog">
+        <div class="modal fade" id="Invitation" role="dialog">
+            <div class="modal-dialog">
 
-                      <div class="modal-content">
-                        <div class="modal-header center"  style="padding:35px 50px;">
-                          <button type="button" class="close white" data-dismiss="modal">&times;</button>
-                          <h1 class="modal-title">New Invitation</h1>
-                        </div>
-
-                        <div class="modal-body">
-
-                            <form action='/invitations' method='post'>
-
-                                <fieldset style="display:none">
-                                  <input type="hidden" name="user_id" value="<%=current_user.id%>">
-                                 </fieldset>
-
-                                 <fieldset style="display:none">
-                                  <input type="hidden" name="invited_id" value="<%=params[:id]%>">
-                                 </fieldset>
-
-                                 <fieldset class="form-group">
-                                  <label for="Cuisine">Cuisine</label>
-                                  <input type="text" class="form-control" id="cuisine"  name="invitation[cuisine]"placeholder="American, French...">
-                                 </fieldset>
-
-                                <fieldset class="form-group">
-                                  <label for="Datetime">Proposed date and time</label>
-                                  <input type="datetime" class="form-control" id="datetime"  name="invitation[datetime]"placeholder='<%= "#{DateTime.now}"%>'>
-                                 </fieldset>
-
-                                <fieldset class="form-group">
-                                  <label for="Location">Location</label>
-                                  <input type="text" class="form-control" id="location"  name="invitation[location]" placeholder="1234 Folsom, San Francisco, CA">
-                                </fieldset>
-
-                                <button type="submit" class="btn btn-primary">Submit</button>
-                              </form>
-                        </div>
-
-                        <div>
-
-                        </div>
-                        <div class="modal-footer">
-                            Footers are so cool!
-                        </div>
-                      </div>
-
+                <div class="modal-content">
+                    <div class="modal-header center" style="padding:35px 50px;">
+                        <button type="button" class="close white" data-dismiss="modal">&times;</button>
+                        <h1 class="modal-title">New Invitation</h1>
                     </div>
-                  </div>
 
+                    <div class="modal-body">
+
+                        <form action='/invitations' method='post'>
+
+                            <fieldset style="display:none">
+                                <input type="hidden" name="user_id" value="<%=current_user.id%>">
+                            </fieldset>
+
+                            <fieldset style="display:none">
+                                <input type="hidden" name="invited_id" value="<%=params[:id]%>">
+                            </fieldset>
+
+                            <fieldset class="form-group">
+                                <label for="Cuisine">Cuisine</label>
+                                <input type="text" class="form-control" id="cuisine" name="invitation[cuisine]" placeholder="American, French...">
+                            </fieldset>
+
+                            <fieldset class="form-group">
+                                <label for="Datetime">Proposed date and time</label>
+                                <input type="datetime" class="form-control" id="datetime" name="invitation[datetime]" placeholder='<%= "#{DateTime.now}"%>'>
+                            </fieldset>
+
+                            <fieldset class="form-group">
+                                <label for="Location">Location</label>
+                                <input type="text" class="form-control" id="location" name="invitation[location]" placeholder="1234 Folsom, San Francisco, CA">
+                            </fieldset>
+
+                            <button type="submit" class="btn btn-primary">Submit</button>
+                        </form>
+                    </div>
                 </div>
+            </div>
+        </div>
+    </div>
 
-          <% elsif @user == current_user %>
-          <% else%>
-            <%= button_to "Add friend", {:controller => :friendships,
+    <% elsif @user == current_user %>
+<% else%>
+    <%= button_to "Add friend", {:controller => :friendships,
               :id => @user.id},  :class => 'btn btn-primary', :method => :post %>
-          <% end %>
-        <% end %>
+    <% end %>
+    <% end %>
 
     <hr>
-          <div class="row">
-           <div class="col-sm-3 col-md-3 col-lg-3">
-              <h4>Friends </h4>
-              <div class="form-group">
+    <div class="row">
+        <div class="col-sm-3 col-md-3 col-lg-3">
+            <h4>Friends
+            </h4>
+            <div class="form-group">
                 <div>
                     <% if current_user.id == @user.id %>
                     <%= form_tag friendships_path, :method => 'get', :class => "navbar-form navbar-left" do %>
@@ -123,55 +177,53 @@
                     <% Friendship.where(friend_id: @user.id).each do |friend| %>
 
                     <% if User.find(friend.user_id).image == nil %>
-                        <img src="https://dadadee.com/assets/user_missing_medium-edce384836db8136d7ba5bf78dc5212db38e5fe6454c9091a847e429a7b0cfe6.png" style="width: 30%">
-                    <% else  %>
-                        <img src="<%= User.find(friend.user_id).image %>" style="width: 30%">
+                    <img src="https://dadadee.com/assets/user_missing_medium-edce384836db8136d7ba5bf78dc5212db38e5fe6454c9091a847e429a7b0cfe6.png" style="width: 30%">
+                <% else  %>
+                    <img src="<%= User.find(friend.user_id).image %>" style="width: 30%">
                     <% end %>
-                    <a href="/users/<%= User.find(friend.user_id).id %>"><%= User.find(friend.user_id).name %></a></h4>
-                        <br>
-                        <% end %>
-                    </div>
-                </div>
-                </div>
-
-            <div class="col-sm-3 col-md-3 col-lg-3">
-               <h4>My Ingredients:</h4>
-               <div >
-                <% if current_user.id == @user.id %>
-                <%= form_for(:ingredient, :url => ingredients_path, :html => {
-                    :id => 'ingredient-form'}) do |f|%>
-                    <%= f.text_field :ingredient, placeholder: "Enter new ingredient" %>
-                    <%= submit_tag ("Add"),:class => 'btn btn-primary', :id => 'ingredient-add'%>
-                    <% end %>
-                    <% end %>
-                </div>
-                <div class="ingredients-list">
-                    <% @user.ingredients.each do |ingredient| %>
-
-                    <div class="ingredient-item">
-                        <img class="ingredient-image" src="<%= ingredient.image %>" value="<%= ingredient.name %>">
-                        <div class="ingredient-name">
-                            <p><%= ingredient.name %></p>
-                        </div>
-                        <% if current_user.id == @user.id %>
-                        <div class="ingredient-delete">
-                            <%= button_to "X", {:controller => :ingredients, :action => 'destroy', :id => ingredient.id }, :method => :delete %>
-                        </div>
-                        <% end %>
-                    </div>
-                    <% end %>
-                </div>
+                    <a href="/users/<%= User.find(friend.user_id).id %>"><%= User.find(friend.user_id).name %></a>
+                </h4>
+                <br>
+                <% end %>
             </div>
-            <div class="col-sm-3 col-md-3 col-lg-3">
-              <h4>My Forks:</h4>
-
-          </div>
-          <div class="col-sm-3 col-md-3 col-lg-3">
-            <h1>My recipes</h1>
         </div>
     </div>
 
+    <div class="col-sm-3 col-md-3 col-lg-3">
+        <h4>My Ingredients:</h4>
+        <div >
+            <% if current_user.id == @user.id %>
+            <%= form_for(:ingredient, :url => ingredients_path, :html => {
+                    :id => 'ingredient-form'}) do |f|%>
+            <%= f.text_field :ingredient, placeholder: "Enter new ingredient" %>
+            <%= submit_tag ("Add"),:class => 'btn btn-primary', :id => 'ingredient-add'%>
+            <% end %>
+            <% end %>
+        </div>
+        <div class="ingredients-list">
+            <% @user.ingredients.each do |ingredient| %>
 
+            <div class="ingredient-item">
+                <img class="ingredient-image" src="<%= ingredient.image %>" value="<%= ingredient.name %>">
+                <div class="ingredient-name">
+                    <p><%= ingredient.name %></p>
+                </div>
+                <% if current_user.id == @user.id %>
+                <div class="ingredient-delete">
+                    <%= button_to "X", {:controller => :ingredients, :action => 'destroy', :id => ingredient.id }, :method => :delete %>
+                </div>
+                <% end %>
+            </div>
+            <% end %>
+        </div>
+    </div>
+    <div class="col-sm-3 col-md-3 col-lg-3">
+        <h4>My Forks:</h4>
 
+    </div>
+    <div class="col-sm-3 col-md-3 col-lg-3">
+        <h1>My recipes</h1>
+    </div>
+</div>
 
 </div>
