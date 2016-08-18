@@ -23,9 +23,12 @@
     <!-- Latest compiled and minified JavaScript -->
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS" crossorigin="anonymous"></script>
 
-    <script src="https://npmcdn.com/masonry-layout@4.1/dist/masonry.pkgd.min.js"></script>
+
+      <script src="https://npmcdn.com/masonry-layout@4.1/dist/masonry.pkgd.min.js"></script>
+
+
     <!-- or -->
-    <script src="https://npmcdn.com/masonry-layout@4.1/dist/masonry.pkgd.js"></script>
+    <!-- <script src="https://npmcdn.com/masonry-layout@4.1/dist/masonry.pkgd.js"></script> -->
 
 
 
@@ -48,7 +51,9 @@
           <span class="icon-bar"></span>
           <span class="icon-bar"></span>
         </button>
-        <a class="navbar-brand" href="/">Forked</a>
+        <a class="navbar-brand" href="/"><img src="http://i.imgur.com/XTIKwX7.png" alt="Forked" height="60" width="auto"></a>
+        <a style="padding-top: 35px;" class="navbar-brand" href="/"> Forked</a>
+
       </div>
 
       <!-- Collect the nav links, forms, and other content for toggling -->
@@ -63,7 +68,7 @@
 
         <ul class="nav navbar-nav navbar-right" style="margin-top: 1em">
           <% if current_user.image %>
-            <li><img id="small-fb-image" style="width: 30%;" src="<%= current_user.image %>"></li>
+            <li><img id="small-fb-image"  src="<%= current_user.image %>"></li>
           <% end %>
         </ul>
 
@@ -90,7 +95,7 @@
 
     <% else %>
 
-  <nav class="navbar navbar-default">
+  <nav class="navbar navbar-default"4>
     <div class="container-fluid">
       <!-- Brand and toggle get grouped for better mobile display -->
       <div class="navbar-header">
@@ -100,9 +105,9 @@
           <span class="icon-bar"></span>
           <span class="icon-bar"></span>
         </button>
-        <a class="navbar-brand" href="/">Forked</a>
+        <a style="top:-10px;"class="navbar-brand" href="/"><img src="http://i.imgur.com/XTIKwX7.png" alt="Forked" height="60" width="auto"></a>
+        <a style="padding-top: 35px;" class="navbar-brand" href="/"> Forked</a>
       </div>
-
 
       <!-- Collect the nav links, forms, and other content for toggling -->
       <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">

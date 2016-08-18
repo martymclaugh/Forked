@@ -14,18 +14,80 @@
  *= require_self
  */
 
+.friend-button{
+padding-left: 6.5%;
+
+}
+
+.col-sm-3.col-md-3.col-lg-3{
+  max-height: 540px;
+}
+
+.invitations {
+  color: black;
+  text-decoration: none;
+}
+.invitations:hover{
+  color: orange;
+  text-transform: uppercase;
+  outline: none;
+  background: none;
+  text-decoration: none;
+}
 #small-fb-image{
-    margin-bottom: 10px;
+    margin-bottom: 15px;
+    width: 30%;
+    text-align: center;
 }
 
+.preview-link{
+  font-size: 120%;
+  padding-right: 10%
+}
 
-.ingredient-list{
+.fb-share-button{
+    padding-top: 25px;
+}
+
+#home-grid{
+    margin-left: 100px;
+}
+
+.ingredients-list{
     overflow: hidden;
+    border: solid gray 2px;
+    text-align: left;
+}
+
+.friendships-list{
+    overflow: hidden;
+    height: 411px;
+    overflow: scroll;
+    padding-right: 15%;
+    border: solid gray 2px;
+    text-align: left;
+    width: auto;
+}
+
+.forked-list{
+    overflow: hidden;
+    height: 416px;
+    padding-left: 5%;
+    overflow: scroll;
+    border: solid gray 2px;
+    text-align: left;
+}
+
+.profile-row{
+    padding-left: 15%;
+}
+
+.user-info-row{
+
 }
 
 
-
- .grid-item {
+.grid-item {
     width: 20%;
 }
 
@@ -107,20 +169,19 @@
     left: 1.8%;
     right: auto;
     width: 96.66666666666666%;
-    color: #fff;
+    color: black;
 }
 
 .header-text h2 {
     font-size: 40px;
+
 }
 
 .header-text h2 span {
-    background-color: black;
     padding: 10px;
 }
 
 .header-text h3 span {
-    background-color: #000;
     padding: 15px;
 }
 
@@ -222,7 +283,6 @@ ul li:last-child {
 }
 
 .navbar-brand {
-    margin-top: 15px;
     text-transform: uppercase;
     font-weight: 900;
     letter-spacing: 2px;
@@ -342,7 +402,7 @@ ul li:last-child {
 
     }
     .preview-image{
-        width: 60%
+        width: 30%
     }
 }
 
@@ -408,7 +468,7 @@ transform: scale(1.5);
 	display: block;
 }
 .ingredients-list {
-	height: 400px;
+	height: 416px;
 	width: auto;
 	overflow: scroll;
 }
@@ -424,7 +484,7 @@ transform: scale(1.5);
 }
 
 .preview-image{
-        width: 60%;
+        width: 30%
     }
 
 
@@ -449,7 +509,8 @@ transform: scale(1.5);
     }
 
     .preview-image{
-        width: 60%;
+        width: 30%;
+        margin-left: 75px;
     }
 
     .image-div{
@@ -468,6 +529,12 @@ transform: scale(1.5);
          text-align: center;
     }
 
+    .friendships-list{
+    overflow: hidden;
+    padding-left: 5%;
+    /*background-color: blue;*/
+    overflow: scroll;
+}
 
     .top-divider {
         margin-top: 0;
@@ -493,7 +560,6 @@ transform: scale(1.5);
 
 
     .recipe-nav{
-
         list-style-type: none;
         margin: 0;
         padding: 0;
@@ -512,6 +578,11 @@ transform: scale(1.5);
     }
 
 
+   #small-fb-image{
+    margin-left: 150px;
+    width: 30%;
+
+}
 
 
     .navbar {

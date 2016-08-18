@@ -13,7 +13,6 @@
 //= require jquery
 //= require jquery_ujs
 //= require cocoon
-//= require turbolinks
 //= require_tree .
 
 
@@ -21,6 +20,7 @@ $(document).on("ready", function(){
 	$('.ingredient-check').on('click', recipeDone)
 	$('.directions').on('click', directionDone)
 	addIngredient();
+	hideCustomIngredients();
 })
 
 
@@ -41,6 +41,7 @@ function directionDone(){
 function addIngredient(){
 	$('#ingredient-add').on('click', function(event){
 		event.preventDefault();
+		console.log(event);
 		var formData = $('Input#ingredient_ingredient').serialize()
 		$.ajax({
 			url: '/ingredients',
@@ -51,5 +52,12 @@ function addIngredient(){
 			$('.ingredients-list').append(response);
 			$('#ingredient-form')[0].reset();
 		})
+	})
+}
+
+function hideCustomIngredients(){
+	$('.users-ingredients').on('click', function(){
+		$('#custom-ingredients').toggle();
+		$('#my-ingredients').toggle();
 	})
 }

@@ -10,21 +10,12 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160817015559) do
+ActiveRecord::Schema.define(version: 20160817174318) do
 
-  create_table "dinnerparties", force: :cascade do |t|
+  create_table "dinner_parties", force: :cascade do |t|
+    t.string   "cuisine"
+    t.datetime "datetime"
     t.string   "location"
-    t.datetime "date"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-  end
-
-  create_table "dinnerparty_recipes", force: :cascade do |t|
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-  end
-
-  create_table "dinnerparty_users", force: :cascade do |t|
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
@@ -40,6 +31,15 @@ ActiveRecord::Schema.define(version: 20160817015559) do
     t.string   "name"
     t.string   "spoon_id"
     t.string   "image"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "invitations", force: :cascade do |t|
+    t.string   "cuisine"
+    t.datetime "datetime"
+    t.string   "location"
+    t.integer  "creator_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
@@ -87,9 +87,23 @@ ActiveRecord::Schema.define(version: 20160817015559) do
     t.datetime "updated_at",  null: false
   end
 
+  create_table "user_dinner_parties", force: :cascade do |t|
+    t.integer  "dinner_party_id"
+    t.integer  "user_id"
+    t.datetime "created_at",      null: false
+    t.datetime "updated_at",      null: false
+  end
+
   create_table "user_ingredients", force: :cascade do |t|
     t.integer  "user_id"
     t.integer  "ingredient_id"
+    t.datetime "created_at",    null: false
+    t.datetime "updated_at",    null: false
+  end
+
+  create_table "user_invitations", force: :cascade do |t|
+    t.integer  "invitation_id"
+    t.integer  "invited_id"
     t.datetime "created_at",    null: false
     t.datetime "updated_at",    null: false
   end
