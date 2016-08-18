@@ -51,7 +51,7 @@ GEM
       execjs
     coffee-script-source (1.10.0)
     concurrent-ruby (1.0.2)
-    daemons (1.2.3)
+    daemons (1.2.4)
     debug_inspector (0.0.2)
     dotenv (2.1.1)
     dotenv-rails (2.1.1)
@@ -95,7 +95,7 @@ GEM
     multi_xml (0.5.5)
     multipart-post (2.0.0)
     nio4r (1.2.1)
-    nokogiri (1.6.7)
+    nokogiri (1.6.8)
       mini_portile2 (~> 2.1.0)
       pkg-config (~> 1.1.7)
     oauth2 (1.2.0)
