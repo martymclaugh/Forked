@@ -19,6 +19,7 @@ padding-left: 6.5%;
 
 }
 
+
 .boarder{
     border: black solid 2px; "
 }
@@ -411,7 +412,7 @@ ul li:last-child {
 }
 
 
-}
+
 
 @media screen and (min-width:1200px) {
     .box:after {

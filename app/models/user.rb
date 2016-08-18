@@ -31,4 +31,8 @@ class User < ApplicationRecord
     where("lower(name) LIKE ?", "%#{search_param}%")
   end
 
+  def first_name
+    name.split(" ")[0]
+  end
+
 end
