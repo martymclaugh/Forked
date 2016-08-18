@@ -164,10 +164,9 @@
             </div>
             <div class="col-sm-3 col-md-3 col-lg-3">
               <h4>My Forks:</h4>
-
                 <div class="forked-list">
-                    <% UserRecipe.where(user_id: @user.id).each do |recipe| %>
-                    <a href="/recipes/<%= recipe.recipe_id %>">link</a>
+                    <% Like.where(user_id: @user.id).each do |recipe| %>
+                        <%= recipe.recipe_id %>
                     <% end %>
                 </div>
             </div>
@@ -175,9 +174,16 @@
           </div>
           <div class="col-sm-3 col-md-3 col-lg-3">
             <h1>My recipes</h1>
+             <div class="forked-list">
+                    <% UserRecipe.where(user_id: @user.id).each do |recipe| %>
+                        <a href="/recipes/<%= recipe.recipe_id %>"><%= recipe.title %</a>
+                    <% end %>
+                </div>
         </div>
     </div>
 
+
+<!-- Recipe.find(UserRecipe.last.recipe_id).title -->
 
 
 
