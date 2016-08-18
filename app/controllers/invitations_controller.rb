@@ -13,4 +13,5 @@ class InvitationsController < ApplicationController
     redirect_to user_path(User.find(params[:user_id]))
     # Create 2 new user_invitation objects
   end
+  
 end
