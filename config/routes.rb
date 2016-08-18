@@ -18,4 +18,5 @@ Rails.application.routes.draw do
   resources :makes, only: [:create, :index]
   resources :likes, only: [:create, :index]
   resources :invitations
+  resources :dinner_parties
 end

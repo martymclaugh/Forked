@@ -50,16 +50,6 @@
 
                             <div class="modal-body">
 
-                                <form action='/invitations' method='post'>
-
-                                    <fieldset style="display:none">
-                                        <input type="hidden" name="user_id" value="<%=current_user.id%>">
-                                    </fieldset>
-
-                                    <fieldset style="display:none">
-                                        <input type="hidden" name="invited_id" value="<%=params[:id]%>">
-                                    </fieldset>
-
                                     <fieldset class="form-group">
                                         <label for="Cuisine">Cuisine:</label>
                                         <p><%= invitation.cuisine %></p>
@@ -75,13 +65,18 @@
                                         <p><%= invitation.location %></p>
 
                                     </fieldset>
-
-                                    <button type="submit" class="btn btn-primary">Accept</button>
-                                      <input type="hidden" name="invitation_id" value="<%=invitation.id %>">
-                                      <input type="hidden" name="user_id" value="<%=@user.id %>">
-
-                                    <button type="submit" class="btn btn-primary">Deny</button>
+                                <form class="right" action="/dinner_parties" method="post">
+                                  <button type="submit" class="btn btn-primary">Accept</button>
+                                  <input type="hidden" name="invitation_id" value="<%=invitation.id %>">
+                                  <input type="hidden" name="user_id" value="<%=@user.id %>">
                                 </form>
+
+                                <form style="display: inline;" class="right" action="/invitations" method="delete">
+                                  <button type="submit" class="btn btn-primary">Deny</button>
+                                  <input type="hidden" name="invitation_id" value="<%=invitation.id %>">
+                                  <input type="hidden" name="user_id" value="<%=@user.id %>">
+                                </form>
+
                             </div>
                         </div>
 
