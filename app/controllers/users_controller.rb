@@ -4,6 +4,7 @@ class UsersController < ApplicationController
   def show
     @user = User.find(params[:id])
     @invitations = []
+    @dinner_parties = @user.dinner_parties
     @user.user_invitations.each do |user_invitation|
       @invitations << Invitation.find(user_invitation.invitation_id)
     end

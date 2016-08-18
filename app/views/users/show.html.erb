@@ -65,14 +65,15 @@
                                         <p><%= invitation.location %></p>
 
                                     </fieldset>
-                                <form class="right" action="/dinner_parties" method="post">
+                                <form  style="display: inline-block;" action="/dinner_parties" method="post">
                                   <button type="submit" class="btn btn-primary">Accept</button>
                                   <input type="hidden" name="invitation_id" value="<%=invitation.id %>">
                                   <input type="hidden" name="user_id" value="<%=@user.id %>">
                                 </form>
 
-                                <form style="display: inline;" class="right" action="/invitations" method="delete">
+                                <form style="display: inline-block;" action="/user_invitations/<%= UserInvitation.where(invitation_id: invitation.id, user_id: @user.id) %>" method="post">
                                   <button type="submit" class="btn btn-primary">Deny</button>
+                                  <input type="hidden" name="_method" value="destroy">
                                   <input type="hidden" name="invitation_id" value="<%=invitation.id %>">
                                   <input type="hidden" name="user_id" value="<%=@user.id %>">
                                 </form>
@@ -89,6 +90,59 @@
         </div>
         <% end %>
     </div>
+    <% if logged_in? && @user.id == current_user.id && @user.dinner_parties.present? %>
+    <div id="dinner-party-invitiations" class="col-sm-4 col-md-4 col-lg-4">
+        <h3>Dinner Parties:</h3>
+        <ul>
+            <% @dinner_parties.each do |dinner_party| %>
+            <li>
+                <a class="invitations" href="#" value="<% dinner_party.id %>" data-toggle="modal" data-target="#Invite-show-<%= dinner_party.id %>">Dinner Party At: <%= dinner_party.location %>
+                </a>
+            </li>
+        </ul>
+
+        <div class="container">
+
+            <div class="modal fade" id="Invite-show-<%= dinner_party.id %>" role="dialog">
+                <div class="modal-dialog">
+
+                    <div class="modal-content">
+                        <div class="modal-header center" style="padding:35px 50px;">
+                            <button type="button" class="close white" data-dismiss="modal">&times;</button>
+                            <h1 class="modal-title">Dinner Parties:</h1>
+                        </div>
+
+                        <div class="modal-body">
+
+                                <fieldset class="form-group">
+                                    <label for="Cuisine">Cuisine:</label>
+                                    <p><%= dinner_party.cuisine %></p>
+                                </fieldset>
+
+                                <fieldset class="form-group">
+                                    <label for="Datetime">Proposed date and time:</label>
+                                    <p><%= dinner_party.datetime %></p>
+                                </fieldset>
+
+                                <fieldset class="form-group">
+                                    <label for="Location">Location:</label>
+                                    <p><%= dinner_party.location %></p>
+
+                                </fieldset>
+
+                              <p>Combined Ingredients: </p><button type="submit" class="btn btn-primary">Search</button>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+
+        </div>
+
+        <% end %>
+    </div>
+    <% end %>
+</div>
 
     <% if logged_in? %>
     <% if @user != current_user && @user.friends.include?(current_user)%>
