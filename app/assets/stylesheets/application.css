@@ -37,6 +37,10 @@ padding-left: 6.5%;
     text-align: center;
 }
 
+.preview-link{
+  font-size: 120%;
+  padding-right: 10%
+}
 
 .fb-share-button{
     padding-top: 25px;
@@ -71,7 +75,7 @@ padding-left: 6.5%;
     text-align: left;
 }
 
-.row{
+.profile-row{
     padding-left: 15%;
 }
 
@@ -276,7 +280,6 @@ ul li:last-child {
 }
 
 .navbar-brand {
-    margin-top: 15px;
     text-transform: uppercase;
     font-weight: 900;
     letter-spacing: 2px;
