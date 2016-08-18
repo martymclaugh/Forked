@@ -71,9 +71,9 @@
                                   <input type="hidden" name="user_id" value="<%=@user.id %>">
                                 </form>
 
-                                <form style="display: inline-block;" action="/invitations" method="post">
+                                <form style="display: inline-block;" action="/user_invitations/<%= UserInvitation.where(invitation_id: invitation.id, user_id: @user.id) %>" method="post">
                                   <button type="submit" class="btn btn-primary">Deny</button>
-                                  <input type="hidden" name="_method" value="delete">
+                                  <input type="hidden" name="_method" value="destroy">
                                   <input type="hidden" name="invitation_id" value="<%=invitation.id %>">
                                   <input type="hidden" name="user_id" value="<%=@user.id %>">
                                 </form>
