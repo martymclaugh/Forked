@@ -2,7 +2,6 @@ class CreateRecipes < ActiveRecord::Migration[5.0]
   def change
     create_table :recipes do |t|
       t.string :title
-      t.string :steps, array: true
       t.string :spoon_id
       t.string :cooktime
       t.string :cuisine
