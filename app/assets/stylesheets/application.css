@@ -30,18 +30,24 @@
     text-align: center;
 }
 
+
+.fb-share-button{
+    padding-top: 25px;
+}
 #home-grid{
     margin-left: 100px;
 }
 
 .ingredients-list{
     overflow: hidden;
-    background-color: blue;
+    /*background-color: blue;*/
 }
 
 .friendships-list{
-    /*overflow: hidden;*/
+    overflow: hidden;
+    padding-left: 5%;
     /*background-color: blue;*/
+    overflow: scroll;
 }
 
 
@@ -379,7 +385,7 @@ ul li:last-child {
 
     }
     .preview-image{
-        width: 60%
+        width: 30%
     }
 }
 
@@ -461,7 +467,7 @@ transform: scale(1.5);
 }
 
 .preview-image{
-        width: 60%
+        width: 30%
     }
 
 
@@ -486,7 +492,7 @@ transform: scale(1.5);
     }
 
     .preview-image{
-        width: 60%;
+        width: 30%;
         margin-left: 75px;
     }
 
@@ -506,6 +512,12 @@ transform: scale(1.5);
          text-align: center;
     }
 
+    .friendships-list{
+    overflow: hidden;
+    padding-left: 5%;
+    /*background-color: blue;*/
+    overflow: scroll;
+}
 
     .top-divider {
         margin-top: 0;
@@ -531,7 +543,6 @@ transform: scale(1.5);
 
 
     .recipe-nav{
-
         list-style-type: none;
         margin: 0;
         padding: 0;

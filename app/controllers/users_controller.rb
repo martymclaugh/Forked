@@ -4,12 +4,10 @@ class UsersController < ApplicationController
   def show
     @user = User.find(params[:id])
     @invitations = []
-    p @user.user_invitations
     @user.user_invitations.each do |user_invitation|
       @invitations << Invitation.find(user_invitation.invitation_id)
     end
-    p "*" *100
-    p @invitations
+    @invitations
   end
 
 

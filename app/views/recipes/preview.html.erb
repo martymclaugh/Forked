@@ -20,7 +20,8 @@
     <div class="center">
         <ul class="recipe-nav">
             <li>
-                <h6>span class="fa fa-share-alt"></span>
+                <h6>
+                <!-- <h6>span class="fa fa-share-alt"></span> -->
                   <div class="fb-share-button active" data-href="http://www.forked-api.herokuapp.com/recipes/<%= params[:id] %>"
   	            	data-layout="button_count">
   	              </div>
@@ -29,20 +30,17 @@
         <% if logged_in? %>
           <li>
             <h6>
-              <span class="fa fa-thumbs-up"></span>
-              <%= link_to "LIKE", likes_path(ingredients: @ingredients), method: 'post' %>
+              <%= link_to " LIKE", likes_path(ingredients: @ingredients), :class => 'fa fa-thumbs-up', method: 'post'  %>
             </h6>
           </li>
             <li>
               <h6>
-                <span class="fa fa-spoon"></span>
-                <%= link_to "I MADE IT", makes_path(ingredients: @ingredients), method: 'post' %>
+                <%= link_to " I MADE IT", makes_path(ingredients: @ingredients), :class => 'fa fa-spoon', method: 'post' %>
               </h6>
             </li>
             <li>
               <h6>
-                <span class="fa fa-cutlery"></span>
-                <%= link_to "FORK IT", recipes_path(ingredients: @ingredients), method: 'post' %>
+                <%= link_to "  FORK IT", recipes_path(ingredients: @ingredients), :class => 'fa fa-cutlery', method: 'post' %>
               </h6>
             </li>
         <% end %>

@@ -158,12 +158,12 @@
             <div class="form-group">
                 <div>
                     <% if current_user.id == @user.id %>
-                    <%= form_tag friendships_path, :method => 'get', :class => "navbar-form navbar-left" do %>
-                    <p>
-                        <%= text_field_tag :search, params[:search] %>
-                        <%= submit_tag "Find Friends",:class => 'btn btn-primary', :name => nil %>
-                    </p>
-                    <% end %>
+                        <%= form_tag friendships_path, :method => 'get', :class => "navbar-form navbar-left" do %>
+                        <p>
+                            <%= text_field_tag :search, params[:search] %>
+                            <%= submit_tag "Find Friends",:class => 'btn btn-primary', :name => nil %>
+                        </p>
+                        <% end %>
                     <% end %>
 
                 </div>
@@ -187,7 +187,7 @@
     <div class="col-sm-3 col-md-3 col-lg-3">
         <h4>My Ingredients:</h4>
         <div >
-            <% if current_user.id == @user.id %>
+             <% if current_user.id == @user.id %>
             <%= form_for(:ingredient, :url => ingredients_path, :html => {
                     :id => 'ingredient-form'}) do |f|%>
             <%= f.text_field :ingredient, placeholder: "Enter new ingredient" %>
@@ -210,15 +210,24 @@
                 <% end %>
             </div>
             <% end %>
+            <div class="col-sm-3 col-md-3 col-lg-3">
+              <h4>My Forks:</h4>
+                <div class="forked-list">
+                    <% Like.where(user_id: @user.id).each do |recipe| %>
+                        <a href="/recipes/<%= recipe.recipe_id %>"><%= Recipe.find(recipe.recipe_id).title %></a>
+                    <% end %>
+                </div>
+            </div>
+
+          </div>
+          <div class="col-sm-3 col-md-3 col-lg-3">
+            <h1>My recipes</h1>
+             <div class="forked-list">
+
+                </div>
         </div>
     </div>
-    <div class="col-sm-3 col-md-3 col-lg-3">
-        <h4>My Forks:</h4>
 
-    </div>
-    <div class="col-sm-3 col-md-3 col-lg-3">
-        <h1>My recipes</h1>
-    </div>
+
 </div>
-
 </div>
