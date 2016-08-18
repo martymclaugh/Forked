@@ -13,6 +13,13 @@
  *= require_tree .
  *= require_self
  */
+
+.friend-button{
+padding-left: 6.5%;
+
+}
+
+
 .invitations {
   color: black;
   text-decoration: none;
@@ -30,6 +37,10 @@
     text-align: center;
 }
 
+.preview-link{
+  font-size: 120%;
+  padding-right: 10%
+}
 
 .fb-share-button{
     padding-top: 25px;
@@ -47,7 +58,7 @@
 
 .friendships-list{
     overflow: hidden;
-    height: 416px;
+    height: 411px;
     overflow: scroll;
     padding-right: 15%;
     border: solid gray 2px;
@@ -64,10 +75,13 @@
     text-align: left;
 }
 
-.row{
+.profile-row{
     padding-left: 15%;
 }
 
+.user-info-row{
+
+}
 
 
 .grid-item {
@@ -266,7 +280,6 @@ ul li:last-child {
 }
 
 .navbar-brand {
-    margin-top: 15px;
     text-transform: uppercase;
     font-weight: 900;
     letter-spacing: 2px;
