@@ -12,8 +12,11 @@
             <h3><%= @user.name %></h3>
             <h4>
                 <span class="fa fa-cutlery"></span>
-                Chef Score:
-                <%= @user.chef_score %></h4>
+                <div id="chef-score">
+                  Chef Score:
+                  <%= @user.chef_score %>
+                </div>
+              </h4>
                 <h4>
                     <span class="fa fa-spoon"></span>
                     <%= @user.name %>'s recipe count:
