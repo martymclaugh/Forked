@@ -10,13 +10,20 @@ You can search for recipes based on what ingredients you have, cuisine, allergie
 
 Other features include:
 * Facebook Authentication
-* Spoonacular API
+![alt tag](http://imgur.com/5nyY79h)
 * Beautiful Design
+![alt tag](http://imgur.com/XtP6SNO)
 * Visualization of Ingredients on profile
+![alt tag](http://imgur.com/XDCuvTO)
 * Dinner Party with friends
+![alt tag](http://imgur.com/LpL2qPh)
 * Search feature to use your own ingredients
+![alt tag](http://imgur.com/ECRxCqV)
 * Creating recipes
 
+
+Schema:
+![alt tag](http://imgur.com/buXioFy)
 Technologies used:
 * Ruby on Rails 5.0
 * Javascript
