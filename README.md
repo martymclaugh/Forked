@@ -8,15 +8,24 @@ Built mainly in Ruby on Rails, Forked allows to to connect with friends and view
 
 You can search for recipes based on what ingredients you have, cuisine, allergies, dish (main course, side dish), and a specific type of recipe.
 
-Other features include:
-Facebook Authentication
-Spoonacular API
-Beautiful Design
-Visualization of Ingredients on profile
-Dinner Party with friends
-Search feature to use your own ingredients
-Creating recipes
+Demo Video: https://youtu.be/ru8OiLv9Oaw
 
+Other features include:
+* Facebook Authentication
+![alt tag](http://imgur.com/5nyY79h)
+* Beautiful Design
+![alt tag](http://imgur.com/XtP6SNO)
+* Visualization of Ingredients on profile
+![alt tag](http://imgur.com/XDCuvTO)
+* Dinner Party with friends
+![alt tag](http://imgur.com/LpL2qPh)
+* Search feature to use your own ingredients
+![alt tag](http://imgur.com/ECRxCqV)
+* Creating recipes
+
+
+Schema:
+![alt tag](http://imgur.com/buXioFy)
 Technologies used:
 * Ruby on Rails 5.0
 * Javascript
