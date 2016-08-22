@@ -12,20 +12,20 @@ Demo Video: https://youtu.be/ru8OiLv9Oaw
 
 Other features include:
 * Facebook Authentication
-![alt tag](http://imgur.com/5nyY79h)
+![alt tag](http://i.imgur.com/5nyY79h.png)
 * Beautiful Design
-![alt tag](http://imgur.com/XtP6SNO)
+![alt tag](http://i.imgur.com/XtP6SNO.png)
 * Visualization of Ingredients on profile
-![alt tag](http://imgur.com/XDCuvTO)
+![alt tag](http://i.imgur.com/XDCuvTO.png)
 * Dinner Party with friends
-![alt tag](http://imgur.com/LpL2qPh)
+![alt tag](http://i.imgur.com/LpL2qPh.png)
 * Search feature to use your own ingredients
-![alt tag](http://imgur.com/ECRxCqV)
+![alt tag](http://i.imgur.com/ECRxCqV.png)
 * Creating recipes
 
 
 Schema:
-![alt tag](http://imgur.com/buXioFy)
+![alt tag](http://i.imgur.com/buXioFy.png)
 Technologies used:
 * Ruby on Rails 5.0
 * Javascript
