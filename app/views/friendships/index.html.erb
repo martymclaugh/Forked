@@ -1,6 +1,6 @@
 <% @friends.each do |friend| %>
   <% if friend.image %>
-    <img style="width:10%; height:auto;" src="<%= current_user.image %>" height="500" width="500" style="border: black solid 2px;" ;>
+    <img style="width:10%; height:auto;" src="<%= friend.image %>" height="500" width="500" style="border: black solid 2px;" ;>
   <% else %>
     <img src="http://sd.keepcalm-o-matic.co.uk/i/keep-calm-my-profile-picture-is-under-construction.png" height="50" width="50">
   <% end %>

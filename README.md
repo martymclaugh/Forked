@@ -1,24 +1,28 @@
-# README
+Forked:
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+Team: Mac Roche, Jason Sutter, Melanie Hahn, Marty McLaughlin
 
-Things you may want to cover:
+A social media web app for recipes.
 
-* Ruby version
+Built mainly in Ruby on Rails, Forked allows to to connect with friends and view not only what recipes they are cooking, but what ingredients they have as well.
 
-* System dependencies
+You can search for recipes based on what ingredients you have, cuisine, allergies, dish (main course, side dish), and a specific type of recipe.
 
-* Configuration
+Other features include:
+Facebook Authentication
+Spoonacular API
+Beautiful Design
+Visualization of Ingredients on profile
+Dinner Party with friends
+Search feature to use your own ingredients
+Creating recipes
 
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+Technologies used:
+* Ruby on Rails 5.0
+* Javascript
+* AJAX
+* jQuery
+* Facebook OAuth 2
+* Spoonacular API
+* HTML5
+* Bootstrap
