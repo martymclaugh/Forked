@@ -8,6 +8,8 @@ Built mainly in Ruby on Rails, Forked allows to to connect with friends and view
 
 You can search for recipes based on what ingredients you have, cuisine, allergies, dish (main course, side dish), and a specific type of recipe.
 
+Demo Video: https://youtu.be/ru8OiLv9Oaw
+
 Other features include:
 * Facebook Authentication
 ![alt tag](http://imgur.com/5nyY79h)
