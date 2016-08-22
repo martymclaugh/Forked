@@ -1,6 +1,6 @@
-Forked:
+# Forked:
 
-Team: Mac Roche, Jason Sutter, Melanie Hahn, Marty McLaughlin
+## Team: Mac Roche, Jason Sutter, Melanie Hahn, Marty McLaughlin
 
 A social media web app for recipes.
 
@@ -8,23 +8,23 @@ Built mainly in Ruby on Rails, Forked allows to to connect with friends and view
 
 You can search for recipes based on what ingredients you have, cuisine, allergies, dish (main course, side dish), and a specific type of recipe.
 
-Demo Video: https://youtu.be/ru8OiLv9Oaw
+### Demo Video: https://youtu.be/ru8OiLv9Oaw
 
-Other features include:
-* Facebook Authentication
+# Other features include:
+## * Facebook Authentication
 ![alt tag](http://i.imgur.com/5nyY79h.png)
-* Beautiful Design
+## * Beautiful Design
 ![alt tag](http://i.imgur.com/XtP6SNO.png)
-* Visualization of Ingredients on profile
+## * Visualization of Ingredients on profile
 ![alt tag](http://i.imgur.com/XDCuvTO.png)
-* Dinner Party with friends
+## * Dinner Party with friends
 ![alt tag](http://i.imgur.com/LpL2qPh.png)
-* Search feature to use your own ingredients
+## * Search feature to use your own ingredients
 ![alt tag](http://i.imgur.com/ECRxCqV.png)
-* Creating recipes
+## * Creating recipes
 
 
-Schema:
+## * Schema:
 ![alt tag](http://i.imgur.com/buXioFy.png)
 Technologies used:
 * Ruby on Rails 5.0
