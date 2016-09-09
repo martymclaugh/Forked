@@ -28,4 +28,6 @@ i=1
   i += 1
 end
 
-
+100.times do
+  Ingredient.create(name: Faker::Food.ingredient)
+end
