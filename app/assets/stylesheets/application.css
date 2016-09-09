@@ -21,7 +21,7 @@ padding-left: 6.5%;
 
 
 .boarder{
-    border: black solid 2px; "
+    border: black solid 2px;
 }
 
 
@@ -118,7 +118,7 @@ padding-left: 6.5%;
 
 .carousel-inner img {
     width: 100%;
-    max-height: 300px
+    max-height: 300px;
 }
 
 .carousel-control {
@@ -377,11 +377,10 @@ ul li:last-child {
         padding: 30px 0 10px;
         text-align: center;
         text-shadow: 1px 1px 2px rgba(0,0,0,0.5);
-        font-family: "Josefin Slab","Helvetica Neue",Helvetica,Arial,sans-serif;
+        font-family: Helvetica,Arial,sans-serif;
         font-size: 5em;
         font-weight: 700;
         line-height: normal;
-
     }
 
     .top-divider {
@@ -419,7 +418,7 @@ ul li:last-child {
 
     }
     .preview-image{
-        width: 30%
+        width: 30%;
     }
 }
 
@@ -501,7 +500,7 @@ transform: scale(1.5);
 }
 
 .preview-image{
-        width: 30%
+        width: 30%;
     }
 
 
