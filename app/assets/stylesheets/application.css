@@ -118,7 +118,7 @@ padding-left: 6.5%;
 
 .carousel-inner img {
     width: 100%;
-    max-height: 300px
+    max-height: 300px;
 }
 
 .carousel-control {
@@ -418,7 +418,7 @@ ul li:last-child {
 
     }
     .preview-image{
-        width: 30%
+        width: 30%;
     }
 }
 
@@ -500,7 +500,7 @@ transform: scale(1.5);
 }
 
 .preview-image{
-        width: 30%
+        width: 30%;
     }
 
 
