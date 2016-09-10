@@ -104,7 +104,7 @@
     <div class="contain" style="width:80%">
       <% @recipes.each do |recipe| %>
       <div>
-        <div class="thumbnail grid-item">
+        <div class="thumbnail grid-item" style="width:200px;">
           <div class="caption" style="height: auto;">
           	<div>
               <a href="/recipes/preview/<%= recipe['id'] %>"><img src="<%= recipe['image'] %>" style="width: 80%; height: auto";></a>
